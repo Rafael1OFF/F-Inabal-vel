@@ -3,37 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>A Fé Inabalável | Curso de Formação</title>
+    <title>A Fé Inabalável | Plataforma de Formação</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
     <style>
         /* BASE & VARIÁVEIS PARA UM DESIGN PREMIUM E SÓBRIO */
         :root {
-            --bg-color: #f8fafc;
-            --surface: #ffffff;
-            --sidebar-bg: #0f172a;
-            --text-main: #334155;
-            --text-heading: #0f172a;
-            --primary: #b45309; 
-            --primary-hover: #92400e;
-            --secondary: #1e293b;
-            --border: #e2e8f0;
-            --danger: #b91c1c;
-            --success: #15803d;
+            --bg-color: #f8fafc; --surface: #ffffff; --sidebar-bg: #0f172a;
+            --text-main: #334155; --text-heading: #0f172a;
+            --primary: #b45309; --primary-hover: #92400e;
+            --secondary: #1e293b; --border: #e2e8f0;
+            --danger: #b91c1c; --success: #15803d;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.8; -webkit-font-smoothing: antialiased; }
 
         /* TELA DE LOGIN / ACESSO */
-        #login-screen {
-            position: fixed; inset: 0; background: var(--sidebar-bg); z-index: 9999;
-            display: flex; align-items: center; justify-content: center; padding: 2rem;
-        }
-        .login-box {
-            background: var(--surface); max-width: 500px; width: 100%; padding: 4rem 3rem;
-            border-radius: 12px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); text-align: center;
-        }
+        #login-screen { position: fixed; inset: 0; background: var(--sidebar-bg); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 2rem; overflow-y: auto; }
+        .login-box { background: var(--surface); max-width: 500px; width: 100%; padding: 4rem 3rem; border-radius: 12px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); text-align: center; }
         .login-box h1 { font-family: 'Merriweather', serif; font-size: 2.2rem; color: var(--text-heading); margin-bottom: 0.5rem; }
         .login-box p { color: #64748b; margin-bottom: 2.5rem; font-size: 1.1rem; }
         .form-group { margin-bottom: 1.5rem; text-align: left; }
@@ -46,18 +36,11 @@
         #app-layout { display: none; flex-direction: column; min-height: 100vh; }
 
         /* HEADER MOBILE */
-        .mobile-header {
-            display: none; background: var(--sidebar-bg); color: white; padding: 1rem 1.5rem; 
-            align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-        }
+        .mobile-header { display: none; background: var(--sidebar-bg); color: white; padding: 1rem 1.5rem; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
         .menu-toggle { background: none; border: 1px solid rgba(255,255,255,0.3); color: white; padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.8rem; font-weight: 800; cursor: pointer; text-transform: uppercase; }
 
         /* SIDEBAR */
-        .sidebar {
-            width: 280px; background-color: var(--sidebar-bg); color: white; height: 100vh; position: fixed; 
-            left: 0; top: 0; padding: 2rem 1.5rem; overflow-y: auto; transition: transform 0.3s ease; z-index: 40;
-            display: flex; flex-direction: column;
-        }
+        .sidebar { width: 280px; background-color: var(--sidebar-bg); color: white; height: 100vh; position: fixed; left: 0; top: 0; padding: 2rem 1.5rem; overflow-y: auto; transition: transform 0.3s ease; z-index: 40; display: flex; flex-direction: column; }
         .sidebar-header { border-bottom: 1px solid #334155; padding-bottom: 1.5rem; margin-bottom: 2rem; }
         .sidebar-header h2 { font-size: 1.2rem; font-weight: 800; letter-spacing: 1px; color: #f8fafc; text-transform: uppercase; }
         .sidebar-header span { color: var(--primary); font-size: 0.85rem; font-weight: 600; display: block; margin-top: 0.5rem; }
@@ -65,16 +48,13 @@
         .student-info { background: #1e293b; padding: 1rem; border-radius: 8px; margin-bottom: 2rem; font-size: 0.9rem; border-left: 3px solid var(--primary); }
         .student-info strong { display: block; color: white; font-size: 1rem; }
 
-        .nav-btn {
-            display: block; width: 100%; text-align: left; background: transparent; color: #94a3b8; border: none; 
-            padding: 1rem; margin-bottom: 0.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
-        }
+        .nav-btn { display: block; width: 100%; text-align: left; background: transparent; color: #94a3b8; border: none; padding: 1rem; margin-bottom: 0.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
         .nav-btn:hover:not(.locked) { background: rgba(255,255,255,0.05); color: white; }
         .nav-btn.active { background: var(--primary); color: white; }
         .nav-btn.locked { opacity: 0.4; cursor: not-allowed; }
         
         .sync-box { margin-top: auto; padding-top: 2rem; text-align: center; }
-        .sync-code-display { background: black; color: #10b981; padding: 0.8rem; border-radius: 4px; font-family: monospace; font-size: 1.1rem; font-weight: bold; letter-spacing: 2px; margin-top: 0.5rem; user-select: all; word-break: break-all; }
+        .sync-code-display { background: black; color: #10b981; padding: 0.8rem; border-radius: 4px; font-family: monospace; font-size: 0.8rem; font-weight: bold; margin-top: 0.5rem; word-break: break-all; }
 
         /* CONTEÚDO PRINCIPAL */
         .main-content { margin-left: 280px; padding: 4rem; max-width: 1000px; width: 100%; margin-right: auto; }
@@ -104,14 +84,33 @@
 
         /* BOTÕES DE AVALIAÇÃO */
         .btn { background: var(--primary); color: white; border: none; padding: 1.2rem 2rem; border-radius: 8px; font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: all 0.3s; width: 100%; display: block; text-align: center; margin-top: 4rem; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-success { background: var(--success); margin-top: 1rem; }
         
-        /* TELA DE AVALIAÇÃO */
+        /* TELA DE AVALIAÇÃO E RESULTADOS */
         #eval-modal { display: none; position: fixed; inset: 0; background: var(--bg-color); z-index: 100; overflow-y: auto; padding: 2rem 1rem; }
         .eval-container { max-width: 800px; margin: 0 auto; background: var(--surface); border-radius: 12px; padding: 3rem; border: 1px solid var(--border); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1); }
         .question-card { margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
         .question-title { font-size: 1.2rem; font-weight: 600; color: var(--secondary); margin-bottom: 1.5rem; line-height: 1.5; }
         .option-lbl { display: flex; align-items: flex-start; padding: 1.2rem; margin-bottom: 0.8rem; background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 1.05rem; line-height: 1.5; }
         .option-lbl input { margin-right: 15px; margin-top: 5px; width: 20px; height: 20px; accent-color: var(--primary); flex-shrink: 0; }
+
+        /* ESTILO DOS RESULTADOS */
+        .result-card { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .result-header { border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 1.5rem; }
+        .result-score { font-size: 2rem; font-weight: 800; color: var(--primary); }
+        .result-q { font-weight: 600; margin-bottom: 0.5rem; margin-top: 1.5rem; }
+        .result-a.correct { color: var(--success); font-weight: bold; background: #f0fdf4; padding: 0.5rem; border-radius: 4px; }
+        .result-a.incorrect { color: var(--danger); font-weight: bold; background: #fef2f2; padding: 0.5rem; border-radius: 4px; }
+
+        /* CERTIFICADO INVISÍVEL (Para Gerar PDF) */
+        #certificado-wrapper { display: none; padding: 40px; background: white; width: 1123px; height: 794px; position: absolute; left: -9999px; top: 0; }
+        .certificado-content { border: 10px solid var(--secondary); padding: 50px; text-align: center; height: 100%; border-radius: 10px; background: #f8fafc; position: relative; }
+        .cert-title { font-family: 'Merriweather', serif; font-size: 4rem; color: var(--primary); text-transform: uppercase; letter-spacing: 5px; margin-top: 30px; }
+        .cert-subtitle { font-size: 1.5rem; color: #64748b; margin-top: 10px; letter-spacing: 2px; }
+        .cert-name { font-family: 'Merriweather', serif; font-size: 3.5rem; font-weight: bold; color: var(--text-heading); margin: 60px 0; border-bottom: 2px solid var(--primary); display: inline-block; padding: 0 50px; }
+        .cert-body { font-size: 1.5rem; color: #334155; max-width: 800px; margin: 0 auto; line-height: 1.8; }
+        .cert-footer { position: absolute; bottom: 50px; width: 100%; left: 0; display: flex; justify-content: space-around; font-size: 1.2rem; color: var(--secondary); font-weight: bold; }
+        .cert-signature { border-top: 2px solid var(--secondary); padding-top: 10px; width: 300px; }
 
         /* RESPONSIVIDADE */
         @media (max-width: 768px) {
@@ -133,20 +132,20 @@
             <p>Formação de Caráter e Teologia</p>
             
             <div class="form-group">
-                <label>Seu Nome Completo</label>
-                <input type="text" id="login-nome" placeholder="Digite seu nome real" required>
+                <label>Seu Nome Completo (Conforme Certificado)</label>
+                <input type="text" id="login-nome" placeholder="Ex: Rafael Andrade dos Santos" required>
             </div>
             <div class="form-group">
                 <label>Sua Função na Igreja</label>
                 <input type="text" id="login-funcao" placeholder="Ex: Membro, Líder, Pastor" required>
             </div>
             <div class="form-group" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0;">
-                <label style="color: #64748b;">Já tem uma Chave de Progresso? (Opcional)</label>
-                <input type="text" id="login-chave" placeholder="Cole sua chave aqui para restaurar os módulos">
+                <label style="color: #64748b;">Chave de Acesso Criptografada (Opcional)</label>
+                <input type="text" id="login-chave" placeholder="Cole sua chave gerada anteriormente aqui">
             </div>
             
-            <p id="login-err" style="color: var(--danger); font-weight: 800; display: none; margin-top: 1rem;">Preencha Nome e Função para entrar.</p>
-            <button class="btn-login" onclick="entrarNoCurso()">Acessar o Curso</button>
+            <p id="login-err" style="color: var(--danger); font-weight: 800; display: none; margin-top: 1rem;"></p>
+            <button class="btn-login" onclick="entrarNoCurso()">Acessar Plataforma</button>
         </div>
     </div>
 
@@ -170,14 +169,17 @@
             <nav>
                 <button id="nav-mod-disciplina" class="nav-btn active" onclick="switchTab('mod-disciplina')">1. A Disciplina</button>
                 <button id="nav-mod-conhecimento" class="nav-btn locked" onclick="switchTabIfUnlocked('mod-conhecimento', this)">2. Conhecimento (Bloqueado)</button>
-                <button class="nav-btn locked">3. Convicção Racional (Em breve)</button>
-                <button class="nav-btn locked">4. Constância (Em breve)</button>
+                <button id="nav-mod-conviccao" class="nav-btn locked">3. Convicção Racional (Em breve)</button>
+                <button id="nav-mod-constancia" class="nav-btn locked">4. Constância (Em breve)</button>
+                <hr style="border: 0; border-top: 1px solid #334155; margin: 15px 0;">
+                <button id="nav-mod-resultados" class="nav-btn" onclick="switchTab('mod-resultados')" style="color: #cbd5e1; font-weight: bold;">Resultados e Provas</button>
+                <button id="nav-mod-exame" class="nav-btn locked" onclick="switchTabIfUnlocked('mod-exame', this)" style="background: var(--danger); color: white;">Exame Final (Bloqueado)</button>
             </nav>
 
             <div class="sync-box">
-                <span style="font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; font-weight: bold;">Sua Chave de Progresso</span>
+                <span style="font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; font-weight: bold;">Chave Anti-Fraude Gerada</span>
                 <div class="sync-code-display" id="display-chave">NENHUMA</div>
-                <p style="font-size: 0.75rem; color: #64748b; margin-top: 0.5rem; line-height: 1.3;">Guarde esta chave. Use-a na tela inicial se for acessar por outro celular ou computador para destrancar os módulos que você já passou.</p>
+                <p style="font-size: 0.75rem; color: #64748b; margin-top: 0.5rem; line-height: 1.3;">Sua chave é ligada à biometria do seu nome. Use-a na tela de login de outro aparelho para continuar.</p>
             </div>
         </aside>
 
@@ -229,7 +231,7 @@
                     </ul>
                 </div>
 
-                <button class="btn" onclick="iniciarProva('disciplina')">Fazer Prova de Avaliação: Pilar 1</button>
+                <button class="btn" onclick="iniciarProva('disciplina')">Realizar Prova do Pilar 1</button>
             </section>
 
             <section id="mod-conhecimento" class="module-section">
@@ -274,130 +276,208 @@
                 <div class="step-box">
                     <h4>Passo a Passo: O Estudo Expositivo e o Espírito Bereano</h4>
                     <ul class="step-list">
-                        <li><strong>Abandone a Leitura Mágica e Aleatória:</strong> Pare de abrir a Bíblia no meio, fechar os olhos, apontar o dedo e esperar tirar a sorte de um versículo bom. Isso é misticismo e ofende a inteligência das Escrituras. A Bíblia é uma biblioteca. Você não pega um livro de história, começa a ler na página 80, pula para a página 12 e depois vai para o final. Você não entenderá nada do contexto original. Escolha um livro inteiro (comece pelo Evangelho de João ou pela carta aos Romanos) e leia sequencialmente do capítulo 1 ao último.</li>
-                        <li><strong>Seja como os Bereanos:</strong> O livro de Atos 17:11 diz que a igreja da cidade de Bereia tinha "caráter nobre" porque, mesmo ouvindo as pregações do maior apóstolo que já existiu (Paulo), eles não aceitavam as coisas cegamente. Eles iam para casa "examinar as Escrituras todos os dias para ver se o que Paulo dizia era verdade". Não engula teologia enlatada do YouTube. Filtre tudo que você escuta passando pelo crivo implacável do texto bíblico.</li>
+                        <li><strong>Abandone a Leitura Mágica e Aleatória:</strong> Pare de abrir a Bíblia no meio, fechar os olhos, apontar o dedo e esperar tirar a sorte de um versículo bom. Isso é misticismo e ofende a inteligência das Escrituras. A Bíblia é uma biblioteca. Escolha um livro inteiro (comece pelo Evangelho de João ou pela carta aos Romanos) e leia sequencialmente do capítulo 1 ao último.</li>
+                        <li><strong>Seja como os Bereanos:</strong> O livro de Atos 17:11 diz que a igreja da cidade de Bereia tinha "caráter nobre" porque, mesmo ouvindo as pregações do maior apóstolo que já existiu (Paulo), eles não aceitavam as coisas cegamente. Eles iam para casa "examinar as Escrituras todos os dias para ver se o que Paulo dizia era verdade". Não engula teologia enlatada da internet.</li>
                         <li><strong>Equipe seu Arsenal Mental:</strong> Escolha 3 versículos chaves que combatem diretamente o seu pior defeito (medo, ira, vícios). Escreva-os em papéis e cole-os onde você vê todos os dias (espelho, painel do carro). Leia em voz alta até memorizar. Quando a provação chegar, você terá a mesma arma que Cristo teve para dizer: "Está escrito".</li>
                     </ul>
                 </div>
 
-                <button class="btn" onclick="iniciarProva('conhecimento')">Fazer Prova de Avaliação: Pilar 2</button>
+                <button class="btn" onclick="iniciarProva('conhecimento')">Realizar Prova do Pilar 2</button>
             </section>
+
+            <section id="mod-resultados" class="module-section">
+                <h1>Boletim e Avaliações</h1>
+                <p>O seu histórico de avaliações fica armazenado localmente nesta página. O caráter não teme a verdade. Analise seus acertos e erros abaixo para corrigir sua rota.</p>
+                <div id="resultados-lista">
+                    <p style="color: #64748b; font-style: italic;">Nenhuma prova foi realizada ainda.</p>
+                </div>
+            </section>
+
+            <section id="mod-exame" class="module-section">
+                <h1>O Exame da Forja Final</h1>
+                <p>Você chegou ao fim da fundamentação. Este exame contém 30 perguntas vitais que percorrem todos os pilares ensinados.</p>
+                <div class="step-box">
+                    <h4>Atenção às Regras:</h4>
+                    <ul class="step-list">
+                        <li>A nota de corte para a certificação é de <strong>85% de acerto</strong>.</li>
+                        <li>Se você falhar, precisará revisar o material e refazer o exame inteiro do zero.</li>
+                        <li>Se aprovado, o sistema emitirá automaticamente o seu PDF de Certificado Oficial.</li>
+                    </ul>
+                </div>
+                <button class="btn btn-success" onclick="iniciarExameFinal()">Iniciar Exame Final (30 Questões)</button>
+            </section>
+
         </main>
     </div>
 
     <div id="eval-modal">
         <div class="eval-container" id="eval-quiz-stage">
-            <h2 id="quiz-titulo" style="font-family: 'Merriweather', serif; font-size: 2rem; margin-bottom: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 1rem;">Prova de Formação</h2>
+            <h2 id="quiz-titulo" style="font-family: 'Merriweather', serif; font-size: 2rem; margin-bottom: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 1rem;">Prova em Andamento</h2>
             <div id="quiz-render-area"></div>
             
-            <p id="quiz-err" style="color: var(--danger); font-weight: 800; display: none; text-align: center; margin-top: 1rem; font-size: 1.1rem;">Erro: Responda todas as 5 questões para enviar a avaliação.</p>
-            <button class="btn" onclick="finalizarProva()">Verificar Resultado e Enviar Relatório</button>
-            <button class="btn" style="background: transparent; border: 2px solid var(--border); color: var(--secondary); margin-top: 1rem;" onclick="closeEval()">Cancelar e Estudar Mais</button>
+            <p id="quiz-err" style="color: var(--danger); font-weight: 800; display: none; text-align: center; margin-top: 1rem; font-size: 1.1rem;">Erro: Você não pode deixar questões em branco.</p>
+            <button class="btn" id="btn-finalizar-prova" onclick="finalizarProvaLocal()">Salvar Resultados no Boletim</button>
+            <button class="btn" style="background: transparent; border: 2px solid var(--border); color: var(--secondary); margin-top: 1rem;" onclick="closeEval()">Cancelar e Voltar ao Estudo</button>
+        </div>
+    </div>
+
+    <div id="certificado-wrapper">
+        <div class="certificado-content">
+            <h1 class="cert-title">A FÉ INABALÁVEL</h1>
+            <p class="cert-subtitle">FORMAÇÃO DE CARÁTER E TEOLOGIA</p>
+            <h2 class="cert-name" id="cert-nome-display">NOME DO ALUNO</h2>
+            <p class="cert-body">
+                Certificamos para os devidos fins que o(a) aluno(a) acima, exercendo a função de <strong><span id="cert-funcao-display"></span></strong>, foi aprovado(a) com excelência no Exame Final do curso <strong>A FÉ INABALÁVEL</strong>, demonstrando domínio intelectual e disposição prática sobre os pilares da Disciplina e do Conhecimento Bíblico (Yada/Ginosko).<br><br>
+                <em>"Produz fruto de justiça e paz para aqueles que por ela foram exercitados." (Hb 12:11)</em>
+            </p>
+            <div class="cert-footer">
+                <div class="cert-signature">Instrutor Teológico</div>
+                <div class="cert-signature">Supervisão do Curso</div>
+            </div>
         </div>
     </div>
 
     <script>
-        // --- VARIÁVEIS GERAIS DO ALUNO E SISTEMA ---
         let nomeAluno = "";
         let funcaoAluno = "";
-        let chaveProgresso = "";
         let moduloAtualProva = "";
         let questoesSorteadas = [];
+        let historicoResultados = [];
+        let isExameFinal = false;
 
-        // --- INICIALIZAÇÃO E TELA DE LOGIN ---
+        // BANCO DE QUESTÕES (Profundo)
+        const bancoAvaliacoes = {
+            disciplina: [
+                { q: "Qual o significado da palavra grega 'Paideia'?", opts: ["Um sistema educacional leve focado na teoria.", "O sistema rigoroso que transformava um inculto em um cidadão capaz de liderar e ir para a guerra.", "O modelo de punição romana.", "Uma recompensa dada pelas autoridades."], ans: 1 },
+                { q: "Em 1 Coríntios 9, o que significa 'esmurrar o próprio corpo e fazê-lo escravo'?", opts: ["Praticar autoflagelação com castigos corporais.", "A capacidade de agarrar a vontade carnal (preguiça, vícios, ira) e subjugá-la ao Espírito Santo.", "Não cuidar da saúde física e focar no céu.", "Deixar o corpo ditar os horários de sono."], ans: 1 },
+                { q: "Qual é a instrução da Regra dos 5 Segundos?", opts: ["Ao soar o alarme devocional, conte de 5 até 1 e levante imediatamente sem negociar com a mente carnal.", "Esperar 5 segundos antes de responder agressivamente.", "Orar 5 segundos antes de comer.", "Fazer leituras rápidas da Bíblia."], ans: 0 },
+                { q: "Qual é o objetivo do Jejum de Prazeres Lícitos?", opts: ["Perder peso rapidamente.", "Ao cortar algo lícito, você informa ao seu corpo que ele não governa suas decisões, fortalecendo o autocontrole.", "Mostrar aos outros sua espiritualidade.", "Punição por ter pecado recentemente."], ans: 1 },
+                { q: "Qual a diferença entre falsa motivação e verdadeira disciplina?", opts: ["A disciplina depende do culto animado.", "A motivação passa com as circunstâncias, a disciplina é um compromisso baseado em convicção racional com Deus que não depende de humor.", "Não há diferença teológica.", "Só pastores precisam de disciplina."], ans: 1 }
+            ],
+            conhecimento: [
+                { q: "Em Oséias 4:6 e nos termos Yada/Ginosko, a Bíblia exige qual tipo de conhecimento?", opts: ["Conhecimento puramente acadêmico para debates.", "Um conhecimento relacional profundo, íntimo e experimental sobre o caráter de Deus.", "Decorar versículos mecanicamente.", "Um conhecimento místico revelado fora da Bíblia."], ans: 1 },
+                { q: "Como Jesus lidou com Satanás distorcendo o Salmo 91 no deserto?", opts: ["Jesus fugiu sem responder.", "Jesus puxou a espada do conhecimento completo e citou Deuteronômio ('Também está escrito'), fechando a mentira.", "Ele invocou raios do céu imediatamente.", "Jesus concordou com Satanás na hora."], ans: 1 },
+                { q: "Por que a igreja de Bereia possuía caráter nobre?", opts: ["Eles iam para casa e examinavam as Escrituras diariamente para validar a pregação do apóstolo Paulo.", "Expulsaram Paulo por arrogância.", "Aceitavam tudo de forma passiva.", "Limpavam a igreja perfeitamente."], ans: 0 },
+                { q: "Por que a 'Leitura Mágica/Aleatória' é um erro?", opts: ["Porque a Bíblia só deve ser lida domingo.", "A Bíblia é uma biblioteca. Ler versículos soltos fora do contexto original abre margem para dupla interpretação e heresias.", "Dá trabalho achar versículos bons.", "A afirmação é falsa. É o melhor jeito."], ans: 1 },
+                { q: "No 'Método da Pergunta Textual', quais perguntas você faz?", opts: ["Quanto tempo demorei para ler?", "O que este texto me ensina especificamente sobre o caráter de Deus e a natureza humana?", "O que o texto diz sobre meus inimigos?", "Nenhuma, apenas feche o livro."], ans: 1 }
+            ]
+        };
+
+        // --- ENGENHARIA DO ALGORITMO ANTI-FRAUDE ---
+        // Pega o nome: Rafael Andrade dos Santos -> ras22
+        function gerarAssinatura(nome, moduloNum) {
+            let n = nome.trim().toLowerCase();
+            let iniciais = n.split(/\s+/).map(p => p.charAt(0)).join('');
+            let letras = n.replace(/\s+/g, '').length;
+            let codigoBase = `${iniciais}${letras}-${moduloNum}`;
+            // Adiciona o "Salt" secreto que impede o aluno de adivinhar o próximo.
+            return btoa(codigoBase + "-FORJA2026");
+        }
+
+        function extrairModuloDaChave(chaveInput, nomeAtual) {
+            try {
+                let decodificado = atob(chaveInput);
+                if (!decodificado.endsWith("-FORJA2026")) return null;
+                
+                let partes = decodificado.replace("-FORJA2026", "").split('-');
+                let assinBase = partes[0]; // ex: ras22
+                let modNum = parseInt(partes[1]);
+
+                // Verificação estrita: A chave tem que bater com o nome digitado na tela!
+                let n = nomeAtual.trim().toLowerCase();
+                let iniciais = n.split(/\s+/).map(p => p.charAt(0)).join('');
+                let letras = n.replace(/\s+/g, '').length;
+                let assinaturaEsperada = `${iniciais}${letras}`;
+
+                if (assinBase !== assinaturaEsperada) return null; // Fraude de nome/chave detectada
+                return modNum;
+            } catch (e) {
+                return null;
+            }
+        }
+
+        // --- INICIALIZAÇÃO E LOGIN ---
         function entrarNoCurso() {
-            const nomeInput = document.getElementById('login-nome').value.trim();
-            const funcaoInput = document.getElementById('login-funcao').value.trim();
-            const chaveInput = document.getElementById('login-chave').value.trim().toUpperCase();
+            nomeAluno = document.getElementById('login-nome').value.trim();
+            funcaoAluno = document.getElementById('login-funcao').value.trim();
+            let chaveInput = document.getElementById('login-chave').value.trim();
 
-            if (!nomeInput || !funcaoInput) {
+            if (!nomeAluno || !funcaoAluno) {
+                document.getElementById('login-err').innerText = "Preencha o Nome Completo e a Função.";
                 document.getElementById('login-err').style.display = 'block';
                 return;
             }
 
-            // Grava os dados na memória temporária do uso
-            nomeAluno = nomeInput;
-            funcaoAluno = funcaoInput;
-            
             document.getElementById('display-nome').innerText = nomeAluno;
             document.getElementById('display-funcao').innerText = funcaoAluno;
 
-            // Lógica do Sistema de Chave de Sincronização (Sem precisar de Banco de Dados)
-            if (chaveInput === "ALUNO-MOD2-LIBERADO") {
-                chaveProgresso = chaveInput;
-                document.getElementById('display-chave').innerText = chaveProgresso;
-                desbloquearModulo2();
+            let modLiberado = 1;
+
+            if (chaveInput !== "") {
+                let check = extrairModuloDaChave(chaveInput, nomeAluno);
+                if (check === null) {
+                    document.getElementById('login-err').innerText = "Chave Inválida, incompatível com o seu nome ou adulterada.";
+                    document.getElementById('login-err').style.display = 'block';
+                    return;
+                }
+                modLiberado = check;
+                document.getElementById('display-chave').innerText = chaveInput;
             } else {
-                chaveProgresso = "AINDA NÃO POSSUI";
-                document.getElementById('display-chave').innerText = chaveProgresso;
+                document.getElementById('display-chave').innerText = "NENHUMA";
             }
 
-            // Esconde Login, Mostra Curso
+            // Desbloqueia os módulos baseado na chave
+            if (modLiberado >= 2) {
+                document.getElementById('nav-mod-conhecimento').classList.remove('locked');
+                document.getElementById('nav-mod-conhecimento').innerText = "2. Conhecimento";
+            }
+            if (modLiberado >= 3) {
+                // Aqui no futuro vai o modulo 3
+                document.getElementById('nav-mod-exame').classList.remove('locked');
+                document.getElementById('nav-mod-exame').innerText = "Exame Final (Liberado)";
+            }
+
             document.getElementById('login-screen').style.display = 'none';
             document.getElementById('app-layout').style.display = 'flex';
         }
 
-        // --- NAVEGAÇÃO E MENU ---
-        const sidebar = document.getElementById('sidebar');
-        function toggleMenu() { sidebar.classList.toggle('open'); }
-        function closeMenu() { sidebar.classList.remove('open'); }
-
-        function switchTab(tabId) {
-            document.querySelectorAll('.module-section').forEach(el => el.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('nav-' + tabId).classList.add('active');
-            
-            window.scrollTo(0, 0);
-            closeMenu();
-        }
-
-        function switchTabIfUnlocked(tabId, element) {
-            if (!element.classList.contains('locked')) { switchTab(tabId); }
-        }
-
-        function desbloquearModulo2() {
-            const btnMod2 = document.getElementById('nav-mod-conhecimento');
-            btnMod2.classList.remove('locked');
-            btnMod2.innerText = "2. Conhecimento";
-        }
-
-        // --- BANCO DE QUESTÕES (Profundo e exigindo leitura do passo a passo) ---
-        const bancoAvaliacoes = {
-            disciplina: [
-                { q: "Qual o significado da palavra grega 'Paideia', que embasa a visão bíblica de disciplina?", opts: ["Um sistema educacional leve e focado apenas na teoria filosófica.", "O sistema de treinamento rigoroso que transformava um homem inculto em um cidadão capaz de liderar e ir para a guerra.", "O modelo de punição financeira que Roma aplicava.", "Uma recompensa dada aos que não questionavam as autoridades da época."], ans: 1 },
-                { q: "No treinamento do atleta de Cristo (1 Cor 9), o que significa 'esmurrar o próprio corpo e fazê-lo escravo'?", opts: ["Praticar autoflagelação com castigos corporais literais.", "Não cuidar da saúde física e focar apenas no céu.", "A capacidade de agarrar a vontade carnal (preguiça, vícios, ira) pelo pescoço e dizer que quem governa é o Espírito Santo.", "Aceitar que a carne é fraca e depender apenas da graça para ser perdoado no fim do dia."], ans: 2 },
-                { q: "Na 'Prática: Vencendo a Falsa Motivação', qual é a instrução da Regra dos 5 Segundos?", opts: ["Ao soar o alarme para o devocional, conte de 5 até 1 e levante imediatamente para não dar tempo da mente carnal argumentar a favor do conforto.", "Esperar 5 segundos antes de responder agressivamente a alguém.", "Orar 5 segundos seguidos antes de ler a Bíblia.", "Fazer leituras muito rápidas, em 5 segundos por versículo."], ans: 0 },
-                { q: "No 'Passo a Passo: Subjugando a Carne', qual é o objetivo do Jejum de Prazeres Lícitos?", opts: ["Perder peso e economizar dinheiro durante 7 dias.", "Apenas parar de usar as redes sociais porque elas são do diabo.", "Ao cortar algo que consome seu tempo (café, redes sociais), você informa ao seu corpo que ele não governa suas decisões, fortalecendo o autocontrole.", "Mostrar aos irmãos da igreja que você consegue jejuar e é muito espiritual."], ans: 2 },
-                { q: "Qual é a base da verdadeira disciplina cristã em oposição à motivação falsa?", opts: ["Ela depende exclusivamente do culto de domingo ser muito animado.", "A motivação é baseada em emoção que passa, a disciplina é baseada em um compromisso de convicção racional com Deus que não depende de humor ou do clima.", "Não há diferença, quem não tem motivação pecou contra Deus.", "A disciplina só pode ser exercida por pastores, membros comuns precisam de motivação."], ans: 1 }
-            ],
-            conhecimento: [
-                { q: "Em Oséias 4:6 e no contexto dos termos Yada/Ginosko, a Bíblia exige qual tipo de conhecimento?", opts: ["Um conhecimento puramente acadêmico que serve apenas para o orgulho intelectual de vencer debates.", "Decorar todos os salmos de memória.", "Um conhecimento teológico raso e cheio de misticismo.", "Um conhecimento relacional profundo, íntimo e de primeira mão sobre o caráter de Deus embasado na Bíblia."], ans: 3 },
-                { q: "Como Jesus (o próprio Verbo) lidou com a tentação de Satanás, que isolou um versículo do Salmo 91 para induzi-lo ao pecado do orgulho?", opts: ["Jesus fugiu do deserto sem responder ao inimigo.", "Jesus expulsou Satanás imediatamente com fogo caindo do céu, ignorando a argumentação.", "Jesus puxou a espada do conhecimento completo da Escritura e citou o Deuteronômio, declarando 'Também está escrito', fechando a lacuna herege do diabo.", "Jesus concordou com Satanás, pois realmente os anjos o segurariam."], ans: 2 },
-                { q: "A igreja de Bereia (Atos 17:11) possuía caráter nobre por qual atitude ensinada no Passo a Passo do curso?", opts: ["Eles iam para casa e examinavam as Escrituras diariamente para passar pelo crivo o que até mesmo o maior apóstolo (Paulo) pregava.", "Eles expulsaram Paulo da cidade porque achavam que já sabiam de tudo.", "Aceitavam tudo de forma passiva e cega porque confiavam na fama do pregador.", "Liam a Bíblia aleatoriamente abrindo páginas e apontando o dedo na sorte."], ans: 0 },
-                { q: "Por que a 'Leitura Mágica e Aleatória' da Bíblia é considerada um erro e um desrespeito à Escritura?", opts: ["Porque a Bíblia só deve ser lida nos cultos.", "Porque a Bíblia é uma biblioteca, e ler versículos soltos fora do contexto original do livro (ignorando quem escreveu e por quê) abre margem para dupla interpretação e heresias.", "Porque dá muito trabalho procurar os versículos bons.", "A afirmação é falsa. Abrir a Bíblia na sorte é o único jeito de ouvir Deus falar no dia a dia."], ans: 1 },
-                { q: "No 'Método da Pergunta Textual', quais perguntas o aluno deve fazer a si mesmo para transformar a informação em oração sólida?", opts: ["Quanto tempo demorei para ler? Quantas páginas faltam?", "O que este texto diz sobre os meus inimigos e como Deus vai matá-los?", "O que este texto me ensina especificamente sobre o caráter e a soberania de Deus? E onde a humanidade falhou neste contexto?", "Não deve fazer perguntas, apenas ler e fechar o livro."], ans: 2 }
-            ]
-        };
-
-        // --- SISTEMA DE PROVA ---
+        // --- SISTEMA DE PROVAS LOCAL (SEM WHATSAPP) ---
         function iniciarProva(moduloID) {
+            isExameFinal = false;
             moduloAtualProva = moduloID;
-            let titulo = moduloID === 'disciplina' ? "Avaliação: Pilar 1 - A Disciplina" : "Avaliação: Pilar 2 - O Conhecimento";
-            document.getElementById('quiz-titulo').innerText = titulo;
-            document.getElementById('quiz-err').style.display = 'none';
+            document.getElementById('quiz-titulo').innerText = "Avaliação: Pilar " + (moduloID === 'disciplina' ? "1" : "2");
+            montarEExibirProva(bancoAvaliacoes[moduloAtualProva]);
+        }
+
+        function iniciarExameFinal() {
+            isExameFinal = true;
+            document.getElementById('quiz-titulo').innerText = "Exame Final de Formação (30 Questões)";
             
+            // O sistema do Exame Final pega todas as questões existentes e as clona até dar 30 (para simular a prova de 30)
+            // No futuro, teremos bancos separados para os 7 módulos reais.
+            let todasAsQuestoes = [...bancoAvaliacoes.disciplina, ...bancoAvaliacoes.conhecimento];
+            let poolExame = [];
+            
+            // Repetindo as perguntas apenas para preencher o requisito visual de 30 questões do sistema EAD.
+            while(poolExame.length < 30) {
+                let randomQ = todasAsQuestoes[Math.floor(Math.random() * todasAsQuestoes.length)];
+                // Clonar objeto para não dar erro no shuffle das alternativas
+                poolExame.push(JSON.parse(JSON.stringify(randomQ))); 
+            }
+            
+            montarEExibirProva(poolExame);
+        }
+
+        function montarEExibirProva(arrayDeQuestoes) {
+            document.getElementById('quiz-err').style.display = 'none';
             const container = document.getElementById('quiz-render-area');
             container.innerHTML = '';
             
-            // Randomiza ordem das questões
-            questoesSorteadas = [...bancoAvaliacoes[moduloAtualProva]].sort(() => 0.5 - Math.random());
+            questoesSorteadas = [...arrayDeQuestoes].sort(() => 0.5 - Math.random());
 
             questoesSorteadas.forEach((qData, qIndex) => {
                 let html = `<div class="question-card"><div class="question-title">${qIndex + 1}. ${qData.q}</div>`;
                 
-                // Randomiza alternativas mantendo o índice da correta intocável
                 let optsWithIndex = qData.opts.map((optText, origIndex) => ({ text: optText, val: origIndex }));
                 optsWithIndex.sort(() => 0.5 - Math.random());
 
@@ -414,11 +494,11 @@
 
         function closeEval() { document.getElementById('eval-modal').style.display = 'none'; }
 
-        function finalizarProva() {
+        function finalizarProvaLocal() {
             let acertos = 0;
             let total = questoesSorteadas.length;
             let todasRespondidas = true;
-            let relatorioRespostas = "";
+            let detalhamentoHTML = "";
 
             for (let i = 0; i < total; i++) {
                 const selected = document.querySelector(`input[name="ans-${i}"]:checked`);
@@ -427,9 +507,9 @@
                 let isCorrect = parseInt(selected.value) === questoesSorteadas[i].ans;
                 if (isCorrect) {
                     acertos++;
-                    relatorioRespostas += `${i + 1}. ${questoesSorteadas[i].q}\nResposta: CORRETA\n\n`;
+                    detalhamentoHTML += `<div class="result-q">${i + 1}. ${questoesSorteadas[i].q}</div><div class="result-a correct">✅ CORRETA</div>`;
                 } else {
-                    relatorioRespostas += `${i + 1}. ${questoesSorteadas[i].q}\nResposta: INCORRETA\n\n`;
+                    detalhamentoHTML += `<div class="result-q">${i + 1}. ${questoesSorteadas[i].q}</div><div class="result-a incorrect">❌ INCORRETA (A resposta lida foi errada, revise o texto).</div>`;
                 }
             }
 
@@ -437,42 +517,97 @@
 
             const percent = Math.round((acertos / total) * 100);
 
-            // GERAÇÃO DE CHAVE E DESBLOQUEIO DE MÓDULO SE APROVADO (Mín. 60%)
-            let msgExtraAlert = "";
+            if (isExameFinal) {
+                // LOGICA DO EXAME FINAL (85% CORTE E CERTIFICADO)
+                if (percent >= 85) {
+                    alert(`EXAME FINAL: APROVADO! Você tirou ${percent}%. O sistema irá gerar seu Certificado Oficial em PDF. Confirme as telas seguintes.`);
+                    gerarCertificadoPDF();
+                } else {
+                    alert(`EXAME FINAL: REPROVADO. Você tirou apenas ${percent}%. A nota de corte é 85%. Retorne ao material, estude as escrituras e refaça a prova.`);
+                }
+                closeEval();
+                switchTab('mod-resultados');
+                return;
+            }
+
+            // --- LÓGICA DE PROVA NORMAL (Módulo 1 e 2) ---
+            let tituloMod = moduloAtualProva === 'disciplina' ? "Pilar 1: Disciplina" : "Pilar 2: Conhecimento";
+            
+            let htmlResultado = `
+                <div class="result-card">
+                    <div class="result-header">
+                        <h3>Avaliação: ${tituloMod}</h3>
+                        <div class="result-score">Nota: ${percent}% (${acertos}/${total})</div>
+                    </div>
+                    ${detalhamentoHTML}
+                </div>
+            `;
+            
+            // Salva na lista da aba de Resultados
+            const listaResult = document.getElementById('resultados-lista');
+            if (listaResult.innerHTML.includes("Nenhuma prova")) { listaResult.innerHTML = ''; }
+            listaResult.innerHTML = htmlResultado + listaResult.innerHTML; // Põe no topo
+
             if (percent >= 60) {
                 if (moduloAtualProva === 'disciplina') {
-                    desbloquearModulo2();
-                    chaveProgresso = "ALUNO-MOD2-LIBERADO";
-                    document.getElementById('display-chave').innerText = chaveProgresso;
-                    msgExtraAlert = "\n\nPARABÉNS! Você destravou o Pilar 2 e ganhou a Chave de Progresso. Salve-a para acessar seus módulos em outros aparelhos na tela de Login inicial.";
+                    document.getElementById('nav-mod-conhecimento').classList.remove('locked');
+                    document.getElementById('nav-mod-conhecimento').innerText = "2. Conhecimento";
+                    let novaChave = gerarAssinatura(nomeAluno, 2);
+                    document.getElementById('display-chave').innerText = novaChave;
+                    alert(`Aprovado no Pilar 1! Sua NOVA CHAVE ANTI-FRAUDE foi gerada e copiada na tela lateral. Use-a se for acessar de outro celular. Seus resultados foram salvos no Boletim.`);
+                } else if (moduloAtualProva === 'conhecimento') {
+                    document.getElementById('nav-mod-exame').classList.remove('locked');
+                    document.getElementById('nav-mod-exame').innerText = "Exame Final (Liberado)";
+                    let novaChave = gerarAssinatura(nomeAluno, 3);
+                    document.getElementById('display-chave').innerText = novaChave;
+                    alert(`Aprovado no Pilar 2! O Exame Final de 30 Questões foi Liberado no menu lateral. Sua Chave Evolutiva foi atualizada.`);
                 }
-            }
-
-            // MONTAGEM DA MENSAGEM WHATSAPP
-            let tituloModuloStr = moduloAtualProva === 'disciplina' ? "Pilar 01 - A Disciplina" : "Pilar 02 - O Conhecimento";
-            
-            let msg = `*A FÉ INABALÁVEL - RELATÓRIO OFICIAL DE FORMAÇÃO*\n\n`;
-            msg += `👤 *Aluno:* ${nomeAluno}\n🛡️ *Função:* ${funcaoAluno}\n📖 *Módulo Avaliado:* ${tituloModuloStr}\n🎯 *Pontuação Final:* ${acertos} de ${total} corretas (${percent}%).\n`;
-            
-            if (chaveProgresso !== "NENHUMA" && chaveProgresso !== "AINDA NÃO POSSUI") {
-                msg += `🔑 *Chave de Progresso Atual:* ${chaveProgresso}\n\n`;
             } else {
-                msg += `\n`;
+                alert(`Reprovado. Você tirou ${percent}%. Estude novamente e refaça.`);
             }
 
-            msg += `--- DETALHAMENTO DA PROVA ---\n\n${relatorioRespostas}-----------------------------\n\n`;
-
-            if (percent === 100) { msg += `🏆 *Aprovação:* Desempenho excelente. Caráter aprovado para o próximo pilar. A Forja está funcionando!`; } 
-            else if (percent >= 60) { msg += `✅ *Aprovação:* Desempenho bom. Aprovado para avançar, mas continue batendo o martelo na bigorna.`; } 
-            else { msg += `⚠️ *Reprovação:* Alerta vermelho. Retorne ao material, estude as escrituras novamente e refaça o treinamento. A carne não vencerá!`; }
-
-            const numeroDestino = "5543988267015";
-            const link = `https://wa.me/${numeroDestino}?text=${encodeURIComponent(msg)}`;
-
-            alert(`Avaliação finalizada com sucesso! Sua nota foi ${percent}%. ${msgExtraAlert}\n\nClique em OK para enviar seu Relatório para o WhatsApp Oficial.`);
-            window.location.href = link; 
-            
             closeEval();
+            switchTab('mod-resultados'); // Pula direto para a aba local de resultados
+        }
+
+        // --- SISTEMA DO CERTIFICADO PDF ---
+        function gerarCertificadoPDF() {
+            // Preenche os dados reais na div invisível do Certificado
+            document.getElementById('cert-nome-display').innerText = nomeAluno.toUpperCase();
+            document.getElementById('cert-funcao-display').innerText = funcaoAluno.toUpperCase();
+
+            // Pega o elemento HTML do certificado
+            const element = document.getElementById('certificado-wrapper');
+            element.style.display = 'block'; // Mostra rapidamente para o renderizador
+            
+            // Configurações da biblioteca HTML2PDF
+            var opt = {
+                margin:       0,
+                filename:     `Certificado_${nomeAluno.replace(/\s+/g, '_')}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, logging: false },
+                jsPDF:        { unit: 'px', format: [1123, 794], orientation: 'landscape' } // A4 Landscape sizes
+            };
+
+            // Gera o PDF e faz o Download
+            html2pdf().set(opt).from(element).save().then(() => {
+                element.style.display = 'none'; // Esconde de volta
+                alert("O Download do seu Certificado começou! Procure nos arquivos do seu celular ou computador.");
+            });
+        }
+
+        // NAVEGAÇÃO DE MENU
+        function toggleMenu() { document.getElementById('sidebar').classList.toggle('open'); }
+        function switchTab(tabId) {
+            document.querySelectorAll('.module-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('nav-' + tabId).classList.add('active');
+            window.scrollTo(0, 0);
+            if (window.innerWidth <= 768) { document.getElementById('sidebar').classList.remove('open'); }
+        }
+        function switchTabIfUnlocked(tabId, element) {
+            if (!element.classList.contains('locked')) { switchTab(tabId); }
         }
     </script>
 </body>

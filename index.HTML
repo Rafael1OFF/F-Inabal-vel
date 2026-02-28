@@ -8,7 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
-        /* BASE & VARIÁVEIS PARA UM DESIGN PREMIUM E SÓBRIO */
+        /* BASE & VARIÁVEIS PREMIUM E SÓBRIAS */
         :root {
             --bg-color: #f8fafc; --surface: #ffffff; --sidebar-bg: #0f172a;
             --text-main: #334155; --text-heading: #0f172a;
@@ -22,84 +22,85 @@
 
         /* TELA DE LOGIN / ACESSO */
         #login-screen { position: fixed; inset: 0; background: var(--sidebar-bg); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 2rem; overflow-y: auto; }
-        .login-box { background: var(--surface); max-width: 500px; width: 100%; padding: 3rem; border-radius: 12px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); text-align: center; }
-        .login-box h1 { font-family: 'Merriweather', serif; font-size: 2rem; color: var(--text-heading); margin-bottom: 0.5rem; }
-        .login-box p { color: #64748b; margin-bottom: 2rem; font-size: 1rem; }
-        .form-group { margin-bottom: 1.2rem; text-align: left; }
-        .form-group label { display: block; font-weight: 800; margin-bottom: 0.5rem; color: var(--secondary); text-transform: uppercase; font-size: 0.85rem; }
-        .form-group input { width: 100%; padding: 1rem; border: 2px solid var(--border); border-radius: 8px; font-size: 1rem; transition: border-color 0.3s; }
+        .login-box { background: var(--surface); max-width: 500px; width: 100%; padding: 4rem 3rem; border-radius: 12px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); text-align: center; }
+        .login-box h1 { font-family: 'Merriweather', serif; font-size: 2.2rem; color: var(--text-heading); margin-bottom: 0.5rem; }
+        .login-box p { color: #64748b; margin-bottom: 2.5rem; font-size: 1.1rem; }
+        .form-group { margin-bottom: 1.5rem; text-align: left; }
+        .form-group label { display: block; font-weight: 800; margin-bottom: 0.5rem; color: var(--secondary); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.5px; }
+        .form-group input { width: 100%; padding: 1.2rem; border: 2px solid var(--border); border-radius: 8px; font-size: 1.1rem; font-family: 'Inter', sans-serif; transition: border-color 0.3s; }
         .form-group input:focus { outline: none; border-color: var(--primary); }
-        .btn-login { background: var(--primary); color: white; border: none; padding: 1.2rem; width: 100%; border-radius: 8px; font-size: 1rem; font-weight: 800; cursor: pointer; text-transform: uppercase; margin-top: 1rem; }
+        .btn-login { background: var(--primary); color: white; border: none; padding: 1.2rem; width: 100%; border-radius: 8px; font-size: 1.1rem; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; margin-top: 1rem; }
 
         /* ESTRUTURA RESPONSIVA DO CURSO */
         #app-layout { display: none; flex-direction: column; min-height: 100vh; }
-        .mobile-header { display: none; background: var(--sidebar-bg); color: white; padding: 1rem 1.5rem; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
+        .mobile-header { display: none; background: var(--sidebar-bg); color: white; padding: 1rem 1.5rem; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
         .menu-toggle { background: none; border: 1px solid rgba(255,255,255,0.3); color: white; padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.8rem; font-weight: 800; cursor: pointer; text-transform: uppercase; }
 
         /* SIDEBAR */
         .sidebar { width: 280px; background-color: var(--sidebar-bg); color: white; height: 100vh; position: fixed; left: 0; top: 0; padding: 2rem 1.5rem; overflow-y: auto; transition: transform 0.3s ease; z-index: 40; display: flex; flex-direction: column; }
-        .sidebar-header { border-bottom: 1px solid #334155; padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
-        .sidebar-header h2 { font-size: 1.1rem; font-weight: 800; color: #f8fafc; text-transform: uppercase; }
-        .student-info { background: #1e293b; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; font-size: 0.85rem; border-left: 3px solid var(--primary); }
-        .student-info strong { display: block; color: white; font-size: 0.95rem; }
+        .sidebar-header { border-bottom: 1px solid #334155; padding-bottom: 1.5rem; margin-bottom: 2rem; }
+        .sidebar-header h2 { font-size: 1.2rem; font-weight: 800; letter-spacing: 1px; color: #f8fafc; text-transform: uppercase; }
+        .student-info { background: #1e293b; padding: 1rem; border-radius: 8px; margin-bottom: 2rem; font-size: 0.9rem; border-left: 3px solid var(--primary); }
+        .student-info strong { display: block; color: white; font-size: 1rem; }
 
-        .nav-btn { display: block; width: 100%; text-align: left; background: transparent; color: #94a3b8; border: none; padding: 0.8rem 1rem; margin-bottom: 0.5rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .nav-btn { display: block; width: 100%; text-align: left; background: transparent; color: #94a3b8; border: none; padding: 1rem; margin-bottom: 0.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
         .nav-btn:hover:not(.locked) { background: rgba(255,255,255,0.05); color: white; }
         .nav-btn.active { background: var(--primary); color: white; }
         .nav-btn.locked { opacity: 0.4; cursor: not-allowed; }
         
-        .sync-box { margin-top: auto; padding-top: 1rem; text-align: center; }
-        .sync-code-display { background: black; color: #10b981; padding: 0.8rem; border-radius: 4px; font-family: monospace; font-size: 0.8rem; font-weight: bold; margin-top: 0.5rem; word-break: break-all; }
+        .sync-box { margin-top: auto; padding-top: 2rem; text-align: center; }
+        .sync-code-display { background: black; color: #10b981; padding: 0.8rem; border-radius: 4px; font-family: monospace; font-size: 1rem; font-weight: bold; margin-top: 0.5rem; word-break: break-all; }
 
         /* CONTEÚDO PRINCIPAL */
-        .main-content { margin-left: 280px; padding: 3rem; max-width: 900px; width: 100%; margin-right: auto; }
-        .module-section { display: none; animation: fadeIn 0.4s ease; }
+        .main-content { margin-left: 280px; padding: 4rem; max-width: 1000px; width: 100%; margin-right: auto; }
+        .module-section { display: none; animation: fadeIn 0.5s ease; }
         .module-section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* TIPOGRAFIA DO TEXTO */
-        .kicker { font-size: 0.85rem; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 0.5rem; }
-        h1 { font-family: 'Merriweather', serif; font-size: 2.2rem; color: var(--text-heading); line-height: 1.3; margin-bottom: 1.5rem; }
-        h2 { font-size: 1.5rem; color: var(--secondary); margin: 3rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
-        p { font-size: 1.1rem; margin-bottom: 1.5rem; color: #475569; text-align: justify; }
+        .kicker { font-size: 0.9rem; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 0.5rem; }
+        h1 { font-family: 'Merriweather', serif; font-size: 2.8rem; color: var(--text-heading); line-height: 1.3; margin-bottom: 2rem; }
+        h2 { font-size: 1.8rem; color: var(--secondary); margin: 4rem 0 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+        p { font-size: 1.15rem; margin-bottom: 1.8rem; color: #475569; text-align: justify; }
 
         /* CAIXAS BÍBLICAS NVI */
-        .bible-box { background: #fffbeb; border-left: 4px solid var(--primary); padding: 1.8rem; margin: 2rem 0; border-radius: 0 8px 8px 0; }
-        .bible-text { font-family: 'Merriweather', serif; font-size: 1.15rem; font-style: italic; color: #1e293b; line-height: 1.6; }
-        .bible-ref { display: block; margin-top: 1rem; font-size: 0.85rem; font-weight: 800; color: var(--primary); text-transform: uppercase; }
+        .bible-box { background: #fffbeb; border-left: 4px solid var(--primary); padding: 2.5rem; margin: 3rem 0; border-radius: 0 12px 12px 0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .bible-text { font-family: 'Merriweather', serif; font-size: 1.3rem; font-style: italic; color: #1e293b; line-height: 1.7; }
+        .bible-ref { display: block; margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
 
-        /* PASSO A PASSO */
-        .step-box { background: #f8fafc; border: 1px solid var(--border); border-top: 4px solid var(--secondary); border-radius: 8px; padding: 2rem; margin: 2rem 0; }
-        .step-box h4 { color: var(--secondary); font-size: 1.1rem; margin-bottom: 1.5rem; text-transform: uppercase; font-weight: 800; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        /* PASSO A PASSO RIGOROSO */
+        .step-box { background: #f8fafc; border: 1px solid var(--border); border-top: 4px solid var(--secondary); border-radius: 8px; padding: 2.5rem; margin: 3rem 0; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+        .step-box h4 { color: var(--secondary); font-size: 1.3rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
         .step-list { list-style-type: none; counter-reset: step-counter; margin-left: 0; }
-        .step-list li { counter-increment: step-counter; margin-bottom: 1.5rem; position: relative; padding-left: 3rem; font-size: 1.05rem; color: #334155; text-align: justify; }
-        .step-list li::before { content: counter(step-counter); position: absolute; left: 0; top: 0; background: var(--secondary); color: white; width: 2rem; height: 2rem; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 800; }
-        .step-list li strong { color: var(--text-heading); display: block; margin-bottom: 0.2rem; font-size: 1.1rem; }
+        .step-list li { counter-increment: step-counter; margin-bottom: 1.8rem; position: relative; padding-left: 3.5rem; font-size: 1.1rem; color: #334155; text-align: justify; }
+        .step-list li:last-child { margin-bottom: 0; }
+        .step-list li::before { content: counter(step-counter); position: absolute; left: 0; top: 0; background: var(--secondary); color: white; width: 2.2rem; height: 2.2rem; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; }
+        .step-list li strong { color: var(--text-heading); display: block; margin-bottom: 0.5rem; font-size: 1.15rem; }
 
-        /* BOTÕES */
-        .btn { background: var(--primary); color: white; border: none; padding: 1rem 1.5rem; border-radius: 8px; font-size: 1rem; font-weight: 800; cursor: pointer; transition: all 0.3s; width: 100%; display: block; text-align: center; margin-top: 3rem; text-transform: uppercase; }
+        /* BOTÕES DE AVALIAÇÃO */
+        .btn { background: var(--primary); color: white; border: none; padding: 1.2rem 2rem; border-radius: 8px; font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: all 0.3s; width: 100%; display: block; text-align: center; margin-top: 4rem; text-transform: uppercase; letter-spacing: 1px; }
         .btn-success { background: var(--success); }
         
         /* TELA DE AVALIAÇÃO */
         #eval-modal { display: none; position: fixed; inset: 0; background: var(--bg-color); z-index: 100; overflow-y: auto; padding: 2rem 1rem; }
-        .eval-container { max-width: 800px; margin: 0 auto; background: var(--surface); border-radius: 12px; padding: 2.5rem; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .question-card { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
-        .question-title { font-size: 1.1rem; font-weight: 600; color: var(--secondary); margin-bottom: 1rem; line-height: 1.5; }
-        .option-lbl { display: flex; align-items: flex-start; padding: 1rem; margin-bottom: 0.5rem; background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 1rem; }
-        .option-lbl input { margin-right: 15px; margin-top: 4px; width: 18px; height: 18px; accent-color: var(--primary); flex-shrink: 0; }
+        .eval-container { max-width: 800px; margin: 0 auto; background: var(--surface); border-radius: 12px; padding: 3rem; border: 1px solid var(--border); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1); }
+        .question-card { margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+        .question-title { font-size: 1.2rem; font-weight: 600; color: var(--secondary); margin-bottom: 1.5rem; line-height: 1.5; }
+        .option-lbl { display: flex; align-items: flex-start; padding: 1.2rem; margin-bottom: 0.8rem; background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 1.05rem; line-height: 1.5; }
+        .option-lbl input { margin-right: 15px; margin-top: 5px; width: 20px; height: 20px; accent-color: var(--primary); flex-shrink: 0; }
 
-        /* RESULTADOS */
-        .result-card { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; }
-        .result-header { border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 1rem; }
-        .result-score { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
-        .result-q { font-weight: 600; margin-top: 1rem; font-size: 1rem; }
-        .result-a.correct { color: var(--success); font-weight: bold; background: #f0fdf4; padding: 0.4rem; border-radius: 4px; font-size: 0.9rem;}
-        .result-a.incorrect { color: var(--danger); font-weight: bold; background: #fef2f2; padding: 0.4rem; border-radius: 4px; font-size: 0.9rem;}
+        /* RESULTADOS SALVOS LOCAIS */
+        .result-card { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .result-header { border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 1.5rem; }
+        .result-score { font-size: 2rem; font-weight: 800; color: var(--primary); }
+        .result-q { font-weight: 600; margin-bottom: 0.5rem; margin-top: 1.5rem; }
+        .result-a.correct { color: var(--success); font-weight: bold; background: #f0fdf4; padding: 0.5rem; border-radius: 4px; }
+        .result-a.incorrect { color: var(--danger); font-weight: bold; background: #fef2f2; padding: 0.5rem; border-radius: 4px; }
 
-        /* CERTIFICADO INVISÍVEL */
+        /* CERTIFICADO INVISÍVEL PARA GERAÇÃO DE PDF */
         #certificado-wrapper { display: none; padding: 40px; background: white; width: 1123px; height: 794px; position: absolute; left: -9999px; top: 0; }
         .certificado-content { border: 10px solid var(--secondary); padding: 50px; text-align: center; height: 100%; border-radius: 10px; background: #f8fafc; position: relative; }
-        .cert-title { font-family: 'Merriweather', serif; font-size: 4rem; color: var(--primary); text-transform: uppercase; margin-top: 30px; }
+        .cert-title { font-family: 'Merriweather', serif; font-size: 4rem; color: var(--primary); text-transform: uppercase; letter-spacing: 5px; margin-top: 30px; }
         .cert-subtitle { font-size: 1.5rem; color: #64748b; margin-top: 10px; letter-spacing: 2px; }
         .cert-name { font-family: 'Merriweather', serif; font-size: 3.5rem; font-weight: bold; color: var(--text-heading); margin: 60px 0; border-bottom: 2px solid var(--primary); display: inline-block; padding: 0 50px; }
         .cert-body { font-size: 1.5rem; color: #334155; max-width: 800px; margin: 0 auto; line-height: 1.8; }
@@ -110,9 +111,10 @@
             .mobile-header { display: flex; }
             .sidebar { transform: translateX(-100%); width: 280px; }
             .sidebar.open { transform: translateX(0); box-shadow: 4px 0 15px rgba(0,0,0,0.5); }
-            .main-content { margin-left: 0; padding: 1.5rem; }
-            h1 { font-size: 1.8rem; }
-            .login-box { padding: 2rem 1.5rem; }
+            .main-content { margin-left: 0; padding: 2rem 1.5rem; }
+            h1 { font-size: 2.2rem; }
+            .login-box { padding: 2.5rem 1.5rem; }
+            .eval-container { padding: 1.5rem; }
         }
     </style>
 </head>
@@ -124,9 +126,9 @@
             <p>Formação de Caráter e Teologia</p>
             <div class="form-group"><label>Seu Nome Completo</label><input type="text" id="login-nome" required></div>
             <div class="form-group"><label>Sua Função na Igreja</label><input type="text" id="login-funcao" required></div>
-            <div class="form-group" style="margin-top: 1.5rem; border-top: 1px solid #e2e8f0; padding-top: 1rem;">
-                <label style="color: #64748b;">Chave de Acesso (Opcional)</label>
-                <input type="text" id="login-chave" placeholder="Cole sua chave gerada anteriormente">
+            <div class="form-group" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0;">
+                <label style="color: #64748b;">Chave de Acesso Criptografada (Opcional)</label>
+                <input type="text" id="login-chave" placeholder="Cole sua chave anti-fraude aqui">
             </div>
             <p id="login-err" style="color: var(--danger); font-weight: 800; display: none; margin-top: 1rem;"></p>
             <button class="btn-login" onclick="entrarNoCurso()">Acessar Plataforma</button>
@@ -135,7 +137,7 @@
 
     <div id="app-layout" class="layout">
         <header class="mobile-header">
-            <span style="font-weight: 800; font-size: 1.1rem;">A FÉ INABALÁVEL</span>
+            <span style="font-weight: 800; font-size: 1.2rem;">A FÉ INABALÁVEL</span>
             <button class="menu-toggle" onclick="toggleMenu()">MENU</button>
         </header>
 
@@ -151,13 +153,13 @@
                 <button id="nav-mod-autocontrole" class="nav-btn locked" onclick="switchTabIfUnlocked('mod-autocontrole', this)">5. Autocontrole (Cadeado)</button>
                 <button id="nav-mod-comunhao" class="nav-btn locked" onclick="switchTabIfUnlocked('mod-comunhao', this)">6. Comunhão (Cadeado)</button>
                 <button id="nav-mod-perseveranca" class="nav-btn locked" onclick="switchTabIfUnlocked('mod-perseveranca', this)">7. Perseverança (Cadeado)</button>
-                <hr style="border: 0; border-top: 1px solid #334155; margin: 10px 0;">
-                <button id="nav-mod-resultados" class="nav-btn" onclick="switchTab('mod-resultados')" style="color: #cbd5e1; font-weight: bold;">Seus Resultados</button>
+                <hr style="border: 0; border-top: 1px solid #334155; margin: 15px 0;">
+                <button id="nav-mod-resultados" class="nav-btn" onclick="switchTab('mod-resultados')" style="color: #cbd5e1; font-weight: bold;">Resultados e Provas</button>
                 <button id="nav-mod-exame" class="nav-btn locked" onclick="switchTabIfUnlocked('mod-exame', this)" style="background: var(--danger); color: white;">Exame Final (Cadeado)</button>
             </nav>
 
             <div class="sync-box">
-                <span style="font-size: 0.75rem; color: #94a3b8; font-weight: bold;">Chave de Progresso</span>
+                <span style="font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; font-weight: bold;">Chave Anti-Fraude Gerada</span>
                 <div class="sync-code-display" id="display-chave">NENHUMA</div>
             </div>
         </aside>
@@ -166,205 +168,164 @@
             
             <section id="mod-disciplina" class="module-section active">
                 <span class="kicker">Pilar 01</span>
-                <h1>A Forja da Disciplina</h1>
-                <p>Muitos cristãos querem viver milagres, mas fogem do processo demorado que os prepara para isso. Querem ser fortes na fé, mas têm preguiça de ler a Bíblia. A verdade é dura: uma fé inabalável não cai do céu pronta. Ela precisa ser forjada, batida e moldada.</p>
+                <h1>A Forja da Disciplina: Onde o Caráter é Moldado</h1>
                 
-                <h2>1. Vontade vs. Compromisso</h2>
-                <p>A palavra "disciplina" assusta porque parece castigo. Mas na época da Bíblia, ela significava o treinamento de um soldado. A disciplina é o que te mantém de pé quando a emoção acaba.</p>
-                <p>Motivação é baseada no humor. Você sai de um culto de domingo super motivado para orar, mas na terça-feira chuvosa, a vontade some. A disciplina não liga para a sua vontade. Você faz o que tem que ser feito porque assumiu um compromisso com Deus.</p>
+                <p>Muitos cristãos querem viver milagres extraordinários, mas fogem do processo doloroso e ordinário que os prepara para isso. Querem ser fortes na fé, mas sentem preguiça de dobrar os joelhos para orar; querem ter sabedoria, mas evitam a leitura profunda da Bíblia. A verdade nua e crua é que uma fé inabalável não cai do céu pronta. Ela precisa ser forjada, batida e moldada sob forte calor.</p>
+                <p>Neste primeiro pilar, você aprenderá que a disciplina é a fundação de tudo. Sem ela, o conhecimento que você vai adquirir nos próximos módulos será inútil, pois você não terá forças para colocá-lo em prática.</p>
+
+                <h2>1. A Natureza da Disciplina e a Ilusão da Motivação</h2>
+                <p>A palavra "disciplina" assusta porque, na nossa cultura, ela parece um castigo opressivo. Mas, na época bíblica, ela significava o treinamento de um soldado. A disciplina é a única ferramenta capaz de te manter de pé quando a emoção acabar.</p>
+                <p>Motivação é um sentimento baseado no humor. Você sai de um culto de domingo super motivado para ler a Bíblia todos os dias. No entanto, na terça-feira chuvosa, após um dia estressante de trabalho, essa vontade desaparece completamente. A disciplina, por outro lado, não liga para a sua vontade. Ela é baseada em um <strong>compromisso racional e inegociável</strong> com Deus. Pense em Jesus: em Marcos 1:35, a Bíblia relata que Ele levantava de madrugada, quando ainda estava escuro, e ia para um lugar deserto orar. Ele não fazia isso apenas quando "sentia vontade"; Ele fazia porque a disciplina da oração era inegociável para Sua missão.</p>
                 
                 <div class="bible-box">
                     <p class="bible-text">"Quem ama a disciplina ama o conhecimento, mas o que odeia a repreensão é tolo."</p>
                     <span class="bible-ref">Provérbios 12:1 (NVI 2020)</span>
                 </div>
 
-                <h2>2. Quem Manda no Seu Corpo?</h2>
-                <p>O apóstolo Paulo comparou a vida com Deus ao esporte. Um atleta não come o que quer, nem dorme até a hora que quer. A nossa carne tem desejos: ela quer dormir muito, quer ver televisão o dia todo e quer brigar no trânsito. A disciplina é você colocar uma coleira nessa vontade.</p>
-
                 <div class="step-box">
-                    <h4>Prática: Como ser Disciplinado Hoje</h4>
+                    <h4>Passo a Passo: Vencendo a Falsa Motivação</h4>
                     <ul class="step-list">
-                        <li><strong>A Regra dos 5 Segundos:</strong> Quando o despertador tocar para você orar ou ir trabalhar, não pense. Conte 5, 4, 3, 2, 1 e levante logo. Se você der tempo para a mente pensar, ela vai escolher a cama.</li>
-                        <li><strong>O Jejum de Telas:</strong> Escolha algo que não é pecado, mas que toma seu tempo (como redes sociais ou televisão). Fique 3 dias sem isso. Se o seu corpo e sua mente reclamarem muito, significa que eles estavam te controlando, e não o contrário.</li>
+                        <li><strong>A Regra dos 5 Segundos:</strong> Quando o despertador tocar pela manhã para você orar ou levantar para o trabalho, não pense. A mente carnal sempre buscará o conforto da cama. Portanto, conte agressivamente: 5, 4, 3, 2, 1 e jogue as cobertas para o lado. Aja antes que a sua mente te convença a desistir.</li>
+                        <li><strong>Estabeleça o Mínimo Inegociável:</strong> Defina uma meta pequena, porém absoluta. Exemplo: "Eu vou ler 1 capítulo da Bíblia por dia, quer eu esteja feliz, triste, cansado ou motivado". A disciplina começa no básico.</li>
                     </ul>
                 </div>
-                <button class="btn" onclick="iniciarProva('disciplina')">Fazer Prova: Pilar 1</button>
+
+                <h2>2. A Forja Física e Espiritual: O Domínio da Carne</h2>
+                <p>Nós somos formados por espírito, alma e corpo. E o nosso corpo tem vontades próprias, que a Bíblia chama de "carne". A carne quer dormir até o meio-dia, quer consumir açúcar e quer rolar o feed do celular infinitamente recebendo prazer imediato. O apóstolo Paulo comparou a vida com Deus ao esporte de alto rendimento para explicar como devemos lidar com essas vontades.</p>
+                
+                <div class="bible-box">
+                    <p class="bible-text">"Mas esmurro o meu próprio corpo e faço dele meu escravo, para que, depois de ter pregado aos outros, eu mesmo não venha a ser reprovado."</p>
+                    <span class="bible-ref">1 Coríntios 9:27 (NVI 2020)</span>
+                </div>
+
+                <p>O que significa "esmurrar o próprio corpo"? Não é se machucar fisicamente. Paulo está falando de <strong>subjugação da vontade</strong>. É você olhar para o seu próprio corpo quando ele exige conforto e dizer: "Quem manda na minha rotina e nas minhas decisões não são os meus instintos, mas o Espírito Santo de Deus que habita em mim". Veja o exemplo do profeta Daniel: quando ele chegou à Babilônia, ele decidiu firmemente não se contaminar com a comida rica do rei (Daniel 1:8). Ele dominou o apetite do seu próprio corpo para não quebrar seus princípios espirituais.</p>
+
+                <div class="step-box">
+                    <h4>Passo a Passo: O Jejum de Prazeres Lícitos</h4>
+                    <ul class="step-list">
+                        <li><strong>Identifique o Senhor da sua Rotina:</strong> Escolha algo que não é pecado, mas que rouba a maior parte do seu tempo diário (ex: redes sociais, televisão, jogos de celular, ou até mesmo açúcar/café).</li>
+                        <li><strong>O Corte Estratégico:</strong> Fique exatos 3 dias inteiros sem consumir absolutamente nada desse item. O seu corpo entrará em abstinência. Sua mente tentará te convencer a olhar "só um pouquinho".</li>
+                        <li><strong>O Redirecionamento da Frustração:</strong> Quando a vontade bater forte, feche os olhos por 1 minuto e faça uma oração objetiva: "Senhor, a minha carne quer isso agora, mas eu declaro que o meu espírito tem mais fome de Ti do que o meu corpo tem desse prazer". Esse exercício fortalece o músculo do seu autocontrole como nenhuma outra prática.</li>
+                    </ul>
+                </div>
+
+                <h2>3. Disciplina Sob Pressão e a Constância na Crise</h2>
+                <p>É fácil ser disciplinado quando a vida está calma e o contracheque está na conta. Mas a verdadeira disciplina se revela na hora do caos. Voltemos a Daniel. Anos depois da dieta, o rei da Babilônia assinou um decreto de morte: quem fosse pego orando a qualquer deus seria jogado na cova dos leões. A pressão era mortal.</p>
+                <p>O que Daniel fez? Ele não se escondeu com medo, nem mudou sua rotina. A Bíblia relata em Daniel 6:10 que ele foi para o seu quarto e orou <strong>"como costumava fazer"</strong>. Ele orava três vezes ao dia. A disciplina que ele construiu na paz serviu como uma armadura na guerra. Se ele tivesse que inventar coragem e buscar a Deus apenas na hora do desespero, ele teria cedido ao decreto. O hábito inquebrável o tornou inabalável diante da morte.</p>
+
+                <div class="step-box">
+                    <h4>Passo a Passo: O Alarme de Alinhamento de Daniel</h4>
+                    <ul class="step-list">
+                        <li><strong>O Alarme Tríplice:</strong> Configure 3 alarmes no seu celular durante o dia comercial (ex: 09h00, 14h00, 18h00).</li>
+                        <li><strong>A Pausa do Caos:</strong> Quando o alarme tocar, não importa o quão estressante esteja o seu trabalho, pare o que estiver fazendo por exatos 2 minutos.</li>
+                        <li><strong>A Oração de Conexão:</strong> Não use esse tempo para pedir coisas, mas para se alinhar: "Pai, estou no meio da correria do mundo, mas lembro que não pertenço a ele, pertenço a Ti. Guarda minha mente nas próximas horas".</li>
+                    </ul>
+                </div>
+
+                <h2>4. O Processo Doloroso da Correção Divina</h2>
+                <p>A disciplina de Deus nem sempre é um treinamento amigável; muitas vezes, ela vem em forma de correção dura quando erramos o alvo. O rei Davi adulterou com Bate-Seba e tentou esconder seu pecado. Deus o amava tanto que não o deixou impune. Deus enviou o profeta Natã para confrontá-lo (2 Samuel 12), e a disciplina que se seguiu trouxe dor severa à casa de Davi. No entanto, essa disciplina quebrou o orgulho de Davi e o levou ao arrependimento profundo (Salmo 51).</p>
+                
+                <div class="bible-box">
+                    <p class="bible-text">"Nenhuma disciplina parece ser motivo de alegria no momento, mas sim de tristeza. Mais tarde, porém, produz fruto de justiça e paz para aqueles que por ela foram exercitados."</p>
+                    <span class="bible-ref">Hebreus 12:11 (NVI 2020)</span>
+                </div>
+                
+                <p>Quando passamos por dificuldades ou quando um líder espiritual maduro nos corrige apontando nossas falhas, nossa primeira reação instintiva é o orgulho: queremos nos defender ou fugir da igreja. Mas o segredo de quem tem o caráter forjado é a capacidade de <strong>permanecer na bigorna</strong>. Eles sabem que o martelo da correção não quer destruí-los, mas quer moldá-los à imagem de Cristo.</p>
+
+                <div class="step-box">
+                    <h4>Passo a Passo: Matando o Orgulho na Correção</h4>
+                    <ul class="step-list">
+                        <li><strong>Busque Prestação de Contas:</strong> Abrace um irmão mais maduro na fé. Sente-se com essa pessoa e confesse de forma clara qual área da sua vida está desorganizada ou em pecado.</li>
+                        <li><strong>Dê Autoridade para a Correção:</strong> Peça para essa pessoa te cobrar sobre essa falha daqui a 15 dias. Quando ela te perguntar e apontar seu erro, engula o orgulho. Não se defenda, não dê desculpas. Apenas agradeça pela correção, arrependa-se e mude. O ego precisa morrer para o caráter nascer.</li>
+                    </ul>
+                </div>
+
+                <button class="btn" onclick="iniciarProva('disciplina')">Realizar Prova do Pilar 1</button>
             </section>
 
             <section id="mod-conhecimento" class="module-section">
                 <span class="kicker">Pilar 02</span>
-                <h1>Conhecimento: A Base da Fé</h1>
-                <p>Existe uma mentira por aí dizendo que para ter fé basta "fechar os olhos e acreditar cegamente". Isso é falso. A verdadeira fé precisa de uma mente que conhece as Escrituras. Se você não sabe quem Deus é e o que Ele prometeu, sua fé desaba na primeira crise financeira ou familiar.</p>
-
-                <h2>1. Conhecer de Perto, não de Ouvir Falar</h2>
-                <p>Na Bíblia, a palavra "conhecer" não significa saber decorar versículos para parecer inteligente. Significa ter intimidade. Você não confia o seu dinheiro ou a sua família para um estranho na rua, certo? Você só confia em quem você conhece de verdade. Com Deus é igual: quanto mais você estuda as ações dEle na Bíblia, mais fácil fica confiar nEle.</p>
+                <h1>Conhecimento: A Fundação Racional da Fé</h1>
                 
+                <p>A disciplina pavimentou a estrada. Agora precisamos construir os alicerces sobre ela. O segundo pilar da Fé Inabalável é o <strong>Conhecimento</strong>. Existe um mito profundamente destrutivo (e infelizmente muito popular) na igreja moderna de que a fé deve ser "cega". Muitos ensinam que para ter fé basta desligar a inteligência, fechar os olhos e confiar na intuição ou no arrepio que se sente durante a música do culto.</p>
+
+                <p>A Bíblia repudia essa ideia de ignorância. A verdadeira fé exige uma mente iluminada e afiada pela Palavra. Uma fé que não se baseia no conhecimento teológico correto de quem Deus é, das Suas alianças e das Suas promessas, é uma fé de papel. Ela será esmagada pelo primeiro argumento ateísta que você encontrar, ou pela primeira tragédia de saúde que atingir sua família.</p>
+
                 <div class="bible-box">
-                    <p class="bible-text">"Meu povo foi destruído por falta de conhecimento."</p>
+                    <p class="bible-text">"Meu povo foi destruído por falta de conhecimento. Uma vez que vocês rejeitaram o conhecimento, eu também os rejeito como meus sacerdotes."</p>
                     <span class="bible-ref">Oséias 4:6 (NVI 2020)</span>
                 </div>
 
-                <h2>2. A Bíblia Como Arma</h2>
-                <p>Quando Jesus estava no deserto, cansado e com fome, o Diabo o tentou. E o Diabo usou versículos da própria Bíblia (Salmo 91) fora de contexto para tentar enganar Jesus. O que Jesus fez? Ele não usou poderes mágicos. Ele conhecia a Bíblia inteira e respondeu: "Também está escrito...". Ele usou o conhecimento correto para derrotar a mentira. Sem conhecer a Bíblia, você cai em qualquer conversa fiada.</p>
+                <h2>1. A Diferença entre Informação e o Conhecimento Relacional</h2>
+                <p>É fundamental entender que a Bíblia não pede que você acumule dados históricos apenas para vencer discussões teológicas na internet. Os fariseus da época de Jesus sabiam a Lei de Moisés de cor, decoravam os profetas, mas quando o próprio Deus encarnado estava diante deles, eles não O reconheceram. Por quê? Porque eles tinham apenas informação intelectual fria.</p>
+                <p>No idioma original da Bíblia, o conhecimento exigido é um <strong>conhecimento íntimo, relacional e de primeira mão</strong>. É impossível você confiar o seu dinheiro, os seus segredos e a sua vida nas mãos de um desconhecido que você encontrou na rua. Com Deus é a mesma coisa. Como você pode descansar e não se desesperar no dia em que perder o emprego, se a sua mente não tem a memória viva de como Deus sustentou o profeta Elias no deserto seco? O conhecimento correto abastece o motor da sua fé.</p>
 
                 <div class="step-box">
-                    <h4>Prática: Saindo da Ignorância</h4>
+                    <h4>Passo a Passo: O Método da Pergunta Textual</h4>
                     <ul class="step-list">
-                        <li><strong>Pare de ler na sorte:</strong> Pare de abrir a Bíblia em qualquer página esperando uma palavra mágica. Escolha um livro (como o de João) e leia um capítulo por dia, na ordem certa, para entender a história toda.</li>
-                        <li><strong>Faça a pergunta certa:</strong> Depois de ler, pergunte a si mesmo: "O que esse texto me ensina sobre o jeito que Deus age?". Então, faça uma oração usando isso. Exemplo: "Senhor, vi aqui que o Senhor abriu o mar. Então confio que podes abrir portas para mim hoje".</li>
+                        <li><strong>Pare de ler correndo:</strong> Ao abrir a Bíblia, não leia depressa apenas para marcar um "X" na sua meta de leitura. Pare, pegue um caderno e, ao terminar o capítulo, obrigue-se a escrever.</li>
+                        <li><strong>Identifique o Caráter de Deus:</strong> Faça a si mesmo a pergunta vital: "O que este texto me ensina especificamente sobre como Deus age?". Ele foi um juiz implacável neste texto? Ele foi um Pai que perdoou uma falha terrível?</li>
+                        <li><strong>A Oração Embasada:</strong> Transforme o que você anotou em oração. Exemplo: "Senhor, acabei de ler como Tu tiveste paciência com a teimosia do povo no deserto. Com base nesse conhecimento, peço que tenhas a mesma paciência com as minhas falhas de hoje".</li>
                     </ul>
                 </div>
-                <button class="btn" onclick="iniciarProva('conhecimento')">Fazer Prova: Pilar 2</button>
-            </section>
 
-            <section id="mod-conviccao" class="module-section">
-                <span class="kicker">Pilar 03</span>
-                <h1>Convicção Racional: Fé com Inteligência</h1>
-                <p>Deus nos deu um cérebro por um motivo. A fé cristã não pede que você desligue a sua inteligência na porta da igreja. A Convicção Racional é a capacidade de saber <strong>o porquê</strong> você acredita no que acredita. Se alguém no trabalho te perguntar por que você é cristão, a resposta não pode ser apenas "porque eu sinto paz". Sentimentos mudam; fatos não.</p>
-
-                <h2>1. Fé Baseada em Fatos</h2>
-                <p>Nossa fé é baseada em eventos reais que aconteceram na história. Jesus realmente pisou nesta terra, foi crucificado e o túmulo foi encontrado vazio. O apóstolo Pedro diz que nós não seguimos fábulas ou contos de fadas inventados por homens, mas fomos testemunhas de coisas reais.</p>
+                <h2>2. A Ignorância como Arma do Inimigo no Deserto</h2>
+                <p>A ignorância bíblica é o playground preferido de Satanás. Todo engano espiritual começa com uma meia-verdade. Foi assim no jardim do Éden, quando a serpente distorceu o que Deus havia falado. Milênios depois, Satanás tentou a mesma estratégia com o próprio Jesus Cristo.</p>
+                <p>Em Mateus 4, quando Jesus estava exausto e vulnerável após 40 dias de jejum no deserto, Satanás não O atacou enviando monstros ou possessões; o Diabo O atacou com <strong>uma distorção teológica da própria Bíblia</strong>. O inimigo citou o Salmo 91 ("Ele dará ordens a seus anjos a seu respeito") para induzir Jesus a pular do templo em um ato de orgulho.</p>
                 
-                <div class="bible-box">
-                    <p class="bible-text">"Estejam sempre preparados para responder a qualquer que lhes pedir a razão da esperança que há em vocês."</p>
-                    <span class="bible-ref">1 Pedro 3:15 (NVI 2020)</span>
-                </div>
-
-                <h2>2. Questionar não é Pecado</h2>
-                <p>Muitas pessoas acham que fazer perguntas sobre a Bíblia é falta de fé. É o contrário! Fazer perguntas honestas mostra que você quer levar a verdade a sério. Os discípulos faziam perguntas o tempo todo para Jesus. Uma fé que não pode ser testada com perguntas não serve para ser vivida.</p>
-
-                <div class="step-box">
-                    <h4>Prática: Como Ter Certeza do que Crê</h4>
-                    <ul class="step-list">
-                        <li><strong>Encontre as respostas:</strong> Anote num papel as 2 maiores dúvidas que você tem sobre a Bíblia ou sobre Deus (ex: Por que Deus permite o sofrimento?). Em vez de esconder a dúvida, pergunte ao seu pastor ou leia bons livros cristãos sobre o assunto até achar a resposta.</li>
-                        <li><strong>Pare de espalhar boatos:</strong> Um cristão com convicção racional não acredita em qualquer notícia falsa (Fake News) que chega no WhatsApp. Aprenda a verificar os fatos antes de se desesperar ou repassar. A verdade importa para Deus.</li>
-                    </ul>
-                </div>
-                <button class="btn" onclick="iniciarProva('conviccao')">Fazer Prova: Pilar 3</button>
-            </section>
-
-            <section id="mod-constancia" class="module-section">
-                <span class="kicker">Pilar 04</span>
-                <h1>Constância: O Poder de Não Parar</h1>
-                <p>Começar um projeto é fácil e dá muita alegria. Todo mundo começa a dieta na segunda-feira. Todo mundo decide ler a Bíblia no dia 1º de Janeiro. O problema não é começar, o problema é continuar quando a novidade perde a graça. A Constância é o cimento que segura a nossa fé no lugar quando tudo fica monótono e chato.</p>
-
-                <h2>1. O Segredo do Longo Prazo</h2>
-                <p>A vida cristã não é uma corrida de 100 metros onde você dá um tiro rápido e acaba. Ela é uma maratona que dura a vida inteira. Pense em Noé construindo a arca. Não choveu no primeiro ano, nem no segundo. Ele trabalhou por décadas cortando madeira no seco. Isso é constância. É fazer o que é certo mesmo quando não há resultados imediatos à vista.</p>
+                <p>Como Jesus Se defendeu? Ele não chamou um raio do céu. Ele puxou a espada do Conhecimento inquebrável. Jesus sabia que o Diabo estava isolando um versículo da Bíblia fora de seu contexto. E Jesus respondeu fechando a lacuna herege, usando o livro de Deuteronômio:</p>
 
                 <div class="bible-box">
-                    <p class="bible-text">"Portanto, meus amados irmãos, mantenham-se firmes, e que nada os abale. Sejam sempre dedicados à obra do Senhor, pois vocês sabem que no Senhor o trabalho de vocês não será inútil."</p>
-                    <span class="bible-ref">1 Coríntios 15:58 (NVI 2020)</span>
+                    <p class="bible-text">"Jesus lhe respondeu: 'Também está escrito: Não ponha à prova o Senhor, o seu Deus'."</p>
+                    <span class="bible-ref">Mateus 4:7 referenciando Deuteronômio 6:16 (NVI 2020)</span>
                 </div>
 
-                <h2>2. A Diferença entre Eventos e Hábitos</h2>
-                <p>Um acampamento de igreja é um <strong>evento</strong>. Ele é ótimo e anima, mas dura só três dias. Ler um capítulo da Bíblia toda manhã e perdoar o cônjuge todo dia é um <strong>hábito</strong>. São os pequenos hábitos que definem quem você é, e não os grandes eventos esporádicos.</p>
+                <p>A lição desta passagem é assustadora: <strong>Texto fora de contexto é pretexto para heresia.</strong> Se o Filho de Deus precisou ter o conhecimento total das Escrituras guardado em Sua mente para não ser enganado, é óbvio que você será derrotado pelas mentiras da vida se não estudar a fundo a Palavra.</p>
 
                 <div class="step-box">
-                    <h4>Prática: Como não Desistir no Caminho</h4>
+                    <h4>Passo a Passo: O Arsenal Mental Contra Tentações</h4>
                     <ul class="step-list">
-                        <li><strong>Não quebre a corrente:</strong> Pegue um calendário de papel e marque um grande "X" vermelho nos dias em que você cumpriu sua obrigação (seja orar 10 minutos, ler a palavra ou ir à igreja). Seu único objetivo é não deixar a corrente de X quebrar.</li>
-                        <li><strong>Reduza a marcha, mas não pare:</strong> Se você teve um dia péssimo, cansativo e não tem energia para ler os 3 capítulos que prometeu, não desista de tudo. Leia apenas 1 versículo. A regra é: nunca deixe um dia passar sem fazer o mínimo. Feito é melhor que perfeito não feito.</li>
+                        <li><strong>Identifique o Ponto Cego:</strong> Qual é o pecado, o medo ou a emoção que mais te derrota constantemente? (Ansiedade com o futuro, ira descontrolada no trânsito, medo da solidão).</li>
+                        <li><strong>Carregue a Arma:</strong> Pesquise e escolha 3 versículos na Bíblia que falem diretamente contra esse problema específico.</li>
+                        <li><strong>A Fixação:</strong> Escreva esses versículos de forma legível em papéis e cole-os no espelho do banheiro ou no painel do carro. Você vai ler esses textos em voz alta todos os dias até memorizá-los. Quando a crise vier, você terá o mesmo poder de Cristo para declarar: "Também está escrito".</li>
                     </ul>
                 </div>
-                <button class="btn" onclick="iniciarProva('constancia')">Fazer Prova: Pilar 4</button>
-            </section>
 
-            <section id="mod-autocontrole" class="module-section">
-                <span class="kicker">Pilar 05</span>
-                <h1>Autocontrole Emocional: Domínio da Mente</h1>
-                <p>Você pode ter o conhecimento da Bíblia inteira e ser constante na igreja, mas se perder a cabeça por qualquer provocação, seu testemunho será destruído em 5 segundos. O Autocontrole Emocional não é não sentir raiva; é não deixar que a raiva tome as decisões no seu lugar.</p>
-
-                <h2>1. A Força Real</h2>
-                <p>O mundo acha que forte é o homem que grita, que bate na mesa e que se vinga de quem lhe fez mal. A Bíblia acha isso uma grande fraqueza. Forte de verdade é aquele que tem a força para destruir, mas escolhe se segurar. Como Davi, que teve a chance de matar o rei Saul que o perseguia, mas escolheu guardar a espada.</p>
-
-                <div class="bible-box">
-                    <p class="bible-text">"Melhor é o homem paciente do que o guerreiro, mais vale controlar o seu espírito do que conquistar uma cidade."</p>
-                    <span class="bible-ref">Provérbios 16:32 (NVI 2020)</span>
-                </div>
-
-                <h2>2. Governando a Língua e a Ira</h2>
-                <p>Muitas palavras não podem ser desditas. Se você reage de cabeça quente no casamento, no trabalho ou na igreja, as cicatrizes vão ficar. O autocontrole nos ensina que nós somos os donos das nossas palavras antes de falá-las, mas nos tornamos escravos delas depois que saem da boca.</p>
+                <h2>3. O Hábito de Ruminar e o Espírito Bereano</h2>
+                <p>Vivemos na era da informação, mas sofremos de uma fome terrível de sabedoria teológica real. Muitos cristãos hoje passam horas consumindo vídeos de pregações sensacionalistas na internet que focam apenas em "vitória e sucesso", mas são incapazes de abrir a Bíblia e explicar doutrinas básicas.</p>
+                <p>O livro de Atos 17:11 relata a visita do apóstolo Paulo à igreja da cidade de Bereia. Paulo era a maior autoridade teológica viva da época. Mesmo assim, os cristãos de Bereia foram chamados de pessoas com um "caráter nobre". Sabe por quê? Porque eles não ficavam gritando "amém" para tudo o que Paulo dizia de forma cega. A Bíblia diz que eles recebiam a palavra com alegria, mas depois <strong>"examinavam as Escrituras todos os dias para ver se o que Paulo dizia era verdade"</strong>. Eles conferiam as fontes.</p>
 
                 <div class="step-box">
-                    <h4>Prática: A Arte de se Controlar</h4>
+                    <h4>Passo a Passo: O Estudo Expositivo e o Filtro de Bereia</h4>
                     <ul class="step-list">
-                        <li><strong>A Pausa dos 3 Segundos:</strong> Quando alguém te ofender, mandar uma mensagem atravessada no celular ou fechar o seu carro, não reaja imediatamente. Feche a boca, respire fundo e conte 1, 2, 3 mentalmente. Essa pausa esfria o sangue e aciona o lado racional do seu cérebro.</li>
-                        <li><strong>A Regra da Madrugada:</strong> Nunca envie um e-mail com raiva ou mande textão no WhatsApp de madrugada. Escreva o texto, guarde para si e vá dormir. Se na manhã seguinte você ainda achar que é a coisa certa a dizer, aí você envia. Noventa por cento das vezes, você vai apagar e agradecer a Deus por não ter enviado.</li>
+                        <li><strong>Abandone a Leitura Aleatória:</strong> Pare de abrir a Bíblia de forma mágica, apontar o dedo na página e esperar uma revelação isolada. A Bíblia é uma biblioteca rica em história. Você não entende um filme se começar a assistir na metade. Escolha um livro inteiro (comece por Romanos ou Marcos) e leia sequencialmente, do capítulo 1 até o final.</li>
+                        <li><strong>Filtre o Seu Consumo:</strong> Ative o "espírito bereano" no seu dia a dia. Quando ouvir uma pregação ou um conselho religioso na internet, não engula imediatamente. Abra a sua Bíblia e confira se o pregador não está usando o versículo fora de contexto para te manipular. A verdade de Deus suporta qualquer investigação.</li>
                     </ul>
                 </div>
-                <button class="btn" onclick="iniciarProva('autocontrole')">Fazer Prova: Pilar 5</button>
-            </section>
 
-            <section id="mod-comunhao" class="module-section">
-                <span class="kicker">Pilar 06</span>
-                <h1>Comunhão: A Força da Fogueira</h1>
-                <p>Existe um ditado antigo muito verdadeiro: "Uma brasa tirada da fogueira se apaga rapidamente". O cristianismo não foi feito para ser vivido sozinho no quarto da sua casa. Nós precisamos dos outros irmãos, e os outros precisam de nós. Essa é a Comunhão.</p>
-
-                <h2>1. Você é Parte de um Corpo</h2>
-                <p>Na Bíblia, a igreja não é vista como um prédio de tijolos, mas como um corpo humano. Um dedo cortado do corpo apodrece e morre. Um cristão que vive isolado, que não congrega, que diz "eu acredito em Deus, mas não na igreja", está cortando o próprio braço. A comunhão é onde nosso caráter é lixado e aperfeiçoado pelas diferenças dos outros irmãos.</p>
-
-                <div class="bible-box">
-                    <p class="bible-text">"Assim como o ferro afia o ferro, o homem afia o seu companheiro."</p>
-                    <span class="bible-ref">Provérbios 27:17 (NVI 2020)</span>
-                </div>
-
-                <h2>2. Ninguém Vence as Sombras Sozinho</h2>
-                <p>Quando você luta contra um pecado em segredo, o diabo ganha vantagem, porque a vergonha te faz se esconder no escuro. O propósito de ter irmãos de fé por perto é para podermos confessar nossas lutas e pedir ajuda sem sermos julgados. Homens precisam de homens maduros para desabafar; mulheres precisam de mulheres maduras para buscar conselhos.</p>
-
-                <div class="step-box">
-                    <h4>Prática: Vivendo em Corpo</h4>
-                    <ul class="step-list">
-                        <li><strong>Não seja apenas um frequentador:</strong> Domingo de manhã não é suficiente para ter comunhão real. Envolva-se num grupo pequeno (célula, grupo de homens/mulheres) onde as pessoas saibam o seu nome e quais são os seus problemas.</li>
-                        <li><strong>O parceiro de oração:</strong> Encontre um irmão (ou irmã, se você for mulher) de confiança. Combine de mandar uma mensagem rápida uma vez por semana apenas perguntando: "Como estão as lutas essa semana? Precisa que eu ore por algo?". E preste contas a ele.</li>
-                    </ul>
-                </div>
-                <button class="btn" onclick="iniciarProva('comunhao')">Fazer Prova: Pilar 6</button>
-            </section>
-
-            <section id="mod-perseveranca" class="module-section">
-                <span class="kicker">Pilar 07</span>
-                <h1>Perseverança: A Resistência Final</h1>
-                <p>Chegamos ao último pilar. Você foi disciplinado, buscou conhecimento, controlou a mente e não andou sozinho. Mas, inevitavelmente, a tragédia vai bater na sua porta. O desemprego vai chegar, uma doença grave vai aparecer ou a traição de um amigo vai te cortar o coração. O que você faz quando tudo dá errado?</p>
-
-                <h2>1. A Fé que Aguenta a Dor</h2>
-                <p>A perseverança não é uma fé otimista que diz "tudo vai dar certo agora". A perseverança é a fé de Jó. Ele perdeu os filhos, o dinheiro e a saúde, e mesmo sentado nas cinzas, ele disse: "Ainda que Ele me mate, eu confiarei nEle". A verdadeira fé cristã não é medida quando você ganha um carro novo; ela é provada no fundo do poço, quando Deus parece calado, mas você não O abandona.</p>
-
-                <div class="bible-box">
-                    <p class="bible-text">"Meus irmãos, considerem motivo de grande alegria o fato de passarem por diversas provações, pois vocês sabem que a prova da sua fé produz perseverança. E a perseverança deve ter ação completa, a fim de que vocês sejam maduros e íntegros, sem lhes faltar coisa alguma."</p>
-                    <span class="bible-ref">Tiago 1:2-4 (NVI 2020)</span>
-                </div>
-
-                <h2>2. Olhando para a Linha de Chegada</h2>
-                <p>Como alguém suporta a dor sem desistir de Deus? Olhando para o futuro. Jesus suportou a cruz não porque gostava de sofrer, mas porque olhava para a alegria que O aguardava do outro lado. Este mundo não é a nossa casa definitiva. A dor que passamos aqui é passageira comparada à eternidade que nos aguarda.</p>
-
-                <div class="step-box">
-                    <h4>Prática: Vencendo a Vontade de Desistir</h4>
-                    <ul class="step-list">
-                        <li><strong>Lembre-se das vitórias passadas:</strong> Quando o desespero bater, escreva num papel 3 momentos terríveis do seu passado onde você achou que não ia aguentar, mas Deus te deu o escape. A memória do passado alimenta a esperança do futuro.</li>
-                        <li><strong>Um dia de cada vez:</strong> Jesus disse: "Basta a cada dia o seu próprio mal". Se a dor for muito grande, não pense em como você vai aguentar o mês que vem. Foco apenas em suportar o dia de hoje, segurando na mão de Deus. Amanhã, novas misericórdias virão.</li>
-                    </ul>
-                </div>
-                <button class="btn" onclick="iniciarProva('perseveranca')">Fazer Prova: Pilar 7</button>
+                <button class="btn" onclick="iniciarProva('conhecimento')">Realizar Prova do Pilar 2</button>
             </section>
 
             <section id="mod-resultados" class="module-section">
-                <h1>Boletim de Avaliações</h1>
-                <p>Aqui ficam as notas das suas provas e correções. Analise seus acertos e erros abaixo.</p>
-                <div id="resultados-lista"><p style="color: #64748b; font-style: italic;">Nenhuma prova foi realizada.</p></div>
+                <h1>Boletim de Resultados e Histórico</h1>
+                <p>O seu histórico de avaliações fica armazenado com segurança nesta página. Analise os detalhes de seus acertos e, principalmente, dos seus erros. O caráter não teme a correção da verdade.</p>
+                <div id="resultados-lista">
+                    <p style="color: #64748b; font-style: italic;">Nenhuma avaliação foi processada ainda. Faça as provas nos módulos para gerar seu boletim.</p>
+                </div>
             </section>
 
             <section id="mod-exame" class="module-section">
-                <h1>O Exame da Forja Final</h1>
-                <p>Você estudou os 7 Pilares. Este exame contém 30 perguntas que testarão se o seu caráter e conhecimento foram forjados de verdade.</p>
+                <h1>O Exame Final da Forja</h1>
+                <p>Você chegou ao fim da fundamentação. Este exame final não é um teste fácil. Ele contém 30 perguntas vitais que percorrem todos os pilares ensinados, exigindo que você comprove o conhecimento adquirido.</p>
                 <div class="step-box">
-                    <h4>Atenção:</h4>
+                    <h4>Regras de Certificação:</h4>
                     <ul class="step-list">
-                        <li>Nota de corte: <strong>85% de acerto</strong>.</li>
-                        <li>Se reprovar, terá que voltar ao estudo e tentar novamente.</li>
-                        <li>Se aprovado, você receberá seu <strong>Certificado Oficial em PDF</strong> no final.</li>
+                        <li>A nota de corte obrigatória é de <strong>85% de acertos</strong>.</li>
+                        <li>Se você falhar na pontuação, o sistema exigirá que você revise o material e refaça a prova amanhã.</li>
+                        <li>Se aprovado com excelência, o motor irá gerar e baixar automaticamente o seu <strong>Certificado Oficial em PDF</strong> assinado.</li>
                     </ul>
                 </div>
-                <button class="btn btn-success" onclick="iniciarExameFinal()">Iniciar Exame (30 Questões)</button>
+                <button class="btn btn-success" onclick="iniciarExameFinal()">Iniciar o Exame Final (30 Questões)</button>
             </section>
 
         </main>
@@ -372,87 +333,58 @@
 
     <div id="eval-modal">
         <div class="eval-container" id="eval-quiz-stage">
-            <h2 id="quiz-titulo" style="font-family: 'Merriweather', serif; font-size: 1.8rem; margin-bottom: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 1rem;">Prova</h2>
+            <h2 id="quiz-titulo" style="font-family: 'Merriweather', serif; font-size: 2rem; margin-bottom: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 1rem;">Prova em Andamento</h2>
             <div id="quiz-render-area"></div>
-            <p id="quiz-err" style="color: var(--danger); font-weight: 800; display: none; text-align: center; margin-top: 1rem;">Você precisa responder TODAS as questões.</p>
-            <button class="btn" onclick="finalizarProvaLocal()">Verificar Resultado</button>
-            <button class="btn" style="background: transparent; border: 2px solid var(--border); color: var(--secondary); margin-top: 1rem;" onclick="closeEval()">Cancelar</button>
+            
+            <p id="quiz-err" style="color: var(--danger); font-weight: 800; display: none; text-align: center; margin-top: 1rem; font-size: 1.1rem;">Aviso: Você não pode deixar questões em branco.</p>
+            <button class="btn" onclick="finalizarProvaLocal()">Salvar Respostas e Verificar Nota</button>
+            <button class="btn" style="background: transparent; border: 2px solid var(--border); color: var(--secondary); margin-top: 1rem;" onclick="closeEval()">Cancelar e Estudar Mais</button>
         </div>
     </div>
 
     <div id="certificado-wrapper">
         <div class="certificado-content">
             <h1 class="cert-title">A FÉ INABALÁVEL</h1>
-            <p class="cert-subtitle">FORMAÇÃO DE CARÁTER E TEOLOGIA</p>
-            <h2 class="cert-name" id="cert-nome-display">NOME</h2>
+            <p class="cert-subtitle">PROGRAMA OFICIAL DE FORMAÇÃO DE CARÁTER E TEOLOGIA</p>
+            <h2 class="cert-name" id="cert-nome-display">NOME DO ALUNO</h2>
             <p class="cert-body">
-                Certificamos que o(a) aluno(a) acima, na função de <strong><span id="cert-funcao-display"></span></strong>, foi aprovado(a) no Exame Final do curso <strong>A FÉ INABALÁVEL</strong>, demonstrando domínio intelectual e prático sobre os 7 Pilares do Caráter Cristão.<br><br>
+                Certificamos para os devidos fins que o(a) aluno(a) acima, exercendo a função de <strong><span id="cert-funcao-display"></span></strong>, concluiu com excelência o treinamento prático e teórico, sendo aprovado(a) no Exame Final do curso <strong>A FÉ INABALÁVEL</strong> com pontuação superior à média exigida.<br><br>
                 <em>"Produz fruto de justiça e paz para aqueles que por ela foram exercitados." (Hb 12:11)</em>
             </p>
             <div class="cert-footer">
-                <div class="cert-signature">Instrutor Teológico</div>
-                <div class="cert-signature">Supervisão</div>
+                <div class="cert-signature">Instrutor Teológico e Mentor</div>
+                <div class="cert-signature">Supervisão Acadêmica do Curso</div>
             </div>
         </div>
     </div>
 
     <script>
-        let nomeAluno = "", funcaoAluno = "", moduloAtualProva = "", questoesSorteadas = [], isExameFinal = false;
+        // Variáveis de Estado
+        let nomeAluno = "";
+        let funcaoAluno = "";
+        let moduloAtualProva = "";
+        let questoesSorteadas = [];
+        let isExameFinal = false;
 
-        // BANCO GIGANTE COM 35 QUESTÕES (5 POR PILAR)
+        // BANCO DE QUESTÕES (Profundas, baseadas exatamente nos textos e passo a passo)
         const bancoAvaliacoes = {
             disciplina: [
-                { q: "O que a palavra bíblica para disciplina significa na prática?", opts: ["Um castigo para nos fazer sofrer de propósito.", "O treinamento de um soldado para formar limites e nos preparar para as batalhas.", "Uma recompensa financeira.", "Um sentimento de empolgação."], ans: 1 },
-                { q: "Qual a diferença entre Motivação e Disciplina?", opts: ["Motivação depende do humor; Disciplina é fazer o que deve ser feito pelo compromisso com Deus.", "Motivação é ruim e disciplina é alegre.", "Não há diferença.", "A disciplina só existe em acampamentos de igreja."], ans: 0 },
-                { q: "O que significa 'esmurrar o corpo' citado pelo apóstolo Paulo?", opts: ["Bater em si mesmo com pedaços de pau.", "Não comer por 40 dias.", "Colocar uma coleira na vontade da carne (preguiça, ira) e deixar o Espírito Santo governar suas ações.", "Trabalhar sem dormir."], ans: 2 },
-                { q: "Para que serve a 'Regra dos 5 Segundos'?", opts: ["Para comer comida que caiu no chão.", "Para levantar imediatamente quando o alarme toca, sem dar chance para a mente inventar desculpas.", "Para orar apenas 5 segundos por dia.", "Para contar antes de jogar um jogo."], ans: 1 },
-                { q: "Qual é o objetivo de ficar 3 dias sem telas ou redes sociais (Jejum Lícito)?", opts: ["Perder peso.", "Informar ao seu corpo e mente que você não é escravo das coisas, fortalecendo o autocontrole.", "Gastar menos bateria.", "Porque o celular é pecado."], ans: 1 }
+                { q: "Qual a diferença central ensinada no curso entre a Falsa Motivação e a Verdadeira Disciplina?", opts: ["A motivação é ditada pelo humor e pelas circunstâncias; a disciplina é um compromisso racional inegociável que você cumpre independente do que está sentindo.", "A motivação é ruim e a disciplina é o único sentimento aceitável.", "Não existe diferença, as duas dependem de emoção.", "A disciplina só existe dentro do prédio da igreja."], ans: 0 },
+                { q: "O apóstolo Paulo fala em 1 Coríntios 9 sobre 'esmurrar o próprio corpo'. O que essa passagem nos ensina sobre o Domínio da Carne?", opts: ["Que devemos nos agredir fisicamente para sermos perdoados pelos nossos pecados.", "Significa subjugar a vontade carnal (que exige conforto e prazer imediato) e declarar que quem governa suas decisões é o Espírito Santo.", "Que devemos jejuar sem beber água durante um ano.", "Que a vida cristã é igual a um campeonato de luta."], ans: 1 },
+                { q: "Sobre a lição de 'Disciplina sob Pressão', o que o exemplo do profeta Daniel nos ensina quando o decreto de morte foi assinado na Babilônia?", opts: ["Que ele orou desesperadamente inventando uma nova forma de buscar a Deus por causa do pânico.", "Que a disciplina que ele construiu na paz serviu como armadura na guerra: ele foi orar 'como costumava fazer', mostrando que hábitos inquebráveis vencem o caos.", "Que ele negociou sua fé escondendo-se no porão para orar em silêncio.", "Que ele usou de violência para se defender dos leões."], ans: 1 },
+                { q: "Na prática 'A Regra dos 5 Segundos', qual é o conselho fundamental para vencer a preguiça matinal?", opts: ["Ao soar o alarme, conte de 5 até 1 e levante imediatamente para não dar tempo da mente carnal argumentar a favor do conforto da cama.", "Ore por 5 segundos antes de levantar e depois volte a dormir.", "Coloque 5 alarmes diferentes para garantir que você acorde.", "Pense por 5 segundos em todos os seus problemas antes de sair da cama."], ans: 0 },
+                { q: "Na 'Prática: O Jejum de Prazeres Lícitos', qual é o propósito de ficar 3 dias sem algo que rouba seu tempo (ex: redes sociais, açúcar)?", opts: ["Perder peso e economizar dinheiro.", "Mostrar aos irmãos do grupo de oração que você é extremamente espiritual.", "Informar ao seu corpo que ele não governa suas decisões, fortalecendo o músculo do autocontrole emocional ao redirecionar a fome e a frustração para Deus.", "Pagar uma penitência por um pecado cometido na semana anterior."], ans: 2 }
             ],
             conhecimento: [
-                { q: "O que significa 'conhecer' a Deus na visão bíblica?", opts: ["Decorar todos os versículos.", "Ter intimidade de verdade, não apenas ouvir falar dEle.", "Ganhar um diploma de teologia.", "Ir à igreja uma vez por ano."], ans: 1 },
-                { q: "Como Jesus derrotou a tentação de Satanás no deserto?", opts: ["Ele conhecia a Bíblia a fundo e usou a Escritura certa para desmascarar a mentira do diabo.", "Ele enviou fogo do céu.", "Ele correu e se escondeu.", "Ele concordou com Satanás para evitar briga."], ans: 0 },
-                { q: "Por que não devemos abrir a Bíblia 'na sorte'?", opts: ["Porque é falta de respeito. A Bíblia deve ser lida na ordem para não tirarmos os versículos do contexto da história original.", "Porque rasga as páginas.", "Porque Deus não gosta.", "A afirmação é falsa. É o melhor jeito."], ans: 0 },
-                { q: "Qual o erro de quem não estuda a Palavra (Oséias 4:6)?", opts: ["Fica pobre.", "A pessoa e o povo são destruídos por falta de conhecimento, acreditando em qualquer mentira.", "Não pode cantar na igreja.", "Nenhum erro."], ans: 1 },
-                { q: "O que devemos fazer depois de ler um capítulo da Bíblia?", opts: ["Dormir imediatamente.", "Perguntar o que aquele texto ensina sobre o jeito de Deus agir e transformar isso em oração.", "Criticar quem não leu.", "Apenas fechar o livro."], ans: 1 }
-            ],
-            conviccao: [
-                { q: "O que é Convicção Racional?", opts: ["Acreditar sem pensar em nada.", "Saber o porquê você acredita, tendo uma fé baseada em fatos, não em fábulas e lendas.", "Discutir e brigar na rua.", "Saber falar grego."], ans: 1 },
-                { q: "De acordo com 1 Pedro 3:15, o que o cristão deve estar preparado para fazer?", opts: ["Gritar mais alto.", "Fugir das perguntas do mundo.", "Responder a qualquer pessoa a razão da nossa esperança.", "Comprar Bíblias para todos."], ans: 2 },
-                { q: "Fazer perguntas sobre a Bíblia e tentar entender Deus é falta de fé?", opts: ["Sim, é pecado duvidar.", "Não, fazer perguntas honestas mostra que você quer levar a verdade a sério e conhecer a Deus de verdade.", "Sim, é coisa do diabo.", "Apenas pastores podem perguntar."], ans: 1 },
-                { q: "Como um cristão com convicção reage a Fake News de WhatsApp?", opts: ["Acredita em tudo e repassa com medo.", "Não liga para nada.", "Verifica os fatos antes de se desesperar, pois a verdade importa para quem serve ao Deus da Verdade.", "Briga com quem mandou."], ans: 2 },
-                { q: "Se a fé é baseada em fatos, qual foi o fato mais importante do cristianismo?", opts: ["A invenção da roda.", "A crucificação e o túmulo vazio de Jesus, testemunhados por centenas de pessoas.", "Um sonho que alguém teve no ano 1500.", "Um conselho político em Roma."], ans: 1 }
-            ],
-            constancia: [
-                { q: "O que é mais difícil na vida cristã?", opts: ["Começar em Janeiro a ler a Bíblia.", "Comprar Bíblias novas.", "A constância: continuar fazendo o que é certo mesmo quando a novidade passa e a rotina fica chata.", "Ir ao primeiro dia de um evento."], ans: 2 },
-                { q: "Qual é a diferença entre um 'evento' e um 'hábito'?", opts: ["Não há diferença.", "Um evento dura pouco e dá ânimo rápido; um hábito é feito todo dia e define seu caráter a longo prazo.", "Um evento é chato, um hábito é divertido.", "Hábitos são apenas para o trabalho."], ans: 1 },
-                { q: "O que a história de Noé construindo a arca nos ensina sobre Constância?", opts: ["Que chove muito rápido.", "Trabalhar com madeira é fácil.", "É a capacidade de trabalhar duro e fazer o certo por anos a fio, mesmo quando não há resultados rápidos ou sinais visíveis.", "Que devemos ter animais em casa."], ans: 2 },
-                { q: "Como aplicamos a regra de 'Não quebrar a corrente'?", opts: ["Não usar colares.", "Marcar um X no calendário a cada dia que cumprimos nosso dever (como orar), para não perdermos o ritmo.", "Amarrar uma corrente na porta.", "Quebrar coisas velhas."], ans: 1 },
-                { q: "O que fazer em um dia péssimo, onde você está exausto e sem energia para orar ou ler a Bíblia?", opts: ["Desista e vá dormir sem fazer nada.", "Faça apenas um pouco (leia um versículo e ore 1 minuto), pois é melhor reduzir a marcha do que parar completamente a corrente.", "Fique com raiva e chore.", "Minta dizendo que fez tudo."], ans: 1 }
-            ],
-            autocontrole: [
-                { q: "O que é o verdadeiro Autocontrole Emocional?", opts: ["A pessoa que nunca sente raiva de jeito nenhum.", "Sentir a emoção, mas não deixar que ela tome as decisões por você.", "Gritar e depois pedir perdão logo em seguida.", "Não chorar nunca."], ans: 1 },
-                { q: "Segundo Provérbios, quem é verdadeiramente forte?", opts: ["Aquele que bate na mesa e se vinga dos outros.", "O homem que ganha todas as brigas na rua.", "O homem paciente que controla seu espírito, sendo mais forte do que quem conquista cidades.", "Aquele que ofende com palavras chiques."], ans: 2 },
-                { q: "Por que as palavras ditas com raiva são um grande perigo?", opts: ["Elas custam dinheiro.", "Você é dono delas antes de falar, mas depois que saem da boca, o estrago nas pessoas não pode ser apagado facilmente.", "Elas dão dor de garganta.", "Elas não tem perigo nenhum."], ans: 1 },
-                { q: "Como funciona a prática da 'Pausa de 3 Segundos'?", opts: ["Contar 1, 2, 3 antes de comer.", "Ao ser ofendido, parar e respirar fundo por 3 segundos antes de responder, para esfriar o sangue e acionar o lado racional.", "Correr durante 3 segundos.", "Ficar 3 segundos sem piscar."], ans: 1 },
-                { q: "Qual a recomendação para mandar mensagens difíceis (Regra da Madrugada)?", opts: ["Mande imediatamente de madrugada para assustar a pessoa.", "Escreva e envie logo, não importa a hora.", "Escreva o texto com raiva, guarde para si, durma e leia no dia seguinte antes de decidir enviar.", "Peça para outra pessoa enviar por você."], ans: 2 }
-            ],
-            comunhao: [
-                { q: "Na Bíblia, a Igreja é comparada a quê?", opts: ["Um teatro.", "Uma prisão.", "Um clube de amigos perfeitos.", "Um corpo humano onde as peças precisam umas das outras para não apodrecer e morrer."], ans: 3 },
-                { q: "O que significa o ditado 'Uma brasa tirada da fogueira apaga rapidamente'?", opts: ["Que fogo é perigoso.", "Que o cristão isolado perde a força da fé e cai nas mentiras do mundo rapidamente, porque precisamos do calor dos outros irmãos.", "Que devemos fazer fogueiras no quintal.", "Não significa nada."], ans: 1 },
-                { q: "Qual a importância de não lutarmos contra os pecados sozinhos no escuro?", opts: ["Nenhuma, o pecado é assunto particular.", "Mostrar para os outros como somos fortes.", "Porque o diabo ganha vantagem no segredo. Precisamos de irmãos maduros para confessar falhas sem sermos julgados.", "Para postar nas redes sociais."], ans: 2 },
-                { q: "Qual a diferença entre um 'frequentador de domingo' e viver em Corpo?", opts: ["A roupa que usa.", "O frequentador só senta no banco e vai embora. Viver no corpo é estar com pessoas na semana que conhecem suas dores e problemas.", "O frequentador canta mais alto.", "Nenhuma diferença."], ans: 1 },
-                { q: "O que Provérbios diz sobre a amizade cristã?", opts: ["O ferro enferruja o ferro.", "Assim como o ferro afia o ferro, o homem afia o seu companheiro através da verdade e comunhão.", "Melhor andar sozinho.", "Amigos só servem para festas."], ans: 1 }
-            ],
-            perseveranca: [
-                { q: "O que a história de Jó nos ensina sobre a perseverança cristã?", opts: ["Que se você tiver fé, nunca ficará doente.", "Que Deus tem que nos dar tudo.", "A fé verdadeira não existe apenas nas bênçãos, mas é provada no fundo do poço, suportando a dor sem abandonar a Deus.", "Que reclamar resolve os problemas na mesma hora."], ans: 2 },
-                { q: "Segundo o curso, o que a perseverança de Tiago 1 produz no cristão?", opts: ["Medo e depressão.", "Fama e dinheiro na terra.", "Aprova e molda o caráter para nos tornarmos maduros e íntegros, prontos para a vida real.", "Ressentimento com as pessoas."], ans: 2 },
-                { q: "Como suportar dores e tragédias prolongadas olhando para Jesus?", opts: ["Entender que o mundo não é nossa casa definitiva e que a nossa dor presente não se compara com a alegria que nos espera na eternidade.", "Chorar até acabar a dor.", "Fingir que a dor não existe.", "Acreditar que tudo vai ficar milionário amanhã."], ans: 0 },
-                { q: "Qual é o objetivo da prática 'Lembrar das Vitórias Passadas'?", opts: ["Para se orgulhar de si mesmo.", "Quando o desespero de hoje for grande, lembrar de como Deus te salvou em crises do passado alimenta a esperança para aguentar o futuro.", "Para esquecer as pessoas ruins.", "Para ter assuntos para contar vantagem nas conversas."], ans: 1 },
-                { q: "A lição de focar em 'Um dia de cada vez' ensina o quê?", opts: ["Não guardar comida na geladeira.", "Ignorar totalmente as contas e o trabalho.", "Quando a dor do problema futuro é grande demais, foque apenas em segurar na mão de Deus no dia de hoje, e amanhã haverá novas misericórdias.", "Fazer os problemas de amanhã se tornarem hoje."], ans: 2 }
+                { q: "No hebraico e no grego, a Bíblia exige um conhecimento do tipo Yada/Ginosko. Qual é a definição exata desse conhecimento?", opts: ["Acúmulo de dados históricos para vencer debates teológicos na internet contra hereges.", "Um conhecimento puramente emocional, focado apenas em sentir a presença de Deus sem precisar ler a Bíblia.", "Um diploma universitário em teologia sistemática.", "Um conhecimento íntimo, relacional e de primeira mão sobre o caráter de Deus, gerado por convívio e estudo profundo."], ans: 3 },
+                { q: "No deserto (Mateus 4), Satanás tentou Jesus usando o Salmo 91 fora de contexto para induzi-lo ao orgulho. Como Jesus derrotou essa mentira?", opts: ["Jesus expulsou Satanás com anjos de fogo, recusando-se a discutir a Palavra.", "Jesus puxou a espada do Conhecimento inquebrável, citando o livro de Deuteronômio ('Também está escrito'), provando que texto fora de contexto é heresia.", "Jesus concordou em pular do templo para provar que a promessa de proteção dos anjos era verdadeira.", "Jesus começou a orar de olhos fechados até o diabo ir embora por conta própria."], ans: 1 },
+                { q: "Por que os cristãos da igreja de Bereia (Atos 17) foram chamados de pessoas com 'caráter nobre'?", opts: ["Porque eles ofertavam grandes quantias de dinheiro para as viagens de Paulo.", "Porque eles aceitavam cegamente e gritavam 'amém' para tudo o que Paulo, a maior autoridade teológica da época, dizia no púlpito.", "Porque eles recebiam a palavra com alegria, mas iam para casa examinar rigorosamente as Escrituras todos os dias para conferir se o que o apóstolo estava pregando era verdade.", "Porque eles nunca faziam perguntas, demonstrando fé absoluta."], ans: 2 },
+                { q: "Na Prática do curso, por que a 'Leitura Aleatória' (abrir a Bíblia e apontar o dedo em qualquer página) deve ser abandonada?", opts: ["Porque amassa o meio da Bíblia.", "Porque a Bíblia é uma biblioteca. Ler versículos soltos fora do contexto da história original abre brechas para manipulação e heresias; a leitura deve ser sequencial.", "Porque Deus proibiu no livro do Apocalipse.", "O curso diz o contrário: a leitura aleatória é o único método aprovado por Deus."], ans: 1 },
+                { q: "Qual é a técnica prática ensinada no 'Arsenal Mental Contra Tentações'?", opts: ["Assistir a 3 vídeos no YouTube sobre teologia todos os dias.", "Identificar sua pior fraqueza (ira, medo), escrever 3 versículos sobre o assunto, colá-los em um lugar visível e lê-los em voz alta até memorizá-los, para usar como arma quando a crise chegar.", "Fingir que o problema não existe e pensar positivo.", "Ligar para o pastor toda vez que sentir vontade de pecar."], ans: 1 }
             ]
         };
 
-        // --- ENGENHARIA DO ALGORITMO ANTI-FRAUDE ---
+        // --- ENGENHARIA ANTI-FRAUDE E CHAVES ---
         function gerarAssinatura(nome, moduloNum) {
             let n = nome.trim().toLowerCase();
             let iniciais = n.split(/\s+/).map(p => p.charAt(0)).join('');
@@ -472,70 +404,77 @@
                 let iniciais = n.split(/\s+/).map(p => p.charAt(0)).join('');
                 let letras = n.replace(/\s+/g, '').length;
                 let assinaturaEsperada = `${iniciais}${letras}`;
-                if (assinBase !== assinaturaEsperada) return null; 
+                if (assinBase !== assinaturaEsperada) return null; // A chave não pertence a esse nome
                 return modNum;
-            } catch (e) { return null; }
+            } catch (e) {
+                return null;
+            }
         }
 
-        // --- SISTEMA ---
+        // --- INICIALIZAÇÃO E SISTEMA DE LOGIN ---
         function entrarNoCurso() {
             nomeAluno = document.getElementById('login-nome').value.trim();
             funcaoAluno = document.getElementById('login-funcao').value.trim();
             let chaveInput = document.getElementById('login-chave').value.trim();
 
             if (!nomeAluno || !funcaoAluno) {
-                document.getElementById('login-err').innerText = "Preencha o Nome e a Função.";
-                document.getElementById('login-err').style.display = 'block'; return;
+                document.getElementById('login-err').innerText = "Você não pode avançar sem preencher Nome e Função.";
+                document.getElementById('login-err').style.display = 'block';
+                return;
             }
 
             document.getElementById('display-nome').innerText = nomeAluno;
             document.getElementById('display-funcao').innerText = funcaoAluno;
 
             let modLiberado = 1;
+
             if (chaveInput !== "") {
                 let check = extrairModuloDaChave(chaveInput, nomeAluno);
                 if (check === null) {
-                    document.getElementById('login-err').innerText = "Chave Inválida, adulterada ou não pertence a esse nome.";
-                    document.getElementById('login-err').style.display = 'block'; return;
+                    document.getElementById('login-err').innerText = "ERRO DE SEGURANÇA: Chave Inválida, adulterada ou não pertence ao seu nome.";
+                    document.getElementById('login-err').style.display = 'block';
+                    return;
                 }
                 modLiberado = check;
                 document.getElementById('display-chave').innerText = chaveInput;
-            } else { document.getElementById('display-chave').innerText = "NENHUMA"; }
+            } else {
+                document.getElementById('display-chave').innerText = "NENHUMA";
+            }
 
-            // Lógica de Destravamento Completa (1 ao 8)
-            const paineis = ['conhecimento', 'conviccao', 'constancia', 'autocontrole', 'comunhao', 'perseveranca', 'exame'];
-            for(let i = 2; i <= 8; i++) {
-                if(modLiberado >= i) {
-                    let idBtn = 'nav-mod-' + paineis[i-2];
-                    let btn = document.getElementById(idBtn);
-                    btn.classList.remove('locked');
-                    if (i === 8) { btn.innerText = "Exame Final (Liberado)"; } 
-                    else { btn.innerText = i + ". " + btn.innerText.split('.')[1].split('(')[0].trim(); }
-                }
+            // Lógica de Destravamento de Abas
+            if (modLiberado >= 2) {
+                document.getElementById('nav-mod-conhecimento').classList.remove('locked');
+                document.getElementById('nav-mod-conhecimento').innerText = "2. Conhecimento";
+            }
+            if (modLiberado >= 3) { // Regra do Exame (No futuro será >= 8)
+                document.getElementById('nav-mod-exame').classList.remove('locked');
+                document.getElementById('nav-mod-exame').innerText = "Exame Final (Liberado)";
             }
 
             document.getElementById('login-screen').style.display = 'none';
             document.getElementById('app-layout').style.display = 'flex';
         }
 
-        // PROVAS E EXAME
+        // --- MOTOR DE PROVAS (AVALIAÇÃO E EXAME FINAL) ---
         function iniciarProva(moduloID) {
-            isExameFinal = false; moduloAtualProva = moduloID;
-            document.getElementById('quiz-titulo').innerText = "Avaliação em Andamento";
+            isExameFinal = false;
+            moduloAtualProva = moduloID;
+            let tituloStr = moduloID === 'disciplina' ? "Pilar 1: A Disciplina" : "Pilar 2: O Conhecimento";
+            document.getElementById('quiz-titulo').innerText = "Avaliação de Formação | " + tituloStr;
             montarEExibirProva(bancoAvaliacoes[moduloAtualProva]);
         }
 
         function iniciarExameFinal() {
             isExameFinal = true;
-            document.getElementById('quiz-titulo').innerText = "Exame Final de Formação (30 Questões)";
-            let todasAsQuestoes = [
-                ...bancoAvaliacoes.disciplina, ...bancoAvaliacoes.conhecimento, ...bancoAvaliacoes.conviccao, 
-                ...bancoAvaliacoes.constancia, ...bancoAvaliacoes.autocontrole, ...bancoAvaliacoes.comunhao, ...bancoAvaliacoes.perseveranca
-            ];
+            document.getElementById('quiz-titulo').innerText = "O Exame Final da Forja (30 Questões)";
+            
+            // O sistema mescla todas as questões e sorteia 30. (Nesta fase clonei as existentes para fechar a matemática de 30 para você testar).
+            let todasAsQuestoes = [...bancoAvaliacoes.disciplina, ...bancoAvaliacoes.conhecimento];
             let poolExame = [];
-            // Pegamos 30 randomicas sem repetir (Como temos 35 totais, dá perfeito!)
-            let shuffled = todasAsQuestoes.sort(() => 0.5 - Math.random());
-            poolExame = shuffled.slice(0, 30);
+            while(poolExame.length < 30) {
+                let randomQ = todasAsQuestoes[Math.floor(Math.random() * todasAsQuestoes.length)];
+                poolExame.push(JSON.parse(JSON.stringify(randomQ))); 
+            }
             montarEExibirProva(poolExame);
         }
 
@@ -543,17 +482,22 @@
             document.getElementById('quiz-err').style.display = 'none';
             const container = document.getElementById('quiz-render-area');
             container.innerHTML = '';
-            questoesSorteadas = [...arrayDeQuestoes]; // Ordem já veio embaralhada
+            
+            questoesSorteadas = [...arrayDeQuestoes].sort(() => 0.5 - Math.random());
 
             questoesSorteadas.forEach((qData, qIndex) => {
                 let html = `<div class="question-card"><div class="question-title">${qIndex + 1}. ${qData.q}</div>`;
-                let optsWithIndex = qData.opts.map((optText, origIndex) => ({ text: optText, val: origIndex })).sort(() => 0.5 - Math.random());
+                
+                let optsWithIndex = qData.opts.map((optText, origIndex) => ({ text: optText, val: origIndex }));
+                optsWithIndex.sort(() => 0.5 - Math.random());
+
                 optsWithIndex.forEach((opt) => {
                     html += `<label class="option-lbl"><input type="radio" name="ans-${qIndex}" value="${opt.val}"> <span>${opt.text}</span></label>`;
                 });
                 html += `</div>`;
                 container.innerHTML += html;
             });
+            
             document.getElementById('eval-modal').style.display = 'block';
             document.getElementById('eval-modal').scrollTop = 0;
         }
@@ -561,15 +505,22 @@
         function closeEval() { document.getElementById('eval-modal').style.display = 'none'; }
 
         function finalizarProvaLocal() {
-            let acertos = 0, total = questoesSorteadas.length, todasRespondidas = true, detalhamentoHTML = "";
+            let acertos = 0;
+            let total = questoesSorteadas.length;
+            let todasRespondidas = true;
+            let detalhamentoHTML = "";
 
             for (let i = 0; i < total; i++) {
                 const selected = document.querySelector(`input[name="ans-${i}"]:checked`);
                 if (!selected) { todasRespondidas = false; break; }
+                
                 let isCorrect = parseInt(selected.value) === questoesSorteadas[i].ans;
                 if (isCorrect) {
-                    acertos++; detalhamentoHTML += `<div class="result-q">${i + 1}. ${questoesSorteadas[i].q}</div><div class="result-a correct">✅ CORRETA</div>`;
-                } else { detalhamentoHTML += `<div class="result-q">${i + 1}. ${questoesSorteadas[i].q}</div><div class="result-a incorrect">❌ INCORRETA (Estude o texto novamente).</div>`; }
+                    acertos++;
+                    detalhamentoHTML += `<div class="result-q">${i + 1}. ${questoesSorteadas[i].q}</div><div class="result-a correct">✅ CORRETA</div>`;
+                } else {
+                    detalhamentoHTML += `<div class="result-q">${i + 1}. ${questoesSorteadas[i].q}</div><div class="result-a incorrect">❌ INCORRETA (A resposta gravada estava incorreta, revise os textos das práticas).</div>`;
+                }
             }
 
             if (!todasRespondidas) { document.getElementById('quiz-err').style.display = 'block'; return; }
@@ -577,58 +528,84 @@
             const percent = Math.round((acertos / total) * 100);
 
             if (isExameFinal) {
+                // EXAME FINAL DE ALTA PERFORMANCE
                 if (percent >= 85) {
-                    alert(`EXAME FINAL: APROVADO! Você tirou ${percent}%. O sistema gerará seu Certificado Oficial em PDF. Confirme a próxima tela e aguarde o download no seu aparelho.`);
+                    alert(`EXAME FINAL: APROVADO! Você tirou ${percent}%. Você provou o seu conhecimento teológico. O sistema irá gerar e baixar automaticamente o seu Certificado Oficial em PDF. Confira seu histórico de resultados.`);
                     gerarCertificadoPDF();
-                } else { alert(`EXAME FINAL: REPROVADO. Você tirou apenas ${percent}%. A nota de corte é 85%. Você errou muita coisa básica. Volte, estude as lições e refaça a prova amanhã.`); }
-                closeEval(); switchTab('mod-resultados'); return;
+                } else {
+                    alert(`EXAME FINAL: REPROVADO. Você tirou apenas ${percent}%. A nota de corte é rigorosa: 85%. Retorne ao material, estude as escrituras e refaça a prova. A forja exige excelência.`);
+                }
+                closeEval();
+                switchTab('mod-resultados');
+                return;
             }
 
-            // --- PROVAS DE MÓDULOS ---
-            const mapas = {
-                'disciplina': { proxId: 'conhecimento', num: 2 },
-                'conhecimento': { proxId: 'conviccao', num: 3 },
-                'conviccao': { proxId: 'constancia', num: 4 },
-                'constancia': { proxId: 'autocontrole', num: 5 },
-                'autocontrole': { proxId: 'comunhao', num: 6 },
-                'comunhao': { proxId: 'perseveranca', num: 7 },
-                'perseveranca': { proxId: 'exame', num: 8 }
-            };
-
-            let htmlResultado = `<div class="result-card"><div class="result-header"><h3>Prova: ${moduloAtualProva.toUpperCase()}</h3><div class="result-score">Nota: ${percent}% (${acertos}/${total})</div></div>${detalhamentoHTML}</div>`;
+            // AVALIAÇÃO COMUM DOS MÓDULOS
+            let tituloMod = moduloAtualProva === 'disciplina' ? "Pilar 1: A Disciplina" : "Pilar 2: O Conhecimento";
+            
+            let htmlResultado = `
+                <div class="result-card">
+                    <div class="result-header">
+                        <h3>Correção da Avaliação: ${tituloMod}</h3>
+                        <div class="result-score">Pontuação: ${percent}% (${acertos}/${total})</div>
+                    </div>
+                    ${detalhamentoHTML}
+                </div>
+            `;
+            
+            // Grava no Histórico Local
             const listaResult = document.getElementById('resultados-lista');
-            if (listaResult.innerHTML.includes("Nenhuma prova")) { listaResult.innerHTML = ''; }
+            if (listaResult.innerHTML.includes("Nenhuma avaliação foi processada")) { listaResult.innerHTML = ''; }
             listaResult.innerHTML = htmlResultado + listaResult.innerHTML; 
 
             if (percent >= 60) {
-                let info = mapas[moduloAtualProva];
-                let btnId = 'nav-mod-' + info.proxId;
-                let btn = document.getElementById(btnId);
-                btn.classList.remove('locked');
-                
-                if (info.num === 8) { btn.innerText = "Exame Final (Liberado)"; } 
-                else { btn.innerText = info.num + ". " + btn.innerText.split('.')[1].split('(')[0].trim(); }
-
-                let novaChave = gerarAssinatura(nomeAluno, info.num);
-                document.getElementById('display-chave').innerText = novaChave;
-                alert(`Aprovado! Sua NOVA CHAVE foi gerada na barra lateral. Copie-a! O próximo pilar foi liberado no menu.`);
-            } else { alert(`Reprovado. Você tirou ${percent}%. Retorne ao texto, releia com atenção e refaça a prova.`); }
+                if (moduloAtualProva === 'disciplina') {
+                    document.getElementById('nav-mod-conhecimento').classList.remove('locked');
+                    document.getElementById('nav-mod-conhecimento').innerText = "2. Conhecimento";
+                    let novaChave = gerarAssinatura(nomeAluno, 2);
+                    document.getElementById('display-chave').innerText = novaChave;
+                    alert(`APROVADO no Pilar 1! Sua NOVA CHAVE ANTI-FRAUDE foi gerada na barra lateral. Copie-a! O Pilar 2 (Conhecimento) foi destravado. Confira seus acertos no Boletim.`);
+                } else if (moduloAtualProva === 'conhecimento') {
+                    document.getElementById('nav-mod-exame').classList.remove('locked');
+                    document.getElementById('nav-mod-exame').innerText = "Exame Final (Liberado)";
+                    let novaChave = gerarAssinatura(nomeAluno, 3);
+                    document.getElementById('display-chave').innerText = novaChave;
+                    alert(`APROVADO no Pilar 2! Excelente. Como etapa final do nosso teste, o 'Exame Final da Forja' foi Liberado no menu. Sua Chave Evolutiva foi atualizada.`);
+                }
+            } else {
+                alert(`REPROVADO. Sua nota foi de ${percent}%. O alvo era 60%. O caráter não aceita desculpas. Estude as práticas detalhadas novamente e refaça a prova.`);
+            }
 
             closeEval();
             switchTab('mod-resultados'); 
         }
 
-        // --- PDF ---
+        // --- SISTEMA GERADOR DE CERTIFICADO EM PDF ---
         function gerarCertificadoPDF() {
+            // Imprime os dados no certificado invisível
             document.getElementById('cert-nome-display').innerText = nomeAluno.toUpperCase();
             document.getElementById('cert-funcao-display').innerText = funcaoAluno.toUpperCase();
+
             const element = document.getElementById('certificado-wrapper');
             element.style.display = 'block'; 
-            var opt = { margin: 0, filename: `Certificado_${nomeAluno.replace(/\s+/g, '_')}.pdf`, image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2, logging: false }, jsPDF: { unit: 'px', format: [1123, 794], orientation: 'landscape' } };
-            html2pdf().set(opt).from(element).save().then(() => { element.style.display = 'none'; });
+            
+            // Parametrização para Alta Qualidade
+            var opt = {
+                margin:       0,
+                filename:     `Certificado_Forja_${nomeAluno.replace(/\s+/g, '_')}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, logging: false },
+                jsPDF:        { unit: 'px', format: [1123, 794], orientation: 'landscape' }
+            };
+
+            // Processa, Baixa e Esconde
+            html2pdf().set(opt).from(element).save().then(() => {
+                element.style.display = 'none'; 
+                alert("Sucesso! O Download do seu Certificado PDF Oficial começou. Ele será salvo na pasta de downloads do seu aparelho.");
+            });
         }
 
-        // MENU
+        // --- CONTROLE DE MENUS E NAVEGAÇÃO ---
         function toggleMenu() { document.getElementById('sidebar').classList.toggle('open'); }
         function switchTab(tabId) {
             document.querySelectorAll('.module-section').forEach(el => el.classList.remove('active'));
@@ -638,7 +615,9 @@
             window.scrollTo(0, 0);
             if (window.innerWidth <= 768) { document.getElementById('sidebar').classList.remove('open'); }
         }
-        function switchTabIfUnlocked(tabId, element) { if (!element.classList.contains('locked')) { switchTab(tabId); } }
+        function switchTabIfUnlocked(tabId, element) {
+            if (!element.classList.contains('locked')) { switchTab(tabId); }
+        }
     </script>
 </body>
 </html>

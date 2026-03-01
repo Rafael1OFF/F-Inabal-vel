@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Fé Inabalável | Plataforma de Formação EAD</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -17,19 +17,51 @@
             --danger: #b91c1c; --success: #15803d;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.8; -webkit-font-smoothing: antialiased; }
+        
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.8; -webkit-font-smoothing: antialiased; touch-action: manipulation; }
 
-        /* TELA DE LOGIN / ACESSO */
-        #login-screen { position: fixed; inset: 0; background: var(--sidebar-bg); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 2rem; overflow-y: auto; }
-        .login-box { background: var(--surface); max-width: 500px; width: 100%; padding: 4rem 3rem; border-radius: 12px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); text-align: center; }
-        .login-box h1 { font-family: 'Merriweather', serif; font-size: 2.2rem; color: var(--text-heading); margin-bottom: 0.5rem; }
-        .login-box p { color: #64748b; margin-bottom: 2.5rem; font-size: 1.1rem; }
-        .form-group { margin-bottom: 1.5rem; text-align: left; }
-        .form-group label { display: block; font-weight: 800; margin-bottom: 0.5rem; color: var(--secondary); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.5px; }
-        .form-group input { width: 100%; padding: 1.2rem; border: 2px solid var(--border); border-radius: 8px; font-size: 1.1rem; font-family: 'Inter', sans-serif; transition: border-color 0.3s; }
-        .form-group input:focus { outline: none; border-color: var(--primary); }
-        .btn-login { background: var(--primary); color: white; border: none; padding: 1.2rem; width: 100%; border-radius: 8px; font-size: 1.1rem; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; margin-top: 1rem; transition: 0.3s; }
-        .btn-login:hover { background: var(--primary-hover); }
+        /* TELA DE LOGIN / ACESSO (ESTILO CARD CLEAN DA IMAGEM) */
+        #login-screen { 
+            position: fixed; inset: 0; 
+            background: url('bg.jpg') center/cover no-repeat, linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%); 
+            z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 1.5rem; overflow-y: auto; 
+        }
+        #login-screen::before {
+            content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 0;
+        }
+        .login-box { 
+            position: relative; z-index: 1;
+            background: #ffffff; 
+            max-width: 420px; width: 100%; padding: 3rem 2.5rem; border-radius: 12px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15); text-align: center; 
+        }
+        .login-box h1 { font-family: 'Inter', sans-serif; font-size: 1.8rem; color: #000000; margin-bottom: 0.2rem; font-weight: 700; }
+        .login-box p { color: #000000; margin-bottom: 2rem; font-size: 0.9rem; text-align: center; }
+        
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group input { 
+            width: 100%; padding: 1rem 1.2rem; 
+            background: #f8fafc; border: 1px solid transparent; 
+            border-radius: 30px; font-size: 0.95rem; font-family: 'Inter', sans-serif; 
+            color: var(--text-main); transition: all 0.3s; 
+        }
+        .form-group input:focus { outline: none; border-color: #4bc3e6; background: #ffffff; box-shadow: 0 0 0 3px rgba(75, 195, 230, 0.15); }
+        .form-group input::placeholder { color: #B4B4B5; }
+        
+        .btn-login { 
+            background: #FF2238; color: white; border: none; padding: 0.9rem 3.5rem; 
+            border-radius: 30px; font-size: 1.1rem; font-weight: 600; cursor: pointer; 
+            margin-top: 1rem; transition: 0.3s; box-shadow: 0 8px 15px rgba(75, 195, 230, 0.3);
+            display: inline-block;
+        }
+        .btn-login:hover { background: #3ab2d4; transform: translateY(-2px); box-shadow: 0 12px 20px rgba(75, 195, 230, 0.4); }
+        
+        .login-divider {
+            display: flex; align-items: center; text-align: center; margin: 1.5rem 0; color: #000000; font-size: 0.85rem;
+        }
+        .login-divider::before, .login-divider::after { content: ''; flex: 1; border-bottom: 1px solid #000000; }
+        .login-divider::before { margin-right: .5em; }
+        .login-divider::after { margin-left: .5em; }
 
         /* ESTRUTURA DO CURSO */
         #app-layout { display: none; flex-direction: column; min-height: 100vh; }
@@ -98,6 +130,12 @@
         .result-a.incorrect { color: var(--danger); font-weight: bold; background: #fef2f2; padding: 0.5rem; border-radius: 4px; }
         .import-badge { color: var(--success); font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; margin-top: 10px; }
 
+        /* MODAL DE CÓPIA DE CHAVE */
+        #copy-key-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center; padding: 2rem; }
+        .copy-key-box { background: white; padding: 3rem; border-radius: 12px; text-align: center; max-width: 500px; width: 100%; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+        .copy-key-box h2 { margin: 0 0 1rem 0; color: var(--success); font-family: 'Merriweather', serif; font-size: 1.8rem; border-bottom: none; padding-bottom: 0; }
+        .new-key-display { background: #1e293b; color: #10b981; padding: 1.2rem; border-radius: 8px; font-family: monospace; font-size: 1.4rem; font-weight: bold; margin: 1.5rem 0; word-break: break-all; }
+
         /* CERTIFICADO INVISÍVEL PARA GERAÇÃO DE PDF */
         #certificado-wrapper { display: none; padding: 40px; background: white; width: 1123px; height: 794px; position: absolute; left: -9999px; top: 0; }
         .certificado-content { border: 10px solid var(--secondary); padding: 50px; text-align: center; height: 100%; border-radius: 10px; background: #f8fafc; position: relative; }
@@ -123,14 +161,24 @@
         <div class="login-box">
             <h1>A FÉ INABALÁVEL</h1>
             <p>Formação de Caráter e Teologia</p>
-            <div class="form-group"><label>Seu Nome Completo</label><input type="text" id="login-nome" required></div>
-            <div class="form-group"><label>Sua Função na Igreja</label><input type="text" id="login-funcao" required></div>
-            <div class="form-group" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0;">
-                <label style="color: #64748b;">Chave de Sincronização (Opcional)</label>
-                <input type="text" id="login-chave" placeholder="Cole a chave para recuperar módulos">
+            
+            <div class="form-group">
+                <input type="text" id="login-nome" placeholder="Seu Nome Completo" required>
             </div>
-            <p id="login-err" style="color: var(--danger); font-weight: 800; display: none; margin-top: 1rem;"></p>
-            <button class="btn-login" onclick="entrarNoCurso()">Acessar Plataforma</button>
+            
+            <div class="form-group">
+                <input type="text" id="login-funcao" placeholder="Sua Função na Igreja" required>
+            </div>
+            
+            <div class="login-divider">Opcional</div>
+            
+            <div class="form-group">
+                <input type="text" id="login-chave" placeholder="Chave de Sincronização">
+            </div>
+            
+            <p id="login-err" style="color: var(--danger); font-weight: 800; display: none; margin-top: 1rem; font-size: 0.9rem;"></p>
+            
+            <button class="btn-login" onclick="entrarNoCurso()">Acessar</button>
         </div>
     </div>
 
@@ -464,6 +512,16 @@
         </div>
     </div>
 
+    <div id="copy-key-modal">
+        <div class="copy-key-box">
+            <h2>Módulo Concluído!</h2>
+            <p style="color: #64748b; font-size: 1.1rem;">Aqui está sua nova chave de sincronização. Copie e guarde-a para não perder seu progresso se fechar a página.</p>
+            <div class="new-key-display" id="new-key-display">CHAVE</div>
+            <button class="btn" style="margin-top: 1rem; margin-bottom: 1rem;" onclick="copiarChaveAcao()">Copiar Chave</button>
+            <button class="btn" style="background: transparent; border: 2px solid var(--border); color: var(--secondary); margin-top: 0;" onclick="fecharModalChave()">Continuar para Resultados</button>
+        </div>
+    </div>
+
     <div id="certificado-wrapper">
         <div class="certificado-content">
             <h1 class="cert-title">A FÉ INABALÁVEL</h1>
@@ -493,7 +551,7 @@
                 { q: "Qual é o objetivo central do Jejum de Prazeres Lícitos, como cortar redes sociais ou café?", opts: ["Melhorar a saúde física, perder peso rapidamente e economizar recursos financeiros diários.", "Demonstrar um alto nível de espiritualidade para os líderes e membros da igreja local.", "Fortalecer o autocontrole, mostrando à mente que os instintos primários não governam suas escolhas diárias.", "Pagar uma dívida espiritual com Deus para alcançar bênçãos materiais e físicas mais rapidamente."], ans: 2 }
             ],
             conhecimento: [
-                { q: "Na Bíblia, o que caracteriza o conhecimento descrito pelas palavras Yada e Ginosko?", opts: ["O acúmulo de dados históricos e informações frias apenas para conseguir vencer debates teológicos.", "Um estado místico e emocional de visões que dispensa totalmente a leitura constante das Escrituras.", "A obtenção de diplomas universitários e títulos acadêmicos renomados em seminários de teologia.", "Um conhecimento íntimo, relacional e prático sobre o caráter de Deus, gerado por convivência profunda."], ans: 3 },
+                { q: "Na Bíblia, o que caracteriza o conocimiento descrito pelas palavras Yada e Ginosko?", opts: ["O acúmulo de dados históricos e informações frias apenas para conseguir vencer debates teológicos.", "Um estado místico e emocional de visões que dispensa totalmente a leitura constante das Escrituras.", "A obtenção de diplomas universitários e títulos acadêmicos renomados em seminários de teologia.", "Um conhecimento íntimo, relacional e prático sobre o caráter de Deus, gerado por convivência profunda."], ans: 3 },
                 { q: "Como Jesus rebateu a distorção do Salmo 91 feita por Satanás no deserto?", opts: ["Ele expulsou o adversário usando uma demonstração visível de Seu enorme poder e glória divina.", "Ele utilizou o conhecimento das Escrituras, citando outro texto bíblico dentro do seu contexto correto.", "Ele concordou parcialmente com o argumento de Satanás, mas pediu humildemente para não ser tentado.", "Ele permaneceu em silêncio absoluto e orou de olhos fechados até que a tentação finalmente acabasse."], ans: 1 },
                 { q: "Por qual motivo os cristãos de Bereia foram elogiados por seu 'caráter nobre' em Atos 17?", opts: ["Eles ofertavam grandes quantias financeiras para conseguir sustentar as viagens missionárias da época.", "Eles aceitavam e concordavam imediatamente com tudo o que o famoso e respeitado apóstolo Paulo pregava.", "Eles ouviam a pregação, mas examinavam as Escrituras em casa para confirmar se o ensino era bíblico.", "Eles eram os únicos que não precisavam estudar, pois recebiam revelações diretas e diárias do céu."], ans: 2 },
                 { q: "Por que a prática da 'Leitura Aleatória' da Bíblia é considerada perigosa no curso?", opts: ["Porque desgasta e amassa as páginas do livro físico muito mais rapidamente com o passar do tempo.", "Porque ler versículos soltos fora do contexto original facilita grandes interpretações erradas e manipulações.", "Porque o livro do Apocalipse proíbe expressamente e duramente que a Bíblia seja lida fora de ordem.", "Porque essa prática exige muito mais tempo diário do que a leitura sistemática de um livro inteiro."], ans: 1 },
@@ -711,11 +769,30 @@
                     let novaChave = gerarAssinatura(nomeAluno, info.num);
                     document.getElementById('display-chave').innerText = novaChave;
                     
-                    alert(`APROVAÇÃO CONFIRMADA! O próximo passo da Forja foi desbloqueado no Menu. Sua nova chave de Sincronização foi gerada.`);
+                    // Exibe o modal para copiar a chave antes de ir aos resultados
+                    document.getElementById('new-key-display').innerText = novaChave;
+                    document.getElementById('copy-key-modal').style.display = 'flex';
+                    closeEval();
+                    return; // Interrompe a função aqui para o modal ficar visível
                 }
             } else { alert(`REPROVADO (${percent}%). O padrão exigido de 60% falhou severamente. Execute a leitura atenta novamente.`); }
 
             closeEval(); switchTab('mod-resultados'); 
+        }
+
+        // FUNÇÕES DO MODAL DE CÓPIA DE CHAVE
+        function copiarChaveAcao() {
+            let chaveTexto = document.getElementById('new-key-display').innerText;
+            navigator.clipboard.writeText(chaveTexto).then(() => {
+                alert("Chave copiada com sucesso!");
+            }).catch(err => {
+                alert("Erro ao copiar. Por favor, selecione o texto e copie manualmente.");
+            });
+        }
+
+        function fecharModalChave() {
+            document.getElementById('copy-key-modal').style.display = 'none';
+            switchTab('mod-resultados'); // Só vai para a aba de resultados após fechar o modal
         }
 
         // MOTOR DO PDF

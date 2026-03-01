@@ -16,45 +16,45 @@
             --danger: #b91c1c; --success: #15803d;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.8; -webkit-font-smoothing: antialiased; touch-action: manipulation; }
 
         /* TELA DE LOGIN / ACESSO (ESTILO CARD CLEAN DA IMAGEM) */
-        #login-screen { 
-            position: fixed; inset: 0; 
-            background: url('bg.jpg') center/cover no-repeat, linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%); 
-            z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 1.5rem; overflow-y: auto; 
+        #login-screen {
+            position: fixed; inset: 0;
+            background: url('bg.jpg') center/cover no-repeat, linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 1.5rem; overflow-y: auto;
         }
         #login-screen::before {
             content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 0;
         }
-        .login-box { 
+        .login-box {
             position: relative; z-index: 1;
-            background: #ffffff; 
-            max-width: 420px; width: 100%; padding: 3rem 2.5rem; border-radius: 12px; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15); text-align: center; 
+            background: #ffffff;
+            max-width: 420px; width: 100%; padding: 3rem 2.5rem; border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15); text-align: center;
         }
         .login-box h1 { font-family: 'Inter', sans-serif; font-size: 1.8rem; color: #000000; margin-bottom: 0.2rem; font-weight: 700; }
         .login-box p { color: #475569; margin-bottom: 2rem; font-size: 0.9rem; text-align: center; }
-        
+
         .form-group { margin-bottom: 1.2rem; }
-        .form-group input { 
-            width: 100%; padding: 1rem 1.2rem; 
-            background: #f8fafc; border: 1px solid transparent; 
-            border-radius: 30px; font-size: 0.95rem; font-family: 'Inter', sans-serif; 
-            color: var(--text-main); transition: all 0.3s; 
+        .form-group input {
+            width: 100%; padding: 1rem 1.2rem;
+            background: #f8fafc; border: 1px solid transparent;
+            border-radius: 30px; font-size: 0.95rem; font-family: 'Inter', sans-serif;
+            color: var(--text-main); transition: all 0.3s;
         }
         .form-group input:focus { outline: none; border-color: #4bc3e6; background: #ffffff; box-shadow: 0 0 0 3px rgba(75, 195, 230, 0.15); }
         .form-group input::placeholder { color: #B9B9B9; }
-        
-        .btn-login { 
-            background: #C82626; color: white; border: none; padding: 0.9rem 3.5rem; 
-            border-radius: 30px; font-size: 1.1rem; font-weight: 600; cursor: pointer; 
+
+        .btn-login {
+            background: #C82626; color: white; border: none; padding: 0.9rem 3.5rem;
+            border-radius: 30px; font-size: 1.1rem; font-weight: 600; cursor: pointer;
             margin-top: 1rem; transition: 0.3s; box-shadow: 0 8px 15px rgba(75, 195, 230, 0.3);
             display: inline-block;
         }
         .btn-login:hover { background: #FFFFFF; transform: translateY(-2px); box-shadow: 0 12px 20px rgba(75, 195, 230, 0.4); }
-        
+
         .login-divider {
             display: flex; align-items: center; text-align: center; margin: 1.5rem 0; color: #000000; font-size: 0.85rem;
         }
@@ -78,7 +78,7 @@
         .nav-btn:hover:not(.locked) { background: rgba(255,255,255,0.05); color: white; }
         .nav-btn.active { background: var(--primary); color: white; }
         .nav-btn.locked { opacity: 0.4; cursor: not-allowed; }
-        
+
         .sync-box { margin-top: auto; padding-top: 2rem; text-align: center; }
         .sync-code-display { background: black; color: #10b981; padding: 0.8rem; border-radius: 4px; font-family: monospace; font-size: 1rem; font-weight: bold; margin-top: 0.5rem; word-break: break-all; }
 
@@ -111,7 +111,7 @@
 
         .btn { background: var(--primary); color: white; border: none; padding: 1.2rem 2rem; border-radius: 8px; font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: all 0.3s; width: 100%; display: block; text-align: center; margin-top: 4rem; text-transform: uppercase; letter-spacing: 1px; }
         .btn-success { background: var(--success); }
-        
+
         /* TELA DE AVALIAÇÃO */
         #eval-modal { display: none; position: fixed; inset: 0; background: var(--bg-color); z-index: 100; overflow-y: auto; padding: 2rem 1rem; }
         .eval-container { max-width: 800px; margin: 0 auto; background: var(--surface); border-radius: 12px; padding: 3rem; border: 1px solid var(--border); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1); }
@@ -170,23 +170,23 @@
         <div class="login-box">
             <h1>A FÉ INABALÁVEL</h1>
             <p>Formação de Caráter e Teologia</p>
-            
+
             <div class="form-group">
                 <input type="text" id="login-nome" placeholder="Seu Nome Completo" required>
             </div>
-            
+
             <div class="form-group">
                 <input type="text" id="login-funcao" placeholder="Sua Função na Igreja" required>
             </div>
-            
+
             <div class="login-divider">Opcional</div>
-            
+
             <div class="form-group">
                 <input type="text" id="login-chave" placeholder="Chave de Sincronização">
             </div>
-            
+
             <p id="login-err" style="color: var(--danger); font-weight: 800; display: none; margin-top: 1rem; font-size: 0.9rem;"></p>
-            
+
             <button class="btn-login" onclick="entrarNoCurso()">Acessar</button>
         </div>
     </div>
@@ -200,7 +200,7 @@
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header"><h2>A Forja</h2><span>Formação de Caráter</span></div>
             <div class="student-info">Aluno: <strong id="display-nome">Nome</strong><span id="display-funcao" style="color:#94a3b8;">Função</span></div>
-            
+
             <nav>
                 <button id="nav-mod-disciplina" class="nav-btn active" onclick="switchTab('mod-disciplina')">1. A Disciplina</button>
                 <button id="nav-mod-conhecimento" class="nav-btn locked" onclick="switchTabIfUnlocked('mod-conhecimento', this)">2. Conhecimento (Cadeado)</button>
@@ -221,287 +221,873 @@
         </aside>
 
         <main class="main-content">
-            
+
+            <!-- =========================
+                 1) DISCIPLINA (REESCRITO COM O FORMATO PEDIDO)
+                 ========================= -->
             <section id="mod-disciplina" class="module-section active">
-                <span class="kicker">Pilar 01</span>
-                <h1>A Forja da Disciplina</h1>
-                <p>Muitos cristãos desejam viver milagres extraordinários, mas fogem do processo doloroso que os prepara para isso. A verdade nua e crua é que uma fé inabalável não cai do céu pronta. Ela precisa ser forjada, batida e moldada sob forte calor. Neste primeiro pilar, você aprenderá que a disciplina é a fundação de tudo. Sem ela, o conhecimento será inútil, pois você não terá forças para aplicá-lo.</p>
+                <span class="kicker">TÓPICO 01</span>
+                <h1>Disciplina: O Alicerce de uma Fé Inabalável</h1>
 
-                <h2>1. A Ilusão da Motivação</h2>
-                <p>A motivação é um sentimento baseado no humor. Você pode sair de um culto extremamente motivado, mas, na terça-feira chuvosa, a vontade desaparece. A disciplina, por outro lado, não se importa com a sua vontade; ela é baseada em um <strong>compromisso racional e inegociável</strong> com Deus. Na época bíblica, "disciplina" significava o rigoroso treinamento militar, e não um castigo.</p>
-                <div class="bible-box"><p class="bible-text">"Quem ama a disciplina ama o conhecimento, mas o que odeia a repreensão é tolo."</p><span class="bible-ref">Provérbios 12:1 (NVI)</span></div>
-                
+                <h2>1. O que é Disciplina (definição clara e bíblica)</h2>
+                <p>
+                    Disciplina é a capacidade de obedecer ao que é correto mesmo quando você não sente vontade.
+                    Disciplina não é empolgação. Disciplina não é “ânimo do dia”. Disciplina é <strong>decisão</strong>.
+                    É você dizer: “Eu vou fazer”, e cumprir. O sentimento pode mudar, mas o compromisso permanece.
+                </p>
+                <p>
+                    No sentido bíblico, disciplina é <strong>treinamento</strong> e <strong>formação</strong>.
+                    Não é uma palavra bonita para castigo. A disciplina bíblica é um processo que fortalece o caráter,
+                    organiza a vida e treina o coração para fazer o bem.
+                </p>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Quem ama a disciplina ama o conhecimento, mas o que odeia a repreensão é tolo.”
+                    </p>
+                    <span class="bible-ref">Provérbios 12:1</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Nenhuma disciplina parece ser motivo de alegria no momento, mas sim de tristeza.
+                        Mais tarde, porém, produz fruto de justiça e paz para aqueles que por ela foram exercitados.”
+                    </p>
+                    <span class="bible-ref">Hebreus 12:11</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Mas eu disciplino o meu corpo e o reduzo à escravidão, para que, tendo pregado a outros,
+                        eu mesmo não venha a ser reprovado.”
+                    </p>
+                    <span class="bible-ref">1 Coríntios 9:27</span>
+                </div>
+
+                <h2>2. Quando surgiu (fundamento bíblico e histórico)</h2>
+                <p>
+                    Disciplina existe desde o início do relacionamento de Deus com o ser humano.
+                    Quando Deus chama Abraão, Ele chama para obedecer e caminhar em uma direção (Gênesis 12).
+                    Quando Deus forma Israel, Ele forma um povo com mandamentos, horários, festas e ordem (Êxodo e Levítico).
+                    Isso é disciplina: vida com direção e padrão.
+                </p>
+                <p>
+                    No Novo Testamento, Jesus não ensinou fé como “sensação”. Jesus ensinou fé como caminho,
+                    como cruz diária, como prática constante. A igreja foi orientada a viver em ordem, crescimento e treino.
+                </p>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Se alguém quer vir após mim, negue-se a si mesmo, tome diariamente a sua cruz e siga-me.”
+                    </p>
+                    <span class="bible-ref">Lucas 9:23</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Jesus foi para Nazaré, onde havia sido criado, e no dia de sábado entrou na sinagoga,
+                        <strong>como era seu costume</strong>.”
+                    </p>
+                    <span class="bible-ref">Lucas 4:16</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Daniel… três vezes por dia, ele se punha de joelhos e orava, dando graças ao seu Deus,
+                        <strong>como costumava fazer</strong>.”
+                    </p>
+                    <span class="bible-ref">Daniel 6:10</span>
+                </div>
+
+                <h2>3. Por que a disciplina é necessária</h2>
+                <p>
+                    Porque uma vida sem disciplina vira uma vida guiada por impulso.
+                    Quem vive por impulso ora quando sente. Lê a Bíblia quando está animado.
+                    Perdoa quando está de bom humor. E na crise, quando o coração está seco, desiste.
+                </p>
+                <p>
+                    A disciplina não existe para “aparecer”. Ela existe para <strong>proteger</strong> a fé.
+                    Quando a vida aperta, a disciplina segura você.
+                    Se você só vive de motivação, você vira alguém instável.
+                    Mas a Bíblia ensina firmeza.
+                </p>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “O homem que não tem domínio próprio é como uma cidade com os muros derrubados.”
+                    </p>
+                    <span class="bible-ref">Provérbios 25:28</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Deus não nos deu espírito de covardia, mas de poder, de amor e de domínio próprio.”
+                    </p>
+                    <span class="bible-ref">2 Timóteo 1:7</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Tudo, porém, seja feito com decência e ordem.”
+                    </p>
+                    <span class="bible-ref">1 Coríntios 14:40</span>
+                </div>
+
+                <h2>4. Como ter disciplina (método prático, simples e firme)</h2>
+
                 <div class="step-box">
-                    <h4>Passo a Passo: Vencendo a Preguiça</h4>
+                    <h4>Passo a Passo: Construindo Disciplina de Verdade</h4>
                     <ul class="step-list">
-                        <li><strong>A Regra dos 5 Segundos:</strong> Quando o despertador tocar para orar, não pense. A mente carnal buscará conforto. Conte agressivamente: 5, 4, 3, 2, 1 e jogue as cobertas para o lado. Aja antes que sua mente o convença a desistir.</li>
-                        <li><strong>O Mínimo Inegociável:</strong> Defina uma meta absoluta. Exemplo: "Lerei 1 capítulo da Bíblia por dia, quer eu esteja feliz, triste ou cansado".</li>
+                        <li>
+                            <strong>Passo 1 — Defina um horário fixo:</strong>
+                            Não deixe sua vida espiritual “para quando der”.
+                            Escolha um horário diário e trate como compromisso sério.
+                            Exemplo: 20 minutos por dia, todo dia, no mesmo horário.
+                        </li>
+                        <li>
+                            <strong>Passo 2 — Comece pequeno e seja constante:</strong>
+                            Melhor orar 10 minutos por dia durante 30 dias do que 2 horas em um domingo e ficar 29 dias sem orar.
+                            O coração aprende por repetição.
+                        </li>
+                        <li>
+                            <strong>Passo 3 — Corte o ladrão de tempo:</strong>
+                            Disciplina exige renúncia. Se você quer crescer, algo vai ter que sair.
+                            Redes sociais, vídeos aleatórios, conversas sem fim. Não é pecado ter lazer,
+                            mas é pecado abandonar a vida com Deus por causa do lazer.
+                        </li>
+                        <li>
+                            <strong>Passo 4 — Tenha um “mínimo inegociável”:</strong>
+                            Mesmo no dia ruim, você não zera.
+                            Exemplo: “Eu vou ler pelo menos 10 versículos e orar pelo menos 2 minutos.”
+                            O mínimo mantém a chama acesa.
+                        </li>
+                        <li>
+                            <strong>Passo 5 — Prestação de contas:</strong>
+                            Se você sempre desiste, procure alguém de confiança para acompanhar você.
+                            Um irmão maduro, um líder, alguém sério.
+                            Disciplina também se fortalece quando existe responsabilidade.
+                        </li>
                     </ul>
                 </div>
 
-                <h2>2. O Domínio da Carne</h2>
-                <p>A nossa "carne" exige conforto, quer dormir até o meio-dia e busca prazer imediato nas telas. O apóstolo Paulo comparou a vida a um esporte de alto rendimento. Ele ensinou a "esmurrar o corpo". Isso não significa autoflagelação, mas sim <strong>subjugar a vontade</strong>, mostrando que quem manda na sua rotina é o Espírito Santo, e não os seus instintos primários.</p>
-                <div class="bible-box"><p class="bible-text">"Mas esmurro o meu próprio corpo e faço dele meu escravo, para que eu mesmo não venha a ser reprovado."</p><span class="bible-ref">1 Coríntios 9:27 (NVI)</span></div>
-                
-                <div class="step-box">
-                    <h4>Passo a Passo: O Jejum de Prazeres Lícitos</h4>
-                    <ul class="step-list">
-                        <li><strong>O Corte Estratégico:</strong> Escolha algo que não é pecado, mas que rouba o seu tempo (redes sociais, café, televisão). Fique 3 dias inteiros sem isso. Seu corpo entrará em abstinência.</li>
-                        <li><strong>O Redirecionamento:</strong> Quando a vontade bater forte, ore: "Senhor, meu espírito tem mais fome de Ti do que o meu corpo tem desse prazer". Isso fortalece brutalmente o seu autocontrole.</li>
-                    </ul>
+                <div class="conclusion-box">
+                    <strong>Conclusão:</strong>
+                    Disciplina é o início do crescimento.
+                    Sem disciplina você até começa, mas não termina.
+                    Com disciplina você permanece firme mesmo quando o coração não “sente nada”.
                 </div>
 
-                <h2>3. A Rotina na Hora do Caos</h2>
-                <p>Quando o decreto de morte foi assinado na Babilônia, o profeta Daniel não se escondeu com medo, nem mudou sua rotina. Ele foi para o quarto e orou "como costumava fazer" (Daniel 6:10). A disciplina que ele construiu na época de paz serviu como uma armadura impenetrável na guerra. Hábitos inquebráveis tornam você inabalável diante do caos.</p>
-                
-                <div class="step-box">
-                    <h4>Passo a Passo: O Alarme de Daniel</h4>
-                    <ul class="step-list">
-                        <li><strong>O Alarme Tríplice:</strong> Configure 3 alarmes no celular (por exemplo: 09h, 14h, 18h).</li>
-                        <li><strong>A Pausa do Caos:</strong> Quando o alarme tocar, não importa a correria do trabalho, pare por 2 minutos. Ore apenas para se alinhar: "Pai, estou no meio do caos, mas lembro que pertenço a Ti. Guarda a minha mente".</li>
-                    </ul>
-                </div>
-
-                <div class="conclusion-box"><strong>Conclusão do Pilar 1:</strong> A disciplina molda o caráter. O alicerce da sua fé começa na recusa em ser guiado pelo próprio humor, assumindo o controle racional da sua vida por obediência a Deus.</div>
-
-                <button class="btn" onclick="iniciarProva('disciplina')">Realizar Prova do Pilar 1</button>
+                <button class="btn" onclick="iniciarProva('disciplina')">Realizar Prova do Tópico 1</button>
             </section>
 
+            <!-- =========================
+                 2) CONHECIMENTO
+                 ========================= -->
             <section id="mod-conhecimento" class="module-section">
-                <span class="kicker">Pilar 02</span>
-                <h1>Conhecimento: A Fundação Racional</h1>
-                <p>Existe um mito destrutivo de que a fé deve ser "cega" e ignorante, fundamentada apenas em arrepios e emoções. A Bíblia repudia essa ideia. Uma fé que não se baseia no estudo profundo de quem Deus é torna-se uma estrutura de papelão, que rasgará na primeira crise financeira ou familiar.</p>
+                <span class="kicker">TÓPICO 02</span>
+                <h1>Conhecimento: Entender para Crer com Segurança</h1>
 
-                <h2>1. Yada: Muito Mais que Informação</h2>
-                <p>A Bíblia não pede acúmulo de dados apenas para vencer debates. No hebraico e no grego, o conhecimento exigido é <em>Yada</em> e <em>Ginosko</em>: um <strong>conhecimento íntimo, relacional e experimental</strong>. É impossível confiar o seu dinheiro ou a sua família a um desconhecido. O estudo profundo do caráter de Deus é o combustível que faz a máquina da sua fé funcionar em meio às tragédias.</p>
-                <div class="bible-box"><p class="bible-text">"Meu povo foi destruído por falta de conhecimento."</p><span class="bible-ref">Oséias 4:6 (NVI)</span></div>
-                
+                <h2>1. O que é Conhecimento (bíblico e simples)</h2>
+                <p>
+                    Conhecimento, na Bíblia, não é apenas “informação”.
+                    É compreender quem Deus é, o que Deus quer, e como Deus age.
+                    É saber a verdade para não ser enganado.
+                </p>
+                <p>
+                    A Bíblia mostra que conhecer a Deus envolve mente e coração.
+                    Você aprende com a Palavra, guarda, pratica, e então passa a viver com mais firmeza.
+                </p>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “O meu povo foi destruído por falta de conhecimento.”
+                    </p>
+                    <span class="bible-ref">Oséias 4:6</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “O temor do Senhor é o princípio do conhecimento.”
+                    </p>
+                    <span class="bible-ref">Provérbios 1:7</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “E a vida eterna é esta: que te conheçam a ti… e a Jesus Cristo, a quem enviaste.”
+                    </p>
+                    <span class="bible-ref">João 17:3</span>
+                </div>
+
+                <h2>2. Quando surgiu (fundamento bíblico)</h2>
+                <p>
+                    Desde o começo, Deus se revela.
+                    Ele fala, orienta, ensina, corrige.
+                    O povo sempre precisou conhecer a Lei para viver bem.
+                    O problema é que muita gente quis viver “do seu jeito”.
+                </p>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Estas palavras… você as ensinará a seus filhos…”
+                    </p>
+                    <span class="bible-ref">Deuteronômio 6:6-7</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Bem-aventurado o homem… antes tem o seu prazer na lei do Senhor,
+                        e na sua lei medita de dia e de noite.”
+                    </p>
+                    <span class="bible-ref">Salmo 1:1-2</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Procura apresentar-te a Deus aprovado… que maneja bem a palavra da verdade.”
+                    </p>
+                    <span class="bible-ref">2 Timóteo 2:15</span>
+                </div>
+
+                <h2>3. Por que é necessário</h2>
+                <p>
+                    Porque sem conhecimento você cai em mentira.
+                    Muitas pessoas erram não por maldade, mas por ignorância.
+                    E a ignorância é perigosa, porque o engano entra fácil.
+                </p>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Meu povo… sem entendimento; por isso vai para o cativeiro.”
+                    </p>
+                    <span class="bible-ref">Isaías 5:13</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Examinavam diariamente as Escrituras para ver se as coisas eram assim.”
+                    </p>
+                    <span class="bible-ref">Atos 17:11</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Jesus respondeu: Errais, não conhecendo as Escrituras.”
+                    </p>
+                    <span class="bible-ref">Mateus 22:29</span>
+                </div>
+
+                <h2>4. Como ter conhecimento (método simples)</h2>
                 <div class="step-box">
-                    <h4>Passo a Passo: O Método da Pergunta Textual</h4>
+                    <h4>Passo a Passo: Estudo que Dá Resultado</h4>
                     <ul class="step-list">
-                        <li><strong>Pare de Ler Correndo:</strong> Após ler um capítulo, pegue um caderno. Pare de ler apenas para "cumprir tabela".</li>
-                        <li><strong>Identifique o Caráter:</strong> Pergunte a si mesmo: "O que este texto me ensina especificamente sobre como Deus age?".</li>
-                        <li><strong>A Oração Embasada:</strong> Transforme o que anotou em oração. "Senhor, vi que tiveste paciência no deserto; tem a mesma paciência com as minhas falhas de hoje".</li>
+                        <li>
+                            <strong>Passo 1 — Leia um livro por vez:</strong>
+                            Não abra a Bíblia “na sorte”.
+                            Escolha um livro (ex: João) e leia do começo ao fim.
+                        </li>
+                        <li>
+                            <strong>Passo 2 — Faça 3 perguntas ao texto:</strong>
+                            1) O que o texto diz? 2) O que isso significa? 3) O que eu vou praticar hoje?
+                        </li>
+                        <li>
+                            <strong>Passo 3 — Anote o essencial:</strong>
+                            A mente esquece. O papel guarda.
+                            Escreva 3 linhas por dia. Isso cria crescimento real.
+                        </li>
+                        <li>
+                            <strong>Passo 4 — Pratique:</strong>
+                            Conhecimento sem prática vira orgulho.
+                            Prática transforma o caráter.
+                        </li>
                     </ul>
                 </div>
 
-                <h2>2. A Ignorância como Arma no Deserto</h2>
-                <p>Em Mateus 4, Satanás atacou Jesus usando versículos (como o Salmo 91) fora de contexto para induzi-Lo ao pecado do orgulho. Como Jesus Se defendeu? Puxando a espada do Conhecimento: "Também está escrito...". Jesus fechou a mentira e provou que texto fora de contexto é a mãe das heresias. Se Cristo precisou ter a Bíblia na mente, você também precisa.</p>
-                
-                <div class="step-box">
-                    <h4>Passo a Passo: O Arsenal Mental</h4>
-                    <ul class="step-list">
-                        <li><strong>Identifique a Fraqueza:</strong> Descubra o pecado ou medo que mais o derruba (ira no trânsito, ansiedade, luxúria).</li>
-                        <li><strong>Carregue a Arma:</strong> Anote 3 versículos diretos sobre o tema, cole-os no espelho ou no painel do carro e leia-os em voz alta até decorá-los. Quando a crise vier, use-os como munição para dizer: "Também está escrito".</li>
-                    </ul>
+                <div class="conclusion-box">
+                    <strong>Conclusão:</strong>
+                    Quem conhece a Palavra não cai fácil.
+                    Um cristão sem Bíblia vira alvo fácil.
+                    Conhecimento não é luxo: é sobrevivência.
                 </div>
 
-                <h2>3. O Espírito Bereano</h2>
-                <p>A igreja de Bereia (Atos 17:11) possuía um "caráter nobre" porque seus membros não aceitavam nem mesmo a pregação do apóstolo Paulo de forma cega. Eles voltavam para casa e examinavam as Escrituras com rigor para conferir se o que ouviam era verdade. Não engula teologia enlatada e vídeos superficiais da internet. Filtre tudo pela Palavra.</p>
-                
-                <div class="step-box">
-                    <h4>Passo a Passo: O Estudo Expositivo</h4>
-                    <ul class="step-list">
-                        <li><strong>Abandone a Leitura Aleatória:</strong> Pare de abrir a Bíblia de forma "mágica", na sorte. A Bíblia é uma biblioteca rica. Escolha um livro inteiro (comece por Romanos ou João) e leia sequencialmente do primeiro ao último capítulo, respeitando o contexto original.</li>
-                    </ul>
-                </div>
-
-                <div class="conclusion-box"><strong>Conclusão do Pilar 2:</strong> A sua fé deve ser inteligente e fundamentada nas Escrituras. Um cristão que pensa e estuda não é facilmente enganado pelos ventos de doutrina e não se abala diante dos questionamentos do mundo.</div>
-
-                <button class="btn" onclick="iniciarProva('conhecimento')">Realizar Prova do Pilar 2</button>
+                <button class="btn" onclick="iniciarProva('conhecimento')">Realizar Prova do Tópico 2</button>
             </section>
 
+            <!-- =========================
+                 3) CONVICÇÃO RACIONAL
+                 ========================= -->
             <section id="mod-conviccao" class="module-section">
-                <span class="kicker">Pilar 03</span>
-                <h1>Convicção Racional: A Fé que Pensa</h1>
-                <p>Você já parou para pensar por que, de fato, você é cristão? Se a sua resposta for apenas "porque eu nasci em um lar evangélico" ou "porque eu sinto uma paz interior boa", a sua fundação está prestes a desmoronar. O terceiro pilar é a <strong>Convicção Racional</strong>: a capacidade de usar a inteligência dada por Deus para comprovar e defender a verdade.</p>
+                <span class="kicker">TÓPICO 03</span>
+                <h1>Convicção Racional: Saber por que Você Crê</h1>
 
-                <h2>1. Fé Não é Loucura, é Evidência Histórica</h2>
-                <p>A cultura moderna frequentemente tenta nos convencer de que a ciência lida com fatos e a fé lida com contos de fadas. Isso é uma mentira absurda. O Cristianismo está ancorado na história verificável. O apóstolo Lucas, antes de escrever o seu Evangelho, agiu como um verdadeiro jornalista investigativo: ele procurou as testemunhas oculares e validou datas (Lucas 1:1-4). O apóstolo Pedro declarou de forma agressiva: "Não seguimos fábulas engenhosamente inventadas" (2 Pedro 1:16).</p>
-                <p>Nós não seguimos Jesus por um delírio emocional coletivo, mas porque existem evidências reais: a crucificação documentada por romanos, o túmulo vazio e o testemunho de centenas de pessoas que preferiram ser torturadas até a morte a negar o que viram com os próprios olhos. Ter convicção é ter poder de argumentação na faculdade e no mundo corporativo.</p>
+                <h2>1. O que é Convicção Racional</h2>
+                <p>
+                    Convicção racional é ter clareza e firmeza baseada em verdade.
+                    É você conseguir explicar com calma o motivo da sua fé.
+                    Não é “discutir”. É ter base.
+                </p>
 
                 <div class="bible-box">
-                    <p class="bible-text">"Estejam sempre preparados para responder a qualquer que lhes pedir a razão da esperança que há em vocês. Contudo, façam isso com mansidão e respeito."</p>
-                    <span class="bible-ref">1 Pedro 3:15 (NVI)</span>
+                    <p class="bible-text">
+                        “Estejam sempre preparados para responder… a razão da esperança que há em vocês.”
+                    </p>
+                    <span class="bible-ref">1 Pedro 3:15</span>
                 </div>
 
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Não seguimos fábulas engenhosamente inventadas…”
+                    </p>
+                    <span class="bible-ref">2 Pedro 1:16</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Pela sua firme decisão, propôs Daniel no seu coração não se contaminar…”
+                    </p>
+                    <span class="bible-ref">Daniel 1:8</span>
+                </div>
+
+                <h2>2. Quando surgiu (base bíblica)</h2>
+                <p>
+                    A fé cristã sempre esteve ligada a fatos e testemunho.
+                    Lucas escreveu como alguém que investigou cuidadosamente (Lucas 1).
+                    Paulo discutia com base nas Escrituras (Atos 17).
+                    Isso é convicção racional: fé com fundamento.
+                </p>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Tendo investigado tudo cuidadosamente… escrevi para que tenhas certeza…”
+                    </p>
+                    <span class="bible-ref">Lucas 1:3-4</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Paulo… discutia com eles com base nas Escrituras, explicando e provando…”
+                    </p>
+                    <span class="bible-ref">Atos 17:2-3</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Se Cristo não ressuscitou, é vã a nossa pregação…”
+                    </p>
+                    <span class="bible-ref">1 Coríntios 15:14</span>
+                </div>
+
+                <h2>3. Por que é necessário</h2>
+                <p>
+                    Porque o mundo pressiona.
+                    Porque dúvidas aparecem.
+                    Porque filhos perguntam.
+                    Porque a internet espalha mentiras.
+                    Quem não tem convicção vira alguém levado pelo vento.
+                </p>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Para que não sejamos mais meninos, levados de um lado para outro por todo vento de doutrina…”
+                    </p>
+                    <span class="bible-ref">Efésios 4:14</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Examinai tudo. Retende o bem.”
+                    </p>
+                    <span class="bible-ref">1 Tessalonicenses 5:21</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Conhecereis a verdade, e a verdade vos libertará.”
+                    </p>
+                    <span class="bible-ref">João 8:32</span>
+                </div>
+
+                <h2>4. Como desenvolver</h2>
                 <div class="step-box">
-                    <h4>Passo a Passo: O Teste da Defesa (Apologética)</h4>
+                    <h4>Passo a Passo: Convicção Forte e Saudável</h4>
                     <ul class="step-list">
-                        <li><strong>O Mapeamento da Fraqueza:</strong> Escreva num papel a pergunta mais difícil que um ateu poderia lhe fazer hoje e que o deixaria sem resposta (Exemplo: "Como provar que a Bíblia não foi alterada ao longo dos séculos?" ou "Por que Deus permite o mal?").</li>
-                        <li><strong>A Busca Acadêmica:</strong> Deus não se assusta com as suas dúvidas; é o Diabo quem prefere que você não estude. Adquira livros cristãos sérios sobre apologética e devore-os até que a resposta esteja cimentada na sua mente.</li>
+                        <li>
+                            <strong>Passo 1 — Liste suas dúvidas:</strong>
+                            Escreva claramente: “Eu não sei responder isso”.
+                            Dúvida escondida vira fraqueza.
+                        </li>
+                        <li>
+                            <strong>Passo 2 — Busque resposta séria:</strong>
+                            Use Bíblia, ensino firme e leitura responsável.
+                            Não confie em vídeo curto.
+                        </li>
+                        <li>
+                            <strong>Passo 3 — Aprenda a falar com mansidão:</strong>
+                            Convicção sem respeito vira orgulho.
+                            Você deve ser firme e educado.
+                        </li>
                     </ul>
                 </div>
 
-                <h2>2. A Dieta da Verdade (O Fim das Fake News)</h2>
-                <p>Nós servimos a Jesus, Aquele que declarou: "Eu sou o Caminho, a VERDADE e a Vida". Portanto, é um escândalo e uma vergonha para o caráter cristão ser o tipo de pessoa que acredita, entra em pânico e repassa mentiras, boatos e conspirações infundadas em grupos de WhatsApp. A convicção exige uma mente que pensa e investiga antes de falar ou compartilhar.</p>
-
-                <div class="step-box">
-                    <h4>Passo a Passo: A Filtragem de Ferro</h4>
-                    <ul class="step-list">
-                        <li><strong>A Regra da Causa e Efeito:</strong> Toda vez que você receber uma mensagem urgente que tente despertar medo, propagar ódio contra alguém ou prometer um milagre financeiro, trave o dedo. Não repasse. Gaste 3 minutos pesquisando no Google ou conferindo a fonte. O uso responsável da razão protege o testemunho da Igreja.</li>
-                    </ul>
+                <div class="conclusion-box">
+                    <strong>Conclusão:</strong>
+                    Convicção racional é fé com base.
+                    Não é grito.
+                    Não é “achismo”.
+                    É segurança construída na verdade.
                 </div>
 
-                <div class="conclusion-box"><strong>Conclusão do Pilar 3:</strong> A fé cristã não exige que você desligue o cérebro. Fortaleça sua mente com o raciocínio apologético; saiba em quem você tem crido e defenda a Verdade de forma sólida, educada e irrepreensível.</div>
-
-                <button class="btn" onclick="iniciarProva('conviccao')">Realizar Prova do Pilar 3</button>
+                <button class="btn" onclick="iniciarProva('conviccao')">Realizar Prova do Tópico 3</button>
             </section>
 
+            <!-- =========================
+                 4) CONSTÂNCIA
+                 ========================= -->
             <section id="mod-constancia" class="module-section">
-                <span class="kicker">Pilar 04</span>
-                <h1>Constância: A Virtude dos Inquebráveis</h1>
-                <p>Fazer um propósito espiritual no altar em um domingo de muito choro é fácil. Começar a ler a Bíblia inteira no dia 1º de janeiro é empolgante. Mas o que você faz no dia 14 de março, quando a chuva cai, o corpo dói de cansaço e a rotina fica sufocante e monótona? O quarto pilar é a <strong>Constância</strong>, indiscutivelmente a virtude mais rara na igreja contemporânea.</p>
+                <span class="kicker">TÓPICO 04</span>
+                <h1>Constância: Permanecer no Caminho Mesmo em Dias Difíceis</h1>
 
-                <h2>1. O Fim da "Espiritualidade de Acampamento"</h2>
-                <p>Muitos cristãos vivem de "picos de insulina espiritual". Eles pulam de retiro em retiro, de evento em evento, buscando incessantemente o próximo louvor agitado ou a próxima profecia para ganhar um "gás". O problema é que eventos de três dias não sustentam um casamento de trinta anos. Eventos não evitam a falência financeira. O que transforma de fato a sua vida são os hábitos invisíveis: dobrar os joelhos todos os dias no silêncio do quarto, perdoar diariamente, ser honesto nos negócios quando ninguém está olhando.</p>
-                <p>Pense em Noé. A Bíblia não diz que ele construiu a arca sorrindo e animado todos os dias. Ele cortou madeira pesada sob o sol escaldante por décadas, sem ver uma única nuvem de chuva no céu, enquanto era chamado de louco. Isso é constância: realizar a obra no cenário seco, aguardando a promessa. É essa obediência monótona de hoje que o salvará do dilúvio amanhã.</p>
+                <h2>1. O que é Constância</h2>
+                <p>
+                    Constância é continuar fazendo o bem mesmo quando não há emoção, não há aplauso,
+                    e parece que nada mudou.
+                    Constância é permanecer.
+                    Constância é fidelidade no comum.
+                </p>
 
                 <div class="bible-box">
-                    <p class="bible-text">"E não nos cansemos de fazer o bem, pois no tempo próprio colheremos, se não desanimarmos."</p>
-                    <span class="bible-ref">Gálatas 6:9 (NVI)</span>
+                    <p class="bible-text">
+                        “E não nos cansemos de fazer o bem, porque a seu tempo ceifaremos, se não houvermos desfalecido.”
+                    </p>
+                    <span class="bible-ref">Gálatas 6:9</span>
                 </div>
 
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “O justo cai sete vezes e se levanta…”
+                    </p>
+                    <span class="bible-ref">Provérbios 24:16</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Corramos com perseverança a carreira que nos está proposta…”
+                    </p>
+                    <span class="bible-ref">Hebreus 12:1</span>
+                </div>
+
+                <h2>2. Quando surgiu (base bíblica)</h2>
+                <p>
+                    A constância aparece em toda a Bíblia:
+                    Noé construiu a arca por muitos anos.
+                    Moisés guiou um povo difícil por décadas.
+                    Paulo serviu mesmo com perseguição.
+                    A constância é o caminho normal do povo de Deus.
+                </p>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Noé fez tudo como Deus lhe ordenara.”
+                    </p>
+                    <span class="bible-ref">Gênesis 6:22</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Sede firmes e constantes, sempre abundantes na obra do Senhor…”
+                    </p>
+                    <span class="bible-ref">1 Coríntios 15:58</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Quem perseverar até o fim será salvo.”
+                    </p>
+                    <span class="bible-ref">Mateus 24:13</span>
+                </div>
+
+                <h2>3. Por que é necessária</h2>
+                <p>
+                    Porque muita gente começa e para.
+                    Começa dieta e para.
+                    Começa leitura e para.
+                    Começa oração e para.
+                    Mas Deus chama para permanecer.
+                </p>
+
+                <h2>4. Como desenvolver</h2>
                 <div class="step-box">
-                    <h4>Passo a Passo: A Corrente Inquebrável</h4>
+                    <h4>Passo a Passo: Constância na Vida Real</h4>
                     <ul class="step-list">
-                        <li><strong>O Calendário Físico:</strong> Imprima um calendário de papel e coloque-o na porta do seu guarda-roupa. Toda vez que você cumprir o seu devocional ou estudo diário, marque um gigantesco "X" vermelho na data.</li>
-                        <li><strong>Foco Micro:</strong> Não pense na meta para o ano que vem. Sua única missão ao acordar deve ser: "Eu não posso quebrar a corrente de marcações hoje". Foque exclusivamente no desafio das próximas 24 horas.</li>
+                        <li>
+                            <strong>Passo 1 — Faça metas pequenas:</strong>
+                            Constância nasce do que é possível manter.
+                        </li>
+                        <li>
+                            <strong>Passo 2 — Regra do “zero não”:</strong>
+                            Em dia ruim, faça o mínimo. Não zere.
+                        </li>
+                        <li>
+                            <strong>Passo 3 — Não falhe dois dias seguidos:</strong>
+                            Um dia ruim acontece. Dois dias viram costume.
+                        </li>
                     </ul>
                 </div>
 
-                <h2>2. A Matemática do Justo (O Princípio do 1%)</h2>
-                <p>O inimigo raramente tentará fazer você desistir de uma só vez; a tática dele é fazer você falhar em um único dia para injetar culpa, levando-o a abandonar tudo no dia seguinte por sentir vergonha. A constância não exige perfeição robótica e inatingível. Provérbios 24:16 diz: "Ainda que o justo caia sete vezes, torna a erguer-se". A vitória não está em nunca cair, mas em sempre voltar rapidamente para a pista.</p>
-
-                <div class="step-box">
-                    <h4>Passo a Passo: O Gerenciamento de Dias Péssimos</h4>
-                    <ul class="step-list">
-                        <li><strong>Reduza a Marcha, Mas Jamais Pare:</strong> Se você teve um dia terrível, chegou tarde, sem energia, e a sua meta original era orar por 30 minutos, não vá dormir com "zero". Ore por 1 minuto. Leia 1 único versículo. A regra de ouro da constância é clara: <em>O feito mínimo é infinitamente melhor que o perfeito não feito.</em> Manter o hábito vivo na mente é o que importa.</li>
-                    </ul>
+                <div class="conclusion-box">
+                    <strong>Conclusão:</strong>
+                    Constância é vitória escondida.
+                    Quem é constante chega onde o instável nunca chega.
                 </div>
 
-                <div class="conclusion-box"><strong>Conclusão do Pilar 4:</strong> O sucesso espiritual é a soma de pequenos esforços repetidos diariamente. Vença a tentação de desistir nos dias ruins e construa a sua jornada um tijolo de cada vez.</div>
-
-                <button class="btn" onclick="iniciarProva('constancia')">Realizar Prova do Pilar 4</button>
+                <button class="btn" onclick="iniciarProva('constancia')">Realizar Prova do Tópico 4</button>
             </section>
 
+            <!-- =========================
+                 5) AUTOCONTROLE
+                 ========================= -->
             <section id="mod-autocontrole" class="module-section">
-                <span class="kicker">Pilar 05</span>
-                <h1>Autocontrole Emocional: Domínio da Alma</h1>
-                <p>Você pode ter sido muito disciplinado, pode ter acumulado um conhecimento teológico formidável, pode ter convicções claras e ser constante. No entanto, se você perder a cabeça em um ataque de fúria por uma simples fechada no trânsito ou durante uma discussão acalorada em família, o seu testemunho será queimado no lixo em exatos cinco segundos. O <strong>Autocontrole</strong> não significa a ausência de raiva ou de tristeza; é a capacidade ativa de colocar correntes nas suas emoções para que elas não tomem o volante das suas decisões e atitudes.</p>
+                <span class="kicker">TÓPICO 05</span>
+                <h1>Autocontrole: Dominar a Alma para Não Destruir o Próprio Caminho</h1>
 
-                <h2>1. A Redefinição de Força (A Espada de Davi)</h2>
-                <p>O mundo atual ensina que o homem forte é aquele que bate na mesa, que grita mais alto, que se vinga e destrói os seus inimigos impiedosamente. A Bíblia enxerga isso como um sinal de fraqueza emocional extrema. Forte de verdade é quem possui o poder para destruir o outro, mas domina a si mesmo e escolhe não o fazer. O rei Saul perseguiu Davi injustamente para matá-lo. Certo dia, Davi encontrou Saul dormindo vulnerável em uma caverna. Davi tinha a faca, a oportunidade e o pretenso "direito" de se vingar. Mas ele controlou o seu ódio instintivo e escolheu não tocar no ungido do Senhor (1 Samuel 24). O mundo conquista cidades com sangue; o cristão conquista a si mesmo com a graça.</p>
+                <h2>1. O que é Autocontrole</h2>
+                <p>
+                    Autocontrole é conseguir segurar a reação.
+                    É pensar antes de falar.
+                    É dominar o impulso.
+                    Não é “não sentir”.
+                    É sentir, mas escolher agir certo.
+                </p>
 
                 <div class="bible-box">
-                    <p class="bible-text">"Melhor é o homem paciente do que o guerreiro, mais vale controlar o seu espírito do que conquistar uma cidade."</p>
-                    <span class="bible-ref">Provérbios 16:32 (NVI)</span>
+                    <p class="bible-text">
+                        “Melhor é o paciente do que o guerreiro; e o que domina o seu espírito do que o que toma uma cidade.”
+                    </p>
+                    <span class="bible-ref">Provérbios 16:32</span>
                 </div>
 
-                <h2>2. O Fogo da Língua</h2>
-                <p>O apóstolo Tiago nos alerta que a língua é um pequeno fogo capaz de incendiar uma floresta inteira (Tiago 3:5). Quantos casamentos, amizades e ministérios foram destruídos, não por traições, mas por palavras impiedosas e sarcásticas atiradas ao vento num momento de explosão? O autocontrole ensina a lei máxima e irrefutável da comunicação: Você é senhor absoluto das suas palavras antes de proferi-las, porém, torna-se refém e escravo delas no exato instante em que saem da sua boca.</p>
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “O fruto do Espírito é… domínio próprio.”
+                    </p>
+                    <span class="bible-ref">Gálatas 5:22-23</span>
+                </div>
 
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Todo homem seja pronto para ouvir, tardio para falar, tardio para se irar.”
+                    </p>
+                    <span class="bible-ref">Tiago 1:19</span>
+                </div>
+
+                <h2>2. Quando surgiu</h2>
+                <p>
+                    Autocontrole é exigência antiga. Deus sempre tratou o coração humano.
+                    Caim foi alertado sobre domínio (Gênesis 4).
+                    Davi foi testado para não matar Saul.
+                    Jesus foi tentado e não cedeu.
+                </p>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “O pecado jaz à porta… mas a ti cumpre dominá-lo.”
+                    </p>
+                    <span class="bible-ref">Gênesis 4:7</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Davi disse… Não estenderei a mão contra o ungido do Senhor.”
+                    </p>
+                    <span class="bible-ref">1 Samuel 24:6</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Então Jesus foi levado ao deserto… para ser tentado.”
+                    </p>
+                    <span class="bible-ref">Mateus 4:1</span>
+                </div>
+
+                <h2>3. Por que é necessário</h2>
+                <p>
+                    Porque palavras e explosões destroem relacionamentos.
+                    Porque raiva fora de controle destrói casamento, família e testemunho.
+                    Porque alguém sem autocontrole vira escravo do momento.
+                </p>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “A língua… é um fogo…”
+                    </p>
+                    <span class="bible-ref">Tiago 3:5-6</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “A ira do homem não produz a justiça de Deus.”
+                    </p>
+                    <span class="bible-ref">Tiago 1:20</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Não saia da vossa boca nenhuma palavra torpe…”
+                    </p>
+                    <span class="bible-ref">Efésios 4:29</span>
+                </div>
+
+                <h2>4. Como desenvolver</h2>
                 <div class="step-box">
-                    <h4>Passo a Passo: O Algoritmo da Calma</h4>
+                    <h4>Passo a Passo: Autocontrole no Dia a Dia</h4>
                     <ul class="step-list">
-                        <li><strong>A Pausa de 3 Segundos:</strong> Quando alguém o insultar gravemente de forma injusta, o sangue certamente vai ferver. Morda a língua se for preciso. Feche a boca, respire profundamente pelo nariz e conte mentalmente: 1, 2, 3. Esse tempo biológico curto é o suficiente para o seu córtex frontal (responsável pela razão) assumir o controle que havia sido "sequestrado" temporariamente pela amígdala (o centro das emoções).</li>
-                        <li><strong>A Regra da Madrugada:</strong> Nunca envie mensagens de WhatsApp ou e-mails importantes de trabalho quando estiver com raiva, especialmente à noite. Escreva tudo o que desejar no bloco de notas do celular, desabafe ali, tranque a tela e vá dormir. No dia seguinte, de cabeça fria, leia o texto novamente. Em 99% das vezes, você apagará tudo e agradecerá a Deus por não ter enviado a "bomba" digital.</li>
+                        <li>
+                            <strong>Passo 1 — Pausa antes de responder:</strong>
+                            Conte mentalmente 3 segundos. Respire. Só depois fale.
+                        </li>
+                        <li>
+                            <strong>Passo 2 — Regra da Madrugada:</strong>
+                            Se estiver nervoso, não envie mensagem. Escreva no bloco de notas e revise no dia seguinte.
+                        </li>
+                        <li>
+                            <strong>Passo 3 — Ore antes de falar:</strong>
+                            Uma oração curta: “Senhor, guarda minha boca e meu coração.”
+                        </li>
                     </ul>
                 </div>
 
-                <div class="conclusion-box"><strong>Conclusão do Pilar 5:</strong> As suas emoções são alertas, não são chefes. Aja pautado pelos princípios de Deus e não pelo calor do momento. Quem domina a própria alma é mais temível que um exército.</div>
+                <div class="conclusion-box">
+                    <strong>Conclusão:</strong>
+                    Autocontrole é prova de maturidade.
+                    Quem domina a si mesmo evita grandes tragédias.
+                </div>
 
-                <button class="btn" onclick="iniciarProva('autocontrole')">Realizar Prova do Pilar 5</button>
+                <button class="btn" onclick="iniciarProva('autocontrole')">Realizar Prova do Tópico 5</button>
             </section>
 
+            <!-- =========================
+                 6) COMUNHÃO
+                 ========================= -->
             <section id="mod-comunhao" class="module-section">
-                <span class="kicker">Pilar 06</span>
-                <h1>Comunhão: O Atrito do Ferro</h1>
-                <p>Você sobreviveu brilhantemente a cinco pilares fortíssimos. Você está se tornando inabalável. Porém, existe uma armadilha sorrateira e letal voltada exatamente para pessoas disciplinadas e maduras no conhecimento: o isolamento arrogante. O sexto pilar é a <strong>Comunhão</strong>. Um ditado antigo resume perfeitamente a regra de sobrevivência do cristianismo: "Uma brasa tirada da fogueira apaga-se rapidamente". A fé não foi desenhada por Deus para ser vivenciada exclusivamente na solidão do seu quarto.</p>
+                <span class="kicker">TÓPICO 06</span>
+                <h1>Comunhão: Crescer com Gente Imperfeita (como Deus planejou)</h1>
 
-                <h2>1. O Corpo e a Lixa</h2>
-                <p>Há um falso e perigoso evangelho moderno que argumenta: "Eu acredito em Deus e leio a Bíblia, mas não preciso ir à igreja porque lá só há pessoas hipócritas". Essa frase ignora a essência do modelo bíblico. A Igreja não é um prédio comercial ou um clube; em 1 Coríntios 12, ela é descrita organicamente como um Corpo Humano. Um dedo decepado e isolado do corpo não ganha liberdade, ele apodrece silenciosamente e morre. Nós precisamos da igreja <em>exatamente</em> porque lá existem pessoas difíceis. É lidando com irmãos imperfeitos que o nosso ego é "lixado" e o nosso caráter é forjado na dor e na prática real do perdão.</p>
+                <h2>1. O que é Comunhão</h2>
+                <p>
+                    Comunhão é vida cristã com outros cristãos.
+                    Não é só ir ao culto. É andar junto.
+                    É cuidado, correção, apoio, serviço e convivência.
+                </p>
 
                 <div class="bible-box">
-                    <p class="bible-text">"Assim como o ferro afia o ferro, o homem afia o seu companheiro."</p>
-                    <span class="bible-ref">Provérbios 27:17 (NVI)</span>
+                    <p class="bible-text">
+                        “Não deixando de congregar-nos… antes admoestando-nos uns aos outros…”
+                    </p>
+                    <span class="bible-ref">Hebreus 10:25</span>
                 </div>
 
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Assim como o ferro afia o ferro, o homem afia o seu companheiro.”
+                    </p>
+                    <span class="bible-ref">Provérbios 27:17</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Confessai… e orai uns pelos outros, para serdes curados.”
+                    </p>
+                    <span class="bible-ref">Tiago 5:16</span>
+                </div>
+
+                <h2>2. Quando surgiu</h2>
+                <p>
+                    Deus sempre formou povo, não “crentes isolados”.
+                    Israel era comunidade.
+                    A igreja nasceu em comunhão (Atos 2).
+                    O cristianismo é um corpo (1 Coríntios 12).
+                </p>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Perseveravam… na comunhão…”
+                    </p>
+                    <span class="bible-ref">Atos 2:42</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Vós sois o corpo de Cristo, e membros em particular.”
+                    </p>
+                    <span class="bible-ref">1 Coríntios 12:27</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Levai as cargas uns dos outros…”
+                    </p>
+                    <span class="bible-ref">Gálatas 6:2</span>
+                </div>
+
+                <h2>3. Por que é necessária</h2>
+                <p>
+                    Porque sozinho você esfria.
+                    Sozinho você se engana.
+                    Sozinho você desanima.
+                    Na comunhão você é lembrado, corrigido e fortalecido.
+                </p>
+
+                <h2>4. Como viver comunhão de verdade</h2>
                 <div class="step-box">
-                    <h4>Passo a Passo: Fugindo do "Cristianismo de Sofá"</h4>
+                    <h4>Passo a Passo: Comunhão Prática</h4>
                     <ul class="step-list">
-                        <li><strong>Desça da Arquibancada:</strong> Ser apenas um frequentador anônimo de domingo de manhã, que se senta, escuta o sermão calado e vai embora não é viver em comunhão bíblica. Envolva-se. Sirva no estacionamento da igreja, ensine crianças, ou entre em uma célula (grupo pequeno) onde as pessoas conheçam verdadeiramente o seu nome, a sua história e as suas dores reais.</li>
+                        <li>
+                            <strong>Passo 1 — Pare de ser visitante:</strong>
+                            Envolva-se. Sirva. Participe.
+                        </li>
+                        <li>
+                            <strong>Passo 2 — Tenha alguém de confiança:</strong>
+                            Uma pessoa madura, que ora com você e pergunta a verdade.
+                        </li>
+                        <li>
+                            <strong>Passo 3 — Ande na luz:</strong>
+                            Pecado escondido ganha força. Na luz, perde força.
+                        </li>
                     </ul>
                 </div>
 
-                <h2>2. O Segredo e a Luz da Confissão</h2>
-                <p>O diabo faz a festa e ganha poder quando as nossas lutas ocorrem no escuro do nosso quarto e sob o peso da vergonha. Quando você está lutando contra um vício oculto (como a pornografia) ou está à beira de um colapso financeiro familiar, a vergonha tentará mantê-lo calado. Mas Tiago 5:16 nos entrega a chave mestra de libertação: "Confessem os seus pecados uns aos outros e orem uns pelos outros para serem curados". O pecado perde o seu poder demoníaco no exato momento em que ele é arrastado para a luz por meio da comunhão verdadeira e correta.</p>
-
-                <div class="step-box">
-                    <h4>Passo a Passo: O Escudeiro Confidencial</h4>
-                    <ul class="step-list">
-                        <li><strong>Prestação de Contas (Accountability):</strong> Encontre um único cristão maduro (do mesmo sexo que você) dentro da sua comunidade local. Não procure por alguém "perfeito", procure por alguém fiel e que saiba guardar segredos.</li>
-                        <li><strong>O Pacto:</strong> Estabeleça um acordo para que essa pessoa o confronte e lhe pergunte seriamente a cada 15 dias: "Como está a sua mente? Como anda a sua rotina de oração diária? Você caiu naquela tentação novamente nesta semana?". Apenas o fato de saber que você terá que olhar nos olhos de alguém e dizer a verdade atua como um freio moral poderosíssimo contra o erro.</li>
-                    </ul>
+                <div class="conclusion-box">
+                    <strong>Conclusão:</strong>
+                    Comunhão não é “opcional”.
+                    É proteção espiritual e crescimento real.
                 </div>
 
-                <div class="conclusion-box"><strong>Conclusão do Pilar 6:</strong> O fardo da vida não foi feito para ser carregado de forma solitária. Permita-se ser conhecido, exortado e amado por irmãos na fé. A força do corpo sustenta a fraqueza do membro.</div>
-
-                <button class="btn" onclick="iniciarProva('comunhao')">Realizar Prova do Pilar 6</button>
+                <button class="btn" onclick="iniciarProva('comunhao')">Realizar Prova do Tópico 6</button>
             </section>
 
+            <!-- =========================
+                 7) PERSEVERANÇA
+                 ========================= -->
             <section id="mod-perseveranca" class="module-section">
-                <span class="kicker">Pilar 07</span>
-                <h1>Perseverança: A Resistência no Fogo</h1>
-                <p>Chegamos ao último pilar, o selo dourado de validação da sua formação. Você agora é um cristão disciplinado, estuda a Bíblia com inteligência apologética, é constante, domina a sua ira e está devidamente cercado por irmãos de confiança. Porém, mais cedo ou mais tarde, a tragédia baterá à sua porta. Um desemprego inesperado surgirá, um diagnóstico médico assustará a sua família ou uma traição profunda cortará a sua alma. O que a sua fé construída faz quando a vida perde completamente o sentido?</p>
+                <span class="kicker">TÓPICO 07</span>
+                <h1>Perseverança: Continuar Crendo Quando a Vida Dói</h1>
 
-                <h2>1. A Fé que Suporta o Vazio de Jó</h2>
-                <p>A perseverança não é aquela teologia da prosperidade rasa e ilusória que apenas sorri e diz "Deus vai me dar um milagre financeiro amanhã". A perseverança real se baseia na teologia de Jó. Ele perdeu o seu patrimônio inteiro e todos os seus dez filhos num único dia. Ele contraiu lepra e foi abandonado pelos amigos. Sentado nas cinzas, sem obter nenhuma resposta ou justificativa imediata do céu, Jó fez a maior declaração de caráter da história: "Embora Ele me mate, ainda assim esperarei nEle" (Jó 13:15). A verdadeira Fé Inabalável não é medida quando você recebe um presente novo no palco iluminado da igreja; ela é pesada e aferida no fundo do poço, no corredor escuro de um hospital, quando Deus parece estar em total silêncio, mas você se recusa a soltar a mão dEle.</p>
+                <h2>1. O que é Perseverança</h2>
+                <p>
+                    Perseverança é continuar firme mesmo quando você não entende.
+                    É permanecer em Deus quando a dor aparece.
+                    Não é fingir que não dói. É confiar apesar da dor.
+                </p>
 
                 <div class="bible-box">
-                    <p class="bible-text">"Meus irmãos, considerem motivo de grande alegria o fato de passarem por diversas provações, pois vocês sabem que a prova da sua fé produz perseverança. E a perseverança deve ter ação completa, a fim de que vocês sejam maduros e íntegros."</p>
-                    <span class="bible-ref">Tiago 1:2-4 (NVI)</span>
+                    <p class="bible-text">
+                        “A prova da vossa fé produz perseverança…”
+                    </p>
+                    <span class="bible-ref">Tiago 1:3-4</span>
                 </div>
 
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Ainda que ele me mate, nele esperarei…”
+                    </p>
+                    <span class="bible-ref">Jó 13:15</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Olhando firmemente para Jesus… que, pela alegria proposta, suportou a cruz…”
+                    </p>
+                    <span class="bible-ref">Hebreus 12:2</span>
+                </div>
+
+                <h2>2. Quando surgiu</h2>
+                <p>
+                    Sempre que o povo de Deus enfrentou provações, a perseverança foi exigida.
+                    Abraão esperou.
+                    José sofreu injustiça.
+                    Jó perdeu tudo.
+                    Paulo sofreu perseguição.
+                    Jesus suportou a cruz.
+                </p>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Aguardou Abraão… e alcançou a promessa.”
+                    </p>
+                    <span class="bible-ref">Hebreus 6:15</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “José… foi posto na prisão… mas o Senhor era com José.”
+                    </p>
+                    <span class="bible-ref">Gênesis 39:20-21</span>
+                </div>
+
+                <div class="bible-box">
+                    <p class="bible-text">
+                        “Em tudo somos atribulados, porém não angustiados…”
+                    </p>
+                    <span class="bible-ref">2 Coríntios 4:8-9</span>
+                </div>
+
+                <h2>3. Por que é necessária</h2>
+                <p>
+                    Porque todo cristão vai enfrentar luta.
+                    A fé verdadeira não é provada no dia bom, mas no dia ruim.
+                    Perseverança é o que impede você de abandonar Deus por causa da dor.
+                </p>
+
+                <h2>4. Como perseverar (método para dias escuros)</h2>
                 <div class="step-box">
-                    <h4>Passo a Passo: O Memorial de Vitórias Anteriores</h4>
+                    <h4>Passo a Passo: Perseverança no Sofrimento</h4>
                     <ul class="step-list">
-                        <li><strong>Anotação do Passado:</strong> Quando o desespero paralisante e a escuridão caírem fortemente sobre você, não tente olhar para o futuro incerto. Pegue um papel e liste as 3 piores crises que você já vivenciou no passado (aquelas ocasiões extremas em que você teve a certeza de que não sobreviveria).</li>
-                        <li><strong>Reconhecimento Ativo:</strong> Olhe atentamente para essa lista e recorde-se de que o Senhor providenciou um caminho no meio daquele mar que parecia fechado. O mesmo Deus de ontem está cuidando do escuro de hoje. O memorial das glórias do passado injeta força e fôlego no presente.</li>
+                        <li>
+                            <strong>Passo 1 — Regra do “Hoje Basta”:</strong>
+                            Não tente carregar o mês inteiro.
+                            Carregue o dia de hoje.
+                        </li>
+                        <li>
+                            <strong>Passo 2 — Memorial de vitórias:</strong>
+                            Escreva crises antigas e como Deus ajudou.
+                            Isso fortalece a mente.
+                        </li>
+                        <li>
+                            <strong>Passo 3 — Olhe para a eternidade:</strong>
+                            A dor passa. Deus permanece.
+                        </li>
                     </ul>
                 </div>
 
-                <h2>2. Os Olhos Cravados na Eternidade</h2>
-                <p>Como alguém como o apóstolo Paulo suportou apedrejamentos severos, fome, frio contínuo e prisões injustas sem jamais desistir de Cristo? Porque ele entendeu que esta terra não é o nosso destino final; a vida terrena é apenas a curta escola de treinamento. Jesus suportou a agonia excruciante da cruz, não porque Ele fosse imune à dor, mas "pela alegria que Lhe fora proposta" (Hebreus 12:2). Ele manteve os olhos no prêmio eterno. Quando você foca as suas lentes na eternidade, a dor brutal de hoje se torna passageira e suportável. Até mesmo a morte perde a sua capacidade de aterrorizar.</p>
-
-                <div class="step-box">
-                    <h4>Passo a Passo: A Regra do 'Hoje Basta'</h4>
-                    <ul class="step-list">
-                        <li><strong>Desmonte o Fardo Esmagador:</strong> Em Mateus 6:34, Jesus ordenou expressamente que não ficássemos consumidos pela ansiedade em relação ao amanhã. Se você estiver enfrentando uma dor devastadora (como o choque de um luto), a simples ideia de tentar imaginar como viverá os próximos 5 anos sem aquela pessoa irá esmagá-lo mentalmente. Não faça isso. Concentre todas as suas forças apenas em sobreviver até a meia-noite de hoje. Respire, chore, ore e suporte o dia de hoje. Amanhã, novas e frescas misericórdias descerão do céu, confeccionadas sob medida para a dor exata daquele novo dia.</li>
-                    </ul>
+                <div class="conclusion-box">
+                    <strong>Conclusão:</strong>
+                    Perseverança é permanecer quando ninguém vê.
+                    É fé madura.
+                    É firmeza no fogo.
                 </div>
 
-                <div class="conclusion-box"><strong>Conclusão do Pilar 7:</strong> A dor não veio para destruí-lo, mas para atuar como a bigorna que finaliza a obra. Fique de pé, suporte o fogo, confie nas promessas futuras e você sairá do outro lado transformado, maduro e com uma Fé Inabalável.</div>
-
-                <button class="btn" onclick="iniciarProva('perseveranca')">Realizar Prova do Pilar 7</button>
+                <button class="btn" onclick="iniciarProva('perseveranca')">Realizar Prova do Tópico 7</button>
             </section>
 
+            <!-- RESULTADOS / EXAME (estrutura igual) -->
             <section id="mod-resultados" class="module-section">
                 <h1>Boletim de Resultados e Histórico</h1>
-                <p>Aqui ficam as notas detalhadas das suas provas. O caráter autêntico não teme a correção da verdade e a prestação de contas.</p>
-                <div id="resultados-lista">
-                </div>
+                <p>Aqui ficam as notas detalhadas das suas provas.</p>
+                <div id="resultados-lista"></div>
             </section>
 
             <section id="mod-exame" class="module-section">
                 <h1>O Exame Final da Forja</h1>
-                <p>Você estudou, sofreu as dores do crescimento espiritual e aplicou os ensinamentos dos 7 Pilares em sua vida. Este exame final não é um teste de sorte ou adivinhação. Ele colocará a sua mente e a sua memória à prova, com perguntas que percorrem absolutamente tudo o que foi ensinado e debatido.</p>
+                <p>
+                    Este exame percorre os 7 tópicos. É objetivo, direto e sem brechas.
+                    A nota mínima é <strong>85%</strong>.
+                </p>
                 <div class="step-box" style="border-top: 4px solid var(--danger);">
                     <h4>Regras do Campo de Batalha:</h4>
                     <ul class="step-list">
-                        <li>A nota de corte obrigatória e irredutível para passar é de <strong>85% de acertos</strong>. Sem negociações.</li>
-                        <li>Se você reprovar, o sistema exigirá com firmeza que você revise o material inteiro com mais foco e refaça a prova.</li>
-                        <li>Se você provar a sua excelência com o acerto exigido, o motor lógico irá gerar o seu <strong>Certificado Oficial em Word (.doc)</strong> validando a sua aprovação na Forja.</li>
+                        <li>A nota de corte obrigatória e irredutível para passar é de <strong>85% de acertos</strong>.</li>
+                        <li>Se reprovar, revise o conteúdo e refaça com seriedade.</li>
+                        <li>Ao aprovar, o sistema libera o <strong>Certificado em Word (.doc)</strong>.</li>
                     </ul>
                 </div>
                 <button class="btn btn-success" style="font-size: 1.3rem;" onclick="iniciarExameFinal()">Iniciar Batalha Final (15 Questões)</button>
@@ -514,16 +1100,16 @@
         <div class="eval-container" id="eval-quiz-stage">
             <h2 id="quiz-titulo" style="font-family: 'Merriweather', serif; font-size: 2rem; margin-bottom: 2rem; border-bottom: 2px solid var(--border); padding-bottom: 1rem;">Prova em Andamento</h2>
             <div id="quiz-render-area"></div>
-            
-            <p id="quiz-err" style="color: var(--danger); font-weight: 800; display: none; text-align: center; margin-top: 1rem; font-size: 1.1rem;">ALERTA: Soldado, você não pode deixar perguntas sem resposta.</p>
+
+            <p id="quiz-err" style="color: var(--danger); font-weight: 800; display: none; text-align: center; margin-top: 1rem; font-size: 1.1rem;">ALERTA: Você não pode deixar perguntas sem resposta.</p>
             <button class="btn" onclick="finalizarProvaLocal()">Verificar Gabarito e Salvar Nota</button>
-            <button class="btn" style="background: transparent; border: 2px solid var(--border); color: var(--secondary); margin-top: 1rem;" onclick="closeEval()">Cancelar e Recuar</button>
+            <button class="btn" style="background: transparent; border: 2px solid var(--border); color: var(--secondary); margin-top: 1rem;" onclick="closeEval()">Cancelar</button>
         </div>
     </div>
 
     <div id="copy-key-modal">
         <div class="copy-key-box">
-            <h2>Módulo Concluído!</h2>
+            <h2>Tópico Concluído!</h2>
             <p style="color: #64748b; font-size: 1.1rem;">Aqui está sua nova chave de sincronização. Copie e guarde-a para não perder seu progresso se fechar a página.</p>
             <div class="new-key-display" id="new-key-display">CHAVE</div>
             <button class="btn" style="margin-top: 1rem; margin-bottom: 1rem;" onclick="copiarChaveAcao()">Copiar Chave</button>
@@ -562,95 +1148,424 @@
     <script>
         let nomeAluno = "", funcaoAluno = "", moduloAtualProva = "", questoesSorteadas = [], isExameFinal = false;
 
-        // BANCO DE 35 QUESTÕES DOS MÓDULOS
+        /*
+          ==========================
+          BANCO DE QUESTÕES (REFEITO)
+          - Linguagem simples (pessoa de idade entende)
+          - Sem brechas
+          - Alternativas bem diferentes (evita “pegadinha”)
+          - Respostas alinhadas com o texto acima
+          ==========================
+        */
         const bancoAvaliacoes = {
             disciplina: [
-                { q: "Qual a diferença central entre motivação e disciplina segundo o curso?", opts: ["A motivação depende do humor do momento, enquanto a disciplina é um compromisso inegociável mantido independente dos sentimentos.", "A motivação é o único caminho para a fé, e a disciplina serve apenas para atividades físicas ou seculares.", "Ambas são idênticas na prática, dependendo exclusivamente da vontade divina para acontecerem em nossa vida.", "A disciplina é baseada nas emoções diárias, enquanto a motivação é uma escolha racional e inegociável."], ans: 0 },
-                { q: "O que o apóstolo Paulo quis dizer com 'esmurrar o próprio corpo' em 1 Coríntios 9?", opts: ["Praticar autoflagelação física constante para punir os próprios pecados.", "Subjugar a vontade carnal que busca conforto, permitindo que o Espírito Santo governe as decisões.", "Realizar jejuns absolutos de quarenta dias sempre que cometer alguma falha espiritual grave.", "Engajar-se em treinamentos militares intensos para defender fisicamente a comunidade cristã."], ans: 1 },
-                { q: "Qual lição principal tiramos da atitude de Daniel diante do decreto de morte na Babilônia?", opts: ["Ele orou escondido e em silêncio para não provocar a fúria das autoridades babilônicas.", "A disciplina mantida na paz o sustentou no caos, pois ele continuou sua rotina de oração normalmente.", "Ele negociou sua fé temporariamente para sobreviver e ajudar o seu povo futuramente.", "Ele formou um exército armado com seus amigos para resistir fisicamente à ordem do rei."], ans: 1 },
-                { q: "Como funciona a 'Regra dos 5 Segundos' para vencer a preguiça?", opts: ["Contar regressivamente de 5 a 1 e agir imediatamente, impedindo que a mente crie desculpas para não levantar.", "Orar durante cinco segundos exatos antes de sair da cama para garantir a proteção divina no dia.", "Programar cinco alarmes consecutivos com intervalos de cinco segundos para forçar o despertar.", "Aguardar cinco segundos após o alarme tocar para refletir sobre as metas do dia antes de agir."], ans: 0 },
-                { q: "Qual é o objetivo central do Jejum de Prazeres Lícitos, como cortar redes sociais ou café?", opts: ["Melhorar a saúde física, perder peso rapidamente e economizar recursos financeiros diários.", "Demonstrar um alto nível de espiritualidade para os líderes e membros da igreja local.", "Fortalecer o autocontrole, mostrando à mente que os instintos primários não governam suas escolhas diárias.", "Pagar uma dívida espiritual com Deus para alcançar bênçãos materiais e físicas mais rapidamente."], ans: 2 }
+                {
+                    q: "Disciplina, segundo o ensino do curso, é principalmente:",
+                    opts: [
+                        "Uma decisão de obedecer ao que é certo, mesmo sem vontade.",
+                        "Uma emoção forte que aparece quando o culto é bom.",
+                        "Um castigo aplicado para humilhar a pessoa.",
+                        "Um dom raro que só alguns recebem e outros nunca terão."
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Qual texto mostra que a disciplina traz fruto depois, mesmo sendo difícil no começo?",
+                    opts: [
+                        "Hebreus 12:11",
+                        "Gênesis 1:1",
+                        "Jonas 2:1",
+                        "Mateus 2:1"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Qual exemplo bíblico mostra disciplina como 'costume' e prática constante?",
+                    opts: [
+                        "Lucas 4:16 (Jesus, como era seu costume)",
+                        "Atos 1:1 (introdução do livro)",
+                        "Salmo 150:6 (louvor)",
+                        "Filemom 1:1 (saudação)"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Qual atitude prática ajuda a construir disciplina sem cair no 'zero'?",
+                    opts: [
+                        "Ter um mínimo inegociável, mesmo no dia ruim.",
+                        "Esperar a motivação voltar para começar.",
+                        "Só fazer quando estiver com tempo sobrando.",
+                        "Desistir e recomeçar do zero sempre que falhar."
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Segundo Provérbios 25:28, quem não tem domínio próprio é comparado a:",
+                    opts: [
+                        "Uma cidade com muros derrubados.",
+                        "Um jardim muito bem cuidado.",
+                        "Um rio calmo e silencioso.",
+                        "Uma casa forte e protegida."
+                    ],
+                    ans: 0
+                }
             ],
             conhecimento: [
-                { q: "Na Bíblia, o que caracteriza o conhecimento descrito pelas palavras Yada e Ginosko?", opts: ["O acúmulo de dados históricos e informações frias apenas para conseguir vencer debates teológicos.", "Um estado místico e emocional de visões que dispensa totalmente a leitura constante das Escrituras.", "A obtenção de diplomas universitários e títulos acadêmicos renomados em seminários de teologia.", "Um conhecimento íntimo, relacional e prático sobre o caráter de Deus, gerado por convivência profunda."], ans: 3 },
-                { q: "Como Jesus rebateu a distorção do Salmo 91 feita por Satanás no deserto?", opts: ["Ele expulsou o adversário usando uma demonstração visível de Seu enorme poder e glória divina.", "Ele utilizou o conhecimento das Escrituras, citando outro texto bíblico dentro do seu contexto correto.", "Ele concordou parcialmente com o argumento de Satanás, mas pediu humildemente para não ser tentado.", "Ele permaneceu em silêncio absoluto e orou de olhos fechados até que a tentação finalmente acabasse."], ans: 1 },
-                { q: "Por qual motivo os cristãos de Bereia foram elogiados por seu 'caráter nobre' em Atos 17?", opts: ["Eles ofertavam grandes quantias financeiras para conseguir sustentar as viagens missionárias da época.", "Eles aceitavam e concordavam imediatamente com tudo o que o famoso e respeitado apóstolo Paulo pregava.", "Eles ouviam a pregação, mas examinavam as Escrituras em casa para confirmar se o ensino era bíblico.", "Eles eram os únicos que não precisavam estudar, pois recebiam revelações diretas e diárias do céu."], ans: 2 },
-                { q: "Por que a prática da 'Leitura Aleatória' da Bíblia é considerada perigosa no curso?", opts: ["Porque desgasta e amassa as páginas do livro físico muito mais rapidamente com o passar do tempo.", "Porque ler versículos soltos fora do contexto original facilita grandes interpretações erradas e manipulações.", "Porque o livro do Apocalipse proíbe expressamente e duramente que a Bíblia seja lida fora de ordem.", "Porque essa prática exige muito mais tempo diário do que a leitura sistemática de um livro inteiro."], ans: 1 },
-                { q: "No Passo a Passo do Arsenal Mental, como você deve se preparar contra as tentações?", opts: ["Assistindo a pregações e vídeos aleatórios na internet todos os dias sempre que se sentir muito fraco.", "Identificando sua fraqueza, memorizando versículos específicos sobre o tema e usando-os como defesa rápida.", "Tentando focar sempre no pensamento positivo e na autoconfiança extrema no exato momento da crise.", "Ligando imediatamente para o pastor ou para um líder espiritual de confiança assim que a tentação começar."], ans: 1 }
+                {
+                    q: "Oséias 4:6 ensina que o povo foi destruído por falta de:",
+                    opts: [
+                        "Conhecimento",
+                        "Dinheiro",
+                        "Força física",
+                        "Amigos"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Qual atitude dos bereanos (Atos 17:11) é modelo de conhecimento saudável?",
+                    opts: [
+                        "Conferir nas Escrituras se o ensino era verdadeiro.",
+                        "Aceitar tudo sem questionar por respeito.",
+                        "Rejeitar a Bíblia por achar difícil.",
+                        "Seguir apenas opinião da internet."
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Segundo Mateus 22:29, Jesus disse que muitos erram porque:",
+                    opts: [
+                        "Não conhecem as Escrituras",
+                        "Não viajam para Jerusalém",
+                        "Não participam de eventos grandes",
+                        "Não têm boa memória"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Um método simples para crescer em conhecimento é:",
+                    opts: [
+                        "Ler um livro da Bíblia do começo ao fim e anotar o essencial.",
+                        "Abrir aleatoriamente e pegar um verso por dia na sorte.",
+                        "Ler só textos curtos para não cansar.",
+                        "Evitar estudo e depender só de emoção."
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "2 Timóteo 2:15 orienta o cristão a:",
+                    opts: [
+                        "Manejar bem a Palavra da verdade e buscar aprovação diante de Deus.",
+                        "Evitar a Bíblia para não ter conflito.",
+                        "Confiar apenas na intuição.",
+                        "Ensinar sem precisar aprender."
+                    ],
+                    ans: 0
+                }
             ],
             conviccao: [
-                { q: "Como Lucas e Pedro demonstram que a fé cristã não é baseada em lendas ou mitos?", opts: ["Eles pediram aos primeiros cristãos que acreditassem sem questionar ou exigir quaisquer provas lógicas.", "Lucas investigou os fatos com testemunhas e Pedro afirmou que não seguiam fábulas engenhosamente inventadas.", "Eles ignoraram as duras acusações dos críticos, mantendo um voto de silêncio absoluto sobre o tema.", "Eles criaram histórias simbólicas ainda maiores para poder competir com a forte mitologia da época greco-romana."], ans: 1 },
-                { q: "O que a passagem de 1 Pedro 3:15 instrui o cristão a fazer em relação à sua fé?", opts: ["Gritar mais alto durante os intensos debates para conseguir calar os ateus e os fortes críticos da Bíblia.", "Frequentar assiduamente as grandes reuniões da igreja para não perder o contato diário com os irmãos.", "Estar preparado intelectualmente para defender e conseguir explicar a razão da sua esperança perante o mundo.", "Aprender a ler todas as Escrituras de forma fluente nos idiomas originais, como o antigo grego e o hebraico."], ans: 2 },
-                { q: "O que o curso ensina sobre ter dúvidas ou fazer perguntas muito difíceis sobre a fé?", opts: ["Demonstra muita fraqueza espiritual, pois quem tem a fé verdadeira e pura jamais questiona as Escrituras.", "Deus não teme dúvidas; buscar boas respostas na apologética forja uma fé inabalável contra as pressões externas.", "Duvidar é um pecado muito grave que atrai duras consequências negativas para a vida financeira e familiar.", "Apenas os líderes formados em grandes seminários têm a total permissão bíblica para investigar temas difíceis."], ans: 1 },
-                { q: "Como a Convicção Racional deve guiar o cristão diante de notícias alarmantes (Fake News)?", opts: ["O cristão deve repassar a mensagem imediatamente para todos os seus contatos para servir de um forte alerta.", "Ele deve usar o raciocínio claro, checar a fonte da informação e não se deixar levar pelo forte medo ou sensacionalismo.", "Ele deve se isolar completamente da tecnologia e das redes sociais modernas para não ser contaminado pelo mundo.", "Ele deve confrontar e ofender publicamente a pessoa desavisada que enviou a notícia falsa no grupo da família."], ans: 1 },
-                { q: "Qual é a principal evidência histórica real que sustenta a validade total do Cristianismo?", opts: ["Uma revelação mística e secreta entregue a um monge isolado no deserto muitos séculos após a morte dos apóstolos.", "A grande descoberta arqueológica totalmente intacta da Arca da Aliança escondida nas ruínas do templo de Jerusalém.", "A crucificação pública de Cristo, o túmulo vazio validado e o testemunho real das pessoas que viram a ressurreição.", "Os extensos registros muito detalhados sobre a infância de Jesus encontrados nos velhos documentos do Império Romano."], ans: 2 }
+                {
+                    q: "1 Pedro 3:15 orienta o cristão a estar preparado para:",
+                    opts: [
+                        "Responder com mansidão e respeito a razão da esperança.",
+                        "Ganhar discussões com gritos.",
+                        "Falar pouco para nunca ser questionado.",
+                        "Evitar qualquer pergunta sobre fé."
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Lucas 1:3-4 mostra que Lucas escreveu após:",
+                    opts: [
+                        "Investigar cuidadosamente para dar certeza ao leitor.",
+                        "Adivinhar fatos por inspiração sem testemunhas.",
+                        "Copiar textos sem conferir.",
+                        "Evitar detalhes para não ser questionado."
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Efésios 4:14 alerta para não sermos:",
+                    opts: [
+                        "Levados por todo vento de doutrina",
+                        "Muito pacientes e mansos",
+                        "Muito firmes e constantes",
+                        "Cheios de alegria"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Uma atitude correta diante de dúvidas é:",
+                    opts: [
+                        "Escrever a dúvida e buscar resposta séria na Palavra e ensino firme.",
+                        "Esconder a dúvida e fingir que está tudo bem.",
+                        "Rir da Bíblia e desistir de aprender.",
+                        "Atacar quem faz perguntas."
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "2 Pedro 1:16 afirma que os cristãos não seguem:",
+                    opts: [
+                        "Fábulas engenhosamente inventadas",
+                        "Trabalho honesto",
+                        "Palavra de Deus",
+                        "O ensino de Jesus"
+                    ],
+                    ans: 0
+                }
             ],
             constancia: [
-                { q: "O que significa exatamente o termo 'Espiritualidade de Acampamento' abordado no módulo?", opts: ["Uma aversão enorme a participar de retiros espirituais ou a congregar em igrejas de estrutura física mais simples.", "A busca constante por picos emocionais em grandes eventos, sem nunca construir hábitos diários e muito consistentes.", "A dura recusa em participar de atividades com os jovens, preferindo o convívio solitário apenas com os adultos maduros.", "A péssima prática de dormir durante os cultos mais agitados devido ao forte cansaço provocado pelos eventos anteriores."], ans: 1 },
-                { q: "Qual grande lição sobre constância nós aprendemos com a forte atitude de Noé ao construir a arca?", opts: ["Ele demonstrou que o mais importante na vida é ter as ferramentas certas para realizar um trabalho muito bem feito.", "Ele provou que devemos apenas esperar sentados e em paz até que o grande milagre de Deus aconteça por conta própria.", "Ele trabalhou de forma obediente e contínua por décadas sem ver os resultados imediatos e suportando as zombarias.", "Ele nos ensinou que a forte preservação da natureza deve estar acima das leis e da sociedade corrompida daquela época."], ans: 2 },
-                { q: "Como o prático método da 'Corrente Inquebrável' ajuda a manter a constância diária na prática?", opts: ["Usando um calendário físico onde se marca um 'X' diário, focando toda a energia apenas em não falhar no dia de hoje.", "Utilizando um objeto físico forte, como uma pulseira pesada, para lembrar o dia todo da responsabilidade com a igreja.", "Colocando lindas fitas coloridas dentro da Bíblia para focar a mente exclusivamente nos textos das grandes promessas.", "Evitando o uso de relógios de pulso durante o período de oração para não limitar de forma alguma o agir do Espírito Santo."], ans: 0 },
-                { q: "O que a importante Regra do 1% nos ensina sobre os dias de extrema exaustão ou muita falta de tempo?", opts: ["Se você não puder cumprir a sua meta inteira, é muito preferível desistir naquele dia e recomeçar do zero no outro.", "Faça o mínimo possível, como ler um só versículo, pois o feito imperfeito é imensamente superior ao perfeito não realizado.", "Use o tempo livre para descansar assistindo televisão e justifique a sua falha culpando totalmente as duras circunstâncias do dia.", "Prometa a Deus que você irá dobrar o tempo de oração e de leitura no dia seguinte apenas para compensar a falha atual."], ans: 1 },
-                { q: "O que o profundo princípio da 'Matemática do Justo' (Provérbios 24:16) nos mostra claramente sobre o fracasso?", opts: ["Mostra que uma pessoa considerada justa por Deus nunca irá falhar ou cair em um grande pecado durante a sua vida.", "Ensina que a vitória real não está na ausência de quedas, mas na capacidade de se levantar rápido e não abandonar o propósito.", "Indica que cair exatamente sete vezes atrai uma imensa recompensa financeira ou material ao final do duro processo de provação.", "Afirma que os períodos de muita tristeza e de dificuldade na vida do crente duram no máximo sete dias completos e exatos."], ans: 1 }
+                {
+                    q: "Gálatas 6:9 ensina que não devemos nos cansar de:",
+                    opts: [
+                        "Fazer o bem",
+                        "Comer",
+                        "Dormir",
+                        "Viajar"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Provérbios 24:16 ensina que o justo pode cair, mas:",
+                    opts: [
+                        "Ele se levanta",
+                        "Ele nunca cai",
+                        "Ele desiste para sempre",
+                        "Ele perde a fé imediatamente"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "1 Coríntios 15:58 orienta a ser:",
+                    opts: [
+                        "Firme e constante na obra do Senhor",
+                        "Instável e variado",
+                        "Rápido para desistir",
+                        "Dependente de evento"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Qual prática ajuda a manter constância em dia ruim?",
+                    opts: [
+                        "Fazer o mínimo e não zerar.",
+                        "Parar tudo e voltar só quando sobrar tempo.",
+                        "Desistir e recomeçar do zero sempre.",
+                        "Esperar emoção aparecer."
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Mateus 24:13 afirma que será salvo quem:",
+                    opts: [
+                        "Perseverar até o fim",
+                        "Nunca tiver problema",
+                        "Nunca for tentado",
+                        "Nunca ficar triste"
+                    ],
+                    ans: 0
+                }
             ],
             autocontrole: [
-                { q: "Como a definição bíblica de um homem 'Forte' contrasta fortemente com a atual visão do mundo moderno?", opts: ["Ambas as visões concordam plenamente que demonstrar indignação batendo na mesa é um sinal muito claro de liderança e de poder.", "O mundo exalta a vingança, mas a Bíblia mostra que forte é aquele que tem poder para destruir, mas escolhe se dominar.", "O mundo valoriza demais a força física, enquanto a Bíblia ensina que devemos ser sempre fracos e vitimizados pela sociedade.", "Forte, segundo as Escrituras Sagradas, é apenas o homem que consegue humilhar seus adversários usando palavras sábias e educadas."], ans: 1 },
-                { q: "O que o apóstolo Tiago alerta principalmente sobre o perigoso 'Fogo da Língua' no Autocontrole?", opts: ["Ele alerta que o bom cristão nunca deve aumentar o tom de voz durante os momentos de adoração e cânticos na igreja.", "Você domina as palavras antes de falar, mas depois de ditas, torna-se escravo das feridas eternas que elas causam aos outros.", "Você pode falar palavras duras durante a raiva extrema, desde que peça desculpas sinceras aos irmãos no dia seguinte.", "A língua humana deve ser utilizada estritamente para a alimentação básica, evitando ao máximo qualquer tipo de debate longo."], ans: 1 },
-                { q: "Qual é a função real e prática da 'Pausa de 3 Segundos' durante uma tensa situação de ofensa?", opts: ["Ela dá tempo suficiente para o cérebro racional reassumir o controle das emoções, evitando reações impulsivas e muito explosivas.", "Ela serve unicamente para você conseguir acumular fôlego e responder à ofensa com um tom de voz superior ao do ofensor.", "É uma técnica altamente espiritual que faz com que a pessoa agressiva se esqueça instantaneamente de tudo o que estava dizendo.", "Ela ajuda você a conseguir desviar o olhar rapidamente e a ignorar completamente a presença da pessoa durante a confusão no trânsito."], ans: 0 },
-                { q: "O que determina a rigorosa 'Regra da Madrugada' ensinada no pilar prático do Autocontrole?", opts: ["Enviar os e-mails e as mensagens de correção severa apenas de madrugada, exatamente quando as pessoas estão dormindo tranquilamente.", "Jamais enviar mensagens importantes sob forte emoção à noite; escreva no bloco de notas e reavalie de cabeça fria no dia seguinte.", "Aproveitar silenciosamente as horas da madrugada para pregar o evangelho nas redes sociais quando a concorrência de atenção é menor.", "Passar a noite inteira em claro orando de joelhos sempre que tiver uma discussão forte com alguém do seu trabalho ou da família."], ans: 1 },
-                { q: "Sobre o autocontrole emocional cristão correto, como ele ensina a lidar com fortes sentimentos como a raiva?", opts: ["Ele se baseia fortemente na ideia de que sentir raiva é um grande pecado mortal que ofende a santidade de Deus profundamente.", "Sentir não é pecado; o autocontrole consiste em colocar limites claros nas emoções para que elas não guiem e dominem suas atitudes.", "A raiva não é uma emoção real e humana, sendo apenas uma forte ilusão criada pelo inimigo para confundir a mente do bom cristão.", "O cristão deve sentir todas as emoções muito intensamente, mas deve ignorá-las pelo resto de sua longa jornada espiritual e terrena."], ans: 1 }
+                {
+                    q: "Provérbios 16:32 diz que é melhor dominar:",
+                    opts: [
+                        "O próprio espírito",
+                        "A vida dos outros",
+                        "A cidade com violência",
+                        "O mundo com força"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Tiago 1:19 ensina a ser:",
+                    opts: [
+                        "Pronto para ouvir e tardio para se irar",
+                        "Rápido para falar e rápido para se irar",
+                        "Indiferente e frio",
+                        "Duro e agressivo"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Gênesis 4:7 mostra Deus dizendo que o homem deve:",
+                    opts: [
+                        "Dominar o pecado",
+                        "Aceitar o pecado",
+                        "Ignorar o pecado",
+                        "Celebrar o pecado"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Tiago 3:5-6 compara a língua a:",
+                    opts: [
+                        "Um fogo que pode destruir",
+                        "Uma água que sempre cura",
+                        "Uma pedra sem efeito",
+                        "Uma luz que nunca falha"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Efésios 4:29 orienta a:",
+                    opts: [
+                        "Não falar palavra que machuca; falar o que edifica.",
+                        "Falar qualquer coisa para aliviar a raiva.",
+                        "Gritar para ser respeitado.",
+                        "Guardar tudo e nunca conversar."
+                    ],
+                    ans: 0
+                }
             ],
             comunhao: [
-                { q: "Qual o significado prático e letal da analogia: 'Uma brasa tirada da fogueira apaga-se rapidamente'?", opts: ["Significa que devemos manter uma boa distância dos irmãos na igreja para evitar que seus grandes defeitos nos prejudiquem bastante.", "A fé isolada enfraquece facilmente; o cristão precisa do calor, da correção e da união ativa com os irmãos para sobreviver às crises.", "Indica que as grandes igrejas não precisam de ambientes confortáveis, devendo focar apenas no duro aspecto espiritual e invisível.", "Mostra que as longas reuniões de comunhão só são verdadeiramente válidas se todos os presentes estiverem totalmente livres de qualquer pecado."], ans: 1 },
-                { q: "Como a forte metáfora da Igreja como Corpo Humano (1 Coríntios 12) combate o moderno isolamento?", opts: ["Ela ensina que a igreja local deve realizar longas atividades físicas conjuntas antes de iniciar os seus profundos momentos de oração.", "Um membro isolado não ganha liberdade, mas morre lentamente; nós precisamos muito da igreja e de seus atritos para podermos crescer.", "Ela sugere que todos os membros ativos da congregação devem pensar de forma idêntica e usar roupas muito semelhantes nos cultos.", "Ela prova que frequentar a igreja de forma passiva, sentando-se confortavelmente no banco, é a única e grande exigência de Deus."], ans: 1 },
-                { q: "Segundo a carta de Tiago capítulo 5, qual é o enorme poder gerado pela confissão de pecados na comunhão?", opts: ["A confissão aumenta fortemente o grande medo de falhar devido à rigidez absoluta e punição imposta pelos líderes e pastores da congregação.", "O pecado oculto tem força na vergonha; ao trazê-lo para a luz em uma comunhão segura, ele perde o seu grande poder de destruição mental.", "Ela serve apenas para conseguir demonstrar quem é o mais santo dentro do grupo, criando uma forte hierarquia de superioridade moral e espiritual.", "A confissão é frequentemente usada para transferir toda a dura culpa dos nossos próprios erros para os nossos pais ou outras pessoas da igreja."], ans: 1 },
-                { q: "Qual é a imensa diferença entre ser apenas um mero 'Frequentador' e viver de fato o Corpo de Cristo?", opts: ["Não existe nenhuma grande diferença prática, pois ambas as atitudes são consideradas altamente bíblicas e bem aceitáveis no Novo Testamento.", "O frequentador apenas assiste ao culto e vai embora, enquanto viver o corpo exige um forte envolvimento, grande serviço e relacionamentos reais.", "O frequentador é apenas aquele que contribui financeiramente para a grandiosa construção de templos, enquanto os demais membros apenas oram.", "A Bíblia Sagrada orienta claramente que o cristão deve focar exclusivamente em sentar e ouvir os longos sermões silenciosamente em todos os encontros."], ans: 1 },
-                { q: "Qual é o objetivo central e prático de ter um chamado 'Escudeiro Confidencial' para prestação de contas?", opts: ["Permitir que os pastores locais tenham acesso rápido aos grandes segredos da congregação para mencioná-los sutilmente durante os cultos de domingo.", "Ter alguém de extrema confiança que faça as perguntas muito difíceis periodicamente atua como um forte e letal freio moral contra as tentações ocultas.", "Garantir que você sempre tenha um amigo bem animado e disponível para conversas longas, casuais e divertidas durante os seus momentos de lazer na semana.", "Assegurar a formação de um grande pacto de silêncio bem rigoroso para esconder os erros uns dos outros, evitando que a liderança os descubra logo."], ans: 1 }
+                {
+                    q: "Hebreus 10:25 ensina que não devemos:",
+                    opts: [
+                        "Deixar de congregar",
+                        "Ler a Bíblia",
+                        "Orar sozinho",
+                        "Trabalhar"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Provérbios 27:17 ensina que:",
+                    opts: [
+                        "Ferro afia ferro",
+                        "Dinheiro compra paz",
+                        "Silêncio sempre resolve",
+                        "Isolamento fortalece"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Tiago 5:16 mostra que confissão e oração uns pelos outros:",
+                    opts: [
+                        "Trazem cura e quebram o peso do segredo",
+                        "Servem para expor e humilhar",
+                        "Servem para fofoca",
+                        "Servem para competir santidade"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Atos 2:42 mostra a igreja perseverando em:",
+                    opts: [
+                        "Comunhão e ensino",
+                        "Isolamento e silêncio",
+                        "Debate e briga",
+                        "Preguiça e descanso"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Gálatas 6:2 orienta:",
+                    opts: [
+                        "Levar as cargas uns dos outros",
+                        "Ignorar problemas alheios",
+                        "Cuidar só de si",
+                        "Evitar ajudar para não se cansar"
+                    ],
+                    ans: 0
+                }
             ],
             perseveranca: [
-                { q: "Como a dura perseverança bíblica se diferencia de um enorme otimismo ilusório, baseado no grande exemplo de Jó?", opts: ["A perseverança consiste em apenas acreditar cegamente que Deus sempre enviará um grande livramento imediato e que o cristão nunca sofrerá dores reais.", "Jó confiou em Deus mesmo perdendo quase tudo e sem ter respostas fáceis; a fé imatura exige bênçãos, mas a fé madura foca no Senhor na dor.", "O enorme otimismo ilusório é chorar muito pelas grandes perdas, enquanto a verdadeira perseverança exige que o cristão esconda fortemente sua profunda tristeza da sociedade.", "A forte perseverança garante com certeza que, após um curto período de muito sofrimento no deserto seco, todas as suas riquezas perdidas retornarão em dobro."], ans: 1 },
-                { q: "Segundo o livro de Tiago capítulo 1, qual é o resultado incrível do processo prático de passar por severas provações?", opts: ["O sofrimento contínuo cria apenas muita revolta e grande indignação, que duram muito pouco tempo e logo depois são esquecidas pela congregação toda.", "A provação extrema atua como uma forja quente que produz perseverança forte, tornando o cristão altamente maduro, inabalável e preparado para as crises.", "As duras provas têm como objetivo muito exclusivo garantir de vez que o cristão alcance a grande prosperidade financeira e o imenso reconhecimento profissional.", "O profundo teste da grande fé produz uma enorme paz superficial que leva o crente a ignorar totalmente as maldades do mundo e a se isolar dos problemas."], ans: 1 },
-                { q: "Como pessoas como Paulo e Cristo suportaram dores absurdas e muito extremas (como prisões escuras e a cruz) sem desistirem?", opts: ["Eles logo receberam um forte e alívio muito milagroso que eliminou completamente a dor física e também emocional durante todos os terríveis momentos de tortura.", "Eles conseguiram manter o foco absoluto na grandiosa eternidade, entendendo bem que o profundo sofrimento terreno é totalmente passageiro perto da glória divina.", "Eles apenas concentraram as suas fortes mentes na grande expectativa de que logo seriam resgatados no último instante por imensos e visíveis exércitos celestiais.", "Eles todos estavam incrivelmente iludidos pela forte e vã esperança de que os perversos governantes romanos iriam rapidamente se arrepender e mudar as sentenças logo."], ans: 1 },
-                { q: "Qual é o objetivo prático do chamado 'Memorial de Vitórias Anteriores' diante de uma enorme e terrível tragédia presente?", opts: ["Fazer com que você olhe muito rápido para o escuro futuro com um falso otimismo forçado, rindo muito diante do grande desespero e apenas fingindo que os problemas sumiram.", "Relembrar como Deus o livrou incrivelmente de grandes crises passadas renova a forte esperança e sempre comprova que a mesma grande misericórdia agirá no caos de agora.", "Ler grandes e tristes histórias de antigas vitórias apenas para conseguir sentir uma forte nostalgia e uma leve e breve consolação durante os tenebrosos momentos de imensa solidão.", "Garantir firmemente que você de forma alguma não cometa novamente os mesmíssimos e graves erros que os seus velhos antepassados cometeram ao enfrentarem desertos cruéis."], ans: 1 },
-                { q: "O que a grandiosa Regra do 'Hoje Basta' (Mateus 6:34) orienta muito claramente a fazer em relação à ansiedade paralisante?", opts: ["Estocar diversos recursos físicos e muitos bens materiais durante os belos tempos de muita paz para conseguir lidar com os assustadores e terríveis vales de fortes sombras futuras.", "Diante de um enorme e pesado fardo esmagador, nunca tente imaginar como sobreviverá aos próximos e escuros anos; foque inteiramente suas poucas forças em suportar o dia de hoje.", "Antecipar as enormes prováveis grandes falências ou futuras tragédias letais por meio de muito longos jejuns dolorosos visando conseguir alterar de vez o cruel curso do destino adverso.", "Optar por ir dormir profundamente e tentar descansar bastante por longos e seguidos períodos noturnos para fugir o máximo possível da forte e muito dura e pesada realidade crua."], ans: 1 }
+                {
+                    q: "Tiago 1:3-4 ensina que a prova da fé produz:",
+                    opts: [
+                        "Perseverança",
+                        "Orgulho",
+                        "Desistência",
+                        "Confusão"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Jó 13:15 mostra Jó dizendo:",
+                    opts: [
+                        "Mesmo se Deus permitir a morte, ele continuará confiando",
+                        "Ele nunca vai sofrer",
+                        "Ele não precisa de Deus",
+                        "Ele não tem fé"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Hebreus 12:2 mostra Jesus suportando a cruz por causa:",
+                    opts: [
+                        "Da alegria proposta (foco no que viria depois)",
+                        "De raiva",
+                        "De vingança",
+                        "De orgulho"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "2 Coríntios 4:8-9 mostra que o cristão pode ser atribulado, mas:",
+                    opts: [
+                        "Não destruído",
+                        "Sempre derrotado",
+                        "Sempre abandonado",
+                        "Sempre sem esperança"
+                    ],
+                    ans: 0
+                },
+                {
+                    q: "Hebreus 6:15 mostra Abraão como exemplo de:",
+                    opts: [
+                        "Esperar e alcançar a promessa",
+                        "Desistir rápido",
+                        "Viver por impulso",
+                        "Ignorar Deus"
+                    ],
+                    ans: 0
+                }
             ]
         };
 
-        // BANCO EXCLUSIVO DO EXAME FINAL (15 QUESTÕES REFORMULADAS E INÉDITAS)
+        /*
+          ==========================
+          EXAME FINAL (15 QUESTÕES)
+          - Diretas, sem “pegadinha”
+          - Alternativas bem separadas
+          ==========================
+        */
         const bancoExameFinal = [
-            { q: "De acordo com a Forja, como o crente deve encarar os dias em que a vontade de buscar a Deus desaparece completamente?", opts: ["Agindo com base no compromisso racional e inegociável, ignorando a falta de vontade do momento.", "Esperando a motivação voltar para não fazer as coisas apenas por obrigação religiosa.", "Trocando o momento de oração por atividades de lazer até o humor melhorar.", "Jejuando de forma absoluta por sete dias até sentir arrepios espirituais mais fortes."], ans: 0 },
-            { q: "O conceito de 'esmurrar o próprio corpo' ensinado por Paulo refere-se a:", opts: ["Castigar o corpo fisicamente para se purificar dos pecados diários cometidos.", "Submeter os instintos carnais e a busca por conforto ao domínio do Espírito Santo.", "Evitar completamente o sono e o descanso durante os finais de semana.", "Participar de lutas corporais para fortalecer a mente e o espírito de batalha."], ans: 1 },
-            { q: "Qual o perigo letal de basear a fé cristã puramente em emoções e arrepios, ignorando o estudo das Escrituras?", opts: ["A fé torna-se inabalável, pois o mundo espiritual não depende de conhecimento humano.", "A fé vira uma estrutura frágil que não resiste às crises, pois falta intimidade real (Yada) com o caráter de Deus.", "O crente passa a ser perseguido com muito mais frequência pelas autoridades governamentais.", "A pessoa desenvolve um orgulho teológico excessivo que afasta os outros membros."], ans: 1 },
-            { q: "Ao ser tentado no deserto, qual estratégia principal Jesus utilizou contra Satanás, que serve de modelo para o nosso Arsenal Mental?", opts: ["Expulsou o inimigo usando um tom de voz extremamente agressivo e autoritário.", "Ignorou completamente as palavras do inimigo, fingindo que ele não estava lá naquele momento.", "Usou o conhecimento bíblico contextualizado, respondendo com a espada da Palavra ('Está escrito').", "Convocou imediatamente uma legião de anjos para debater com o adversário em seu lugar."], ans: 2 },
-            { q: "O apóstolo Pedro afirma que os cristãos não seguem 'fábulas engenhosamente inventadas'. Como a apologética reforça esse ensino?", opts: ["Provando que não precisamos de evidências históricas, pois a fé cega é sempre a mais pura e verdadeira.", "Utilizando a razão e a investigação histórica para comprovar fatos reais como a crucificação e ressurreição de Cristo.", "Afirmando que os mitos e lendas de outras religiões também são caminhos perfeitamente válidos para a salvação eterna.", "Exigindo que os ateus simplesmente aceitem a Bíblia inteira sem nunca questionar os eventos sobrenaturais descritos."], ans: 1 },
-            { q: "Qual deve ser a postura imediata de um cristão com convicção racional ao receber notícias alarmantes (Fake News) em redes sociais?", opts: ["Repassar imediatamente para proteger os irmãos da igreja de possíveis ameaças mundiais.", "Reter a informação, investigar a fonte usando a razão e evitar a propagação de mentiras e pânico.", "Isolar-se completamente da internet para nunca mais correr o risco de ler notícias seculares.", "Confiar cegamente se a mensagem tiver sido enviada por um líder religioso muito famoso."], ans: 1 },
-            { q: "Qual é o principal problema e risco da chamada 'Espiritualidade de Acampamento' abordada no curso?", opts: ["Ela exige muita leitura bíblica diária, sobrecarregando severamente a mente do novo convertido.", "Ela cria uma dependência letal de grandes eventos e fortes picos emocionais, falhando em construir hábitos diários consistentes.", "Ela afasta rapidamente os jovens da igreja por ser considerada muito monótona, silenciosa e com poucas atividades interativas.", "Ela foca excessivamente e apenas na arrecadação financeira para conseguir organizar os enormes retiros anuais das congregações."], ans: 1 },
-            { q: "Em dias de extremo cansaço onde a meta espiritual não pode ser cumprida integralmente, o que o Princípio do 1% ensina o soldado a fazer?", opts: ["É melhor não fazer absolutamente nada do que fazer de forma imperfeita; compense orando o triplo no dia seguinte.", "Faça o mínimo possível (como ler um só versículo), pois manter o hábito vivo na mente é imensamente superior a abandoná-lo.", "Transfira a sua responsabilidade espiritual daquele dia para outra pessoa da sua família que tenha mais tempo livre.", "Assuma a derrota publicamente, peça perdão no altar no domingo e reinicie todo o processo de discipulado desde o primeiro pilar."], ans: 1 },
-            { q: "De acordo com a história do rei Saul e Davi na caverna, qual é a verdadeira métrica de 'força' do caráter cristão?", opts: ["A capacidade de destruir rapidamente todos os inimigos com as próprias mãos sempre que surgir uma oportunidade clara.", "Ter o poder de se vingar e a faca nas mãos, mas escolher dominar a si mesmo e agir com total misericórdia e graça.", "Levantar a voz e intimidar ferozmente o ofensor para garantir que o seu respeito na comunidade seja sempre mantido intacto.", "Fingir fraqueza e humildade diante dos líderes mais fortes para conseguir garantir e colher bons favores políticos no futuro próximo da nação."], ans: 1 },
-            { q: "Por que a rigorosa 'Regra da Madrugada' é uma ferramenta tática fundamental para dominar o ardente 'Fogo da Língua'?", opts: ["Porque orar intensamente de madrugada é o único e exclusivo momento em que Deus perdoa os pecados cometidos por meio das nossas palavras cruéis.", "Porque impede o envio de mensagens agressivas sob forte emoção; o adiamento permite que a razão reassuma o controle no dia seguinte.", "Porque obriga a pessoa a perder noites preciosas de sono como forma de penitência rigorosa por ter ofendido um familiar ou um colega de trabalho.", "Porque a internet costuma ficar inativa durante a madrugada, forçando o crente a ler a Bíblia em vez de usar as redes sociais no celular."], ans: 1 },
-            { q: "Qual o perigo oculto e letal ilustrado pela frase: 'Uma brasa tirada da fogueira apaga-se rapidamente'?", opts: ["O crente que congrega muito acaba perdendo rapidamente a sua individualidade e se tornando um robô, igual a todos os outros do grupo.", "O isolamento espiritual, mesmo para quem estuda muito a Bíblia, esfria a fé; o atrito com os irmãos é totalmente necessário para manter a chama viva.", "Frequentar as células e os pequenos grupos expõe muito o cristão maduro ao contato direto com muitas heresias ensinadas por líderes extremamente despreparados.", "Conviver com irmãos imperfeitos na igreja suga absolutamente todas as energias boas, deixando o cristão muito cansado e deprimido com a humanidade."], ans: 1 },
-            { q: "Na prática da Comunhão, qual a função vital e irrenunciável do 'Escudeiro Confidencial' na luta diária contra o pecado oculto?", opts: ["Atuar como um parceiro de prestação de contas que o confronta periodicamente com perguntas difíceis, quebrando o forte poder da vergonha e do segredo.", "Fazer o papel de um fofoqueiro 'santo' que repassa todos os seus maiores defeitos e problemas para o pastor principal resolver publicamente no culto.", "Servir apenas como um fiel guarda-costas físico para protegê-lo ativamente contra as agressões verbais de pessoas de outras religiões no seu bairro ou cidade.", "Encobertar e esconder perfeitamente todos os seus erros graves das lideranças da igreja, formando um pacto de silêncio absoluto para que ninguém seja julgado injustamente."], ans: 0 },
-            { q: "O que difere a imensa fé de Jó da teologia ilusória moderna que promete apenas vitórias terrenas ininterruptas?", opts: ["Jó acreditava piamente que o sofrimento era um castigo passageiro e leve que duraria exatos sete dias antes de receber absolutamente tudo em dobro de volta na mesma semana.", "A teologia ilusória foca apenas nos benefícios e na ausência de dor; a fé de Jó prova seu valor gigantesco ao continuar confiando no Senhor mesmo na tragédia e sem obter respostas imediatas do céu.", "Jó manteve sua imensa riqueza espiritual e financeira porque aprendeu a ignorar o luto completamente, sorrindo muito e cantando alto enquanto passava por suas piores tragédias familiares.", "A fé inabalável exige fortemente que o crente barganhe com Deus durante a dor, prometendo pagar maiores dízimos e ofertas em troca do milagre imediato e infalível de cura e de alta prosperidade material."], ans: 1 },
-            { q: "Como a profunda perspectiva da eternidade, vivenciada por Paulo e por Jesus na cruz, atua nas tragédias mais devastadoras do presente?", opts: ["Ela cria uma negação psicológica completa e total da realidade, fazendo o cristão acreditar firmemente que a dor física não existe de verdade e que ela não pode atingir o nosso corpo natural.", "Ela diminui drasticamente o peso esmagador da dor atual, pois a vida terrena e difícil passa a ser vista apenas como um treinamento rápido e passageiro diante da indescritível glória eterna que os aguarda.", "Ela serve unicamente para conseguir assustar as pessoas incrédulas e ruins com a imensa dor do inferno, obrigando-as a se converterem muito mais rapidamente por causa do forte e incontrolável pânico da morte iminente.", "Ela garante com cem por cento de certeza que todas as pessoas boas e fiéis terão os seus corpos físicos totalmente restaurados, jovens e completamente curados na terra em menos de cinco anos após qualquer acidente fatal."], ans: 1 },
-            { q: "Qual é a função estratégica, mental e altamente protetora de utilizar o 'Memorial de Vitórias Anteriores' durante um brutal ataque de ansiedade profunda e paralisante?", opts: ["Recordar, listar e anotar como o Senhor Deus já abriu caminhos impossíveis em crises muito piores do passado serve para injetar força, fôlego vital e a esperança inabalável de que Ele mesmo cuidará do caos e da escuridão da crise do presente.", "Serve para forçar o cristão a chorar ainda mais por todas as suas duras perdas antigas, criando um profundo e melancólico estado de pura humilhação depressiva que agrada grandemente o coração e os olhos de Deus durante os dias de chuva.", "Funciona exclusivamente como um pequeno amuleto físico de sorte espiritual que deve ser dobrado e levado sempre dentro da carteira para conseguir afastar definitivamente todas as más vibrações e afastar os duros ataques demoníacos contra o seu negócio atual.", "Obriga a pessoa a esquecer de vez e apagar o seu passado completamente da memória e a focar apenas nas gigantescas riquezas materiais e nas maravilhas visíveis que ela conseguirá conquistar com facilidade nas próximas duas e prósperas décadas de sucesso contínuo."], ans: 0 }
+            { q: "Disciplina é principalmente:", opts: ["Decisão de obedecer ao que é certo mesmo sem vontade.", "Empolgação do momento.", "Castigo para humilhar.", "Sorte espiritual."], ans: 0 },
+            { q: "Qual versículo ensina que disciplina dói no início, mas depois traz fruto de justiça?", opts: ["Hebreus 12:11", "Gênesis 1:1", "Miquéias 6:8", "Salmo 150:6"], ans: 0 },
+            { q: "Qual exemplo mostra prática constante (costume) em vez de impulso?", opts: ["Lucas 4:16", "Filemom 1:1", "Jonas 2:1", "Apocalipse 1:1"], ans: 0 },
+            { q: "Conhecimento é necessário porque:", opts: ["Sem conhecimento, a pessoa pode ser enganada.", "Conhecimento atrapalha a fé.", "Conhecimento é só para pastores.", "Conhecimento é pecado."], ans: 0 },
+            { q: "Oséias 4:6 afirma que o povo foi destruído por falta de:", opts: ["Conhecimento", "Riqueza", "Comida", "Força"], ans: 0 },
+            { q: "Atos 17:11 elogia os bereanos porque:", opts: ["Conferiam nas Escrituras se o ensino era verdadeiro.", "Aceitavam tudo sem conferir.", "Rejeitavam a Bíblia.", "Viviam isolados."], ans: 0 },
+            { q: "Convicção racional significa:", opts: ["Saber por que crê e responder com respeito.", "Gritar mais alto para vencer debates.", "Nunca estudar.", "Evitar perguntas."], ans: 0 },
+            { q: "1 Pedro 3:15 orienta a estar preparado para:", opts: ["Responder a razão da esperança com mansidão e respeito.", "Calar-se sempre.", "Atacar quem pergunta.", "Ignorar dúvidas."], ans: 0 },
+            { q: "Constância é:", opts: ["Continuar no bem mesmo sem emoção e sem resultado imediato.", "Só fazer quando dá vontade.", "Parar em dia ruim.", "Esperar evento grande."], ans: 0 },
+            { q: "Gálatas 6:9 diz para não nos cansarmos de:", opts: ["Fazer o bem", "Dormir", "Comer", "Viajar"], ans: 0 },
+            { q: "Autocontrole é:", opts: ["Dominar a reação e agir certo mesmo sentindo emoção.", "Não sentir nada nunca.", "Explodir para aliviar.", "Vingar-se rapidamente."], ans: 0 },
+            { q: "Tiago 1:19 ensina a ser:", opts: ["Pronto para ouvir e tardio para se irar.", "Rápido para falar e rápido para se irar.", "Sempre agressivo.", "Sempre calado e frio."], ans: 0 },
+            { q: "Comunhão é necessária porque:", opts: ["Deus formou um corpo, não crentes isolados.", "Isolamento fortalece sempre.", "A igreja não serve para nada.", "Cada um se salva sozinho."], ans: 0 },
+            { q: "Hebreus 10:25 ensina a:", opts: ["Não deixar de congregar.", "Ficar sozinho sempre.", "Evitar irmãos.", "Ignorar a igreja."], ans: 0 },
+            { q: "Perseverança é:", opts: ["Continuar confiando em Deus mesmo na dor.", "Desistir quando dói.", "Fingir que não existe sofrimento.", "Negar a fé na crise."], ans: 0 }
         ];
 
         // --- SISTEMÁTICA DE ATUALIZAÇÃO DE RESULTADOS (SEM LOCAL STORAGE) ---
         function carregarHistoricoLocal(modLiberado) {
             let resultDiv = document.getElementById('resultados-lista');
-            resultDiv.innerHTML = ""; // Limpa os resultados ao entrar para evitar resquícios
+            resultDiv.innerHTML = "";
 
             if (modLiberado > 1) {
                 let boletim = "";
                 const nomesMods = ['Disciplina', 'Conhecimento', 'Convicção Racional', 'Constância', 'Autocontrole', 'Comunhão', 'Perseverança'];
-                let maxLoop = modLiberado > 8 ? 8 : modLiberado; 
+                let maxLoop = modLiberado > 8 ? 8 : modLiberado;
                 for(let i = 1; i < maxLoop; i++) {
                     boletim = `
                     <div class="result-card" style="border-left: 5px solid var(--success);">
                         <div class="result-header">
-                            <h3>Pilar ${i}: ${nomesMods[i-1]}</h3>
+                            <h3>Tópico ${i}: ${nomesMods[i-1]}</h3>
                             <div class="import-badge">✔️ Aprovado via Chave de Sincronização</div>
                         </div>
-                        <p style="color:#475569; font-size: 0.95rem;">Sua progressão neste pilar foi autenticada e validada através da sua chave segura inserida no login.</p>
+                        <p style="color:#475569; font-size: 0.95rem;">Seu progresso neste tópico foi validado pela chave inserida no login.</p>
                     </div>` + boletim;
                 }
                 resultDiv.innerHTML = boletim;
@@ -675,7 +1590,7 @@
             if (chaveInput !== "") {
                 let check = extrairModuloDaChave(chaveInput, nomeAluno);
                 if (check === null) {
-                    document.getElementById('login-err').innerText = "ERRO: A Chave foi corrompida ou pertence a outro soldado (Nome incorreto).";
+                    document.getElementById('login-err').innerText = "ERRO: A Chave foi corrompida ou pertence a outro aluno (Nome incorreto).";
                     document.getElementById('login-err').style.display = 'block'; return;
                 }
                 modLiberado = check;
@@ -687,7 +1602,7 @@
                 if(modLiberado >= i) {
                     let btn = document.getElementById('nav-mod-' + paineis[i-2]);
                     btn.classList.remove('locked');
-                    if (i === 8) { btn.innerText = "Exame Final (Liberado)"; } 
+                    if (i === 8) { btn.innerText = "Exame Final (Liberado)"; }
                     else { btn.innerText = i + ". " + btn.innerText.split('.')[1].split('(')[0].trim(); }
                 }
             }
@@ -711,12 +1626,12 @@
                 let decodificado = atob(chaveInput);
                 if (!decodificado.endsWith("-FORJA2026")) return null;
                 let partes = decodificado.replace("-FORJA2026", "").split('-');
-                let assinBase = partes[0]; 
+                let assinBase = partes[0];
                 let modNum = parseInt(partes[1]);
                 let n = nomeAtual.trim().toLowerCase();
                 let iniciais = n.split(/\s+/).map(p => p.charAt(0)).join('');
                 let letras = n.replace(/\s+/g, '').length;
-                if (assinBase !== `${iniciais}${letras}`) return null; 
+                if (assinBase !== `${iniciais}${letras}`) return null;
                 return modNum;
             } catch (e) { return null; }
         }
@@ -725,13 +1640,13 @@
         function iniciarProva(moduloID) {
             isExameFinal = false; moduloAtualProva = moduloID;
             let tituloStr = moduloID.charAt(0).toUpperCase() + moduloID.slice(1);
-            document.getElementById('quiz-titulo').innerText = "Avaliação Tática: " + tituloStr;
+            document.getElementById('quiz-titulo').innerText = "Avaliação: " + tituloStr;
             montarEExibirProva(bancoAvaliacoes[moduloAtualProva]);
         }
 
         function iniciarExameFinal() {
             isExameFinal = true;
-            document.getElementById('quiz-titulo').innerText = "Batalha Final (15 Questões Randômicas)";
+            document.getElementById('quiz-titulo').innerText = "Exame Final (15 Questões)";
             let poolExame = [...bancoExameFinal].sort(() => 0.5 - Math.random());
             montarEExibirProva(poolExame);
         }
@@ -740,7 +1655,7 @@
             document.getElementById('quiz-err').style.display = 'none';
             const container = document.getElementById('quiz-render-area');
             container.innerHTML = '';
-            
+
             questoesSorteadas = [...arrayDeQuestoes];
 
             questoesSorteadas.forEach((qData, qIndex) => {
@@ -750,7 +1665,7 @@
                 html += `</div>`;
                 container.innerHTML += html;
             });
-            
+
             document.getElementById('eval-modal').style.display = 'block';
             document.getElementById('eval-modal').scrollTop = 0;
         }
@@ -765,8 +1680,11 @@
                 if (!selected) { todasRespondidas = false; break; }
                 let isCorrect = parseInt(selected.value) === questoesSorteadas[i].ans;
                 if (isCorrect) {
-                    acertos++; detalhamentoHTML += `<div class="result-q">${i + 1}. ${questoesSorteadas[i].q}</div><div class="result-a correct">✔️ ACERTO CONFIRMADO</div>`;
-                } else { detalhamentoHTML += `<div class="result-q">${i + 1}. ${questoesSorteadas[i].q}</div><div class="result-a incorrect">❌ FALHA. Necessária revisão doutrinária do texto.</div>`; }
+                    acertos++;
+                    detalhamentoHTML += `<div class="result-q">${i + 1}. ${questoesSorteadas[i].q}</div><div class="result-a correct">✔️ CORRETO</div>`;
+                } else {
+                    detalhamentoHTML += `<div class="result-q">${i + 1}. ${questoesSorteadas[i].q}</div><div class="result-a incorrect">❌ INCORRETO. Volte ao conteúdo e revise com atenção.</div>`;
+                }
             }
 
             if (!todasRespondidas) { document.getElementById('quiz-err').style.display = 'block'; return; }
@@ -775,23 +1693,21 @@
 
             if (isExameFinal) {
                 if (percent >= 85) {
-                    // Preenche o formulário com o dado que o aluno digitou no Login
                     document.getElementById('nome-cert').value = nomeAluno;
-                    // Mostra o formulário modal do Certificado
                     document.getElementById('cert-form-modal').style.display = 'flex';
-                } else { 
-                    alert(`REPROVADO EM BATALHA. Nota: ${percent}%. O selo de corte (85%) é inegociável. Retire-se, estude os Pilares novamente e volte amanhã.`); 
+                } else {
+                    alert(`REPROVADO. Nota: ${percent}%. A nota mínima é 85%. Revise os 7 tópicos e tente novamente.`);
                     switchTab('mod-resultados');
                 }
                 closeEval(); return;
             }
 
             let tituloMod = moduloAtualProva.charAt(0).toUpperCase() + moduloAtualProva.slice(1);
-            let htmlResultado = `<div class="result-card"><div class="result-header"><h3>Correção: Pilar ${tituloMod}</h3><div class="result-score">Efetividade: ${percent}% (${acertos}/${total})</div></div>${detalhamentoHTML}</div>`;
-            
+            let htmlResultado = `<div class="result-card"><div class="result-header"><h3>Correção: ${tituloMod}</h3><div class="result-score">Nota: ${percent}% (${acertos}/${total})</div></div>${detalhamentoHTML}</div>`;
+
             const listaResult = document.getElementById('resultados-lista');
             if (listaResult.innerHTML.includes("Nenhuma avaliação")) { listaResult.innerHTML = ''; }
-            listaResult.innerHTML = htmlResultado + listaResult.innerHTML; 
+            listaResult.innerHTML = htmlResultado + listaResult.innerHTML;
 
             const mapas = {
                 'disciplina': { proxId: 'conhecimento', num: 2 }, 'conhecimento': { proxId: 'conviccao', num: 3 },
@@ -804,20 +1720,20 @@
                 let info = mapas[moduloAtualProva];
                 if (info) {
                     document.getElementById('nav-mod-' + info.proxId).classList.remove('locked');
-                    if (info.num === 8) { document.getElementById('nav-mod-' + info.proxId).innerText = "Exame Final (Liberado)"; } 
+                    if (info.num === 8) { document.getElementById('nav-mod-' + info.proxId).innerText = "Exame Final (Liberado)"; }
                     else { document.getElementById('nav-mod-' + info.proxId).innerText = info.num + ". " + info.proxId.charAt(0).toUpperCase() + info.proxId.slice(1); }
-                    
+
                     let novaChave = gerarAssinatura(nomeAluno, info.num);
                     document.getElementById('display-chave').innerText = novaChave;
-                    
+
                     document.getElementById('new-key-display').innerText = novaChave;
                     document.getElementById('copy-key-modal').style.display = 'flex';
                     closeEval();
-                    return; 
+                    return;
                 }
-            } else { alert(`REPROVADO (${percent}%). O padrão exigido de 60% falhou severamente. Execute a leitura atenta novamente.`); }
+            } else { alert(`REPROVADO (${percent}%). A nota mínima para avançar é 60%. Revise e tente de novo.`); }
 
-            closeEval(); switchTab('mod-resultados'); 
+            closeEval(); switchTab('mod-resultados');
         }
 
         // FUNÇÕES DO MODAL DE CÓPIA DE CHAVE
@@ -826,34 +1742,29 @@
             navigator.clipboard.writeText(chaveTexto).then(() => {
                 alert("Chave copiada com sucesso!");
             }).catch(err => {
-                alert("Erro ao copiar. Por favor, selecione o texto e copie manualmente.");
+                alert("Erro ao copiar. Selecione o texto e copie manualmente.");
             });
         }
 
         function fecharModalChave() {
             document.getElementById('copy-key-modal').style.display = 'none';
-            switchTab('mod-resultados'); 
+            switchTab('mod-resultados');
         }
 
         // MOTOR DO CERTIFICADO (WORD .DOC)
         document.getElementById('formCertificado').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            // Configuração Fixa
             const nomeIgreja = "Igreja Comunidade Família Cristã";
-
-            // Pega o nome do formulário
             const nome = document.getElementById('nome-cert').value;
-            nomeAluno = nome; // Atualiza a variável global caso tenha corrigido
-            
-            // Gera a data atual automaticamente
+            nomeAluno = nome;
+
             const dataAtual = new Date();
             const dia = String(dataAtual.getDate()).padStart(2, '0');
             const mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
             const ano = dataAtual.getFullYear();
             const dataFormatada = `${dia}/${mes}/${ano}`;
 
-            // --- Estrutura HTML do CERTIFICADO ---
             const conteudoWord = `
                 <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
                 <head>
@@ -861,35 +1772,26 @@
                     <title>Certificado A Forja</title>
                 </head>
                 <body style="font-family: 'Calibri', 'Arial', sans-serif; margin: 0; padding: 0;">
-                    
                     <div style="border: 15px solid #c5a059; padding: 5px; margin: 20px;">
-                        
                         <div style="border: 5px solid #002147; padding: 50px; text-align: center;">
-                            
                             <p style="color: #c5a059; font-size: 18px; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; margin: 0;">
                                 CERTIFICADO DE CONCLUSÃO
                             </p>
-                            
                             <h1 style="color: #002147; font-size: 62px; margin-top: 10px; margin-bottom: 0; font-family: 'Georgia', serif; font-weight: bold; font-style: italic;">
                                 A Forja
                             </h1>
-                            
                             <div style="width: 200px; height: 2px; background-color: #c5a059; margin: 15px auto 40px auto;"></div>
-                            
                             <p style="font-size: 22px; color: #444; margin-bottom: 10px;">
                                 Certificamos para os devidos fins que
                             </p>
-                            
                             <p style="font-size: 44px; color: #002147; font-weight: bold; text-transform: uppercase; margin: 0; padding: 10px 0; border-bottom: 1px solid #eee;">
                                 ${nome}
                             </p>
-                            
                             <p style="font-size: 19px; color: #555; line-height: 1.7; margin-top: 35px; padding: 0 50px;">
-                                participou e concluiu com distinção o ciclo de capacitação e renovação espiritual baseado no programa <b style="color:#002147;">"A Forja"</b>. Através da oração, do discipulado e da Palavra, demonstrou compromisso em ter seu caráter moldado e seu propósito firmado em Cristo Jesus.
+                                participou e concluiu com distinção o ciclo de capacitação e renovação espiritual baseado no programa <b style="color:#002147;">"A Forja"</b>.
+                                Demonstrou compromisso em ter seu caráter moldado e seu propósito firmado em Cristo Jesus.
                             </p>
-                            
                             <br><br><br>
-                            
                             <table style="width: 100%; margin-top: 40px; border-collapse: collapse;">
                                 <tr>
                                     <td style="text-align: center; width: 50%; padding: 10px; vertical-align: bottom;">
@@ -904,30 +1806,23 @@
                                     </td>
                                 </tr>
                             </table>
-
                         </div>
                     </div>
                 </body>
                 </html>
             `;
 
-            // Cria o arquivo Blob para download
-            const blob = new Blob(['\ufeff', conteudoWord], {
-                type: 'application/msword'
-            });
+            const blob = new Blob(['\ufeff', conteudoWord], { type: 'application/msword' });
             const url = URL.createObjectURL(blob);
-            
-            // Configura o botão de download
+
             const btnDownload = document.getElementById('btnDownload');
             const downloadArea = document.getElementById('downloadArea');
-            
+
             btnDownload.href = url;
-            
-            // Formata o nome do arquivo
+
             const nomeArquivo = nome.replace(/\s+/g, '_').toUpperCase();
             btnDownload.download = `CERTIFICADO_FORJA_${nomeArquivo}.doc`;
-            
-            // Mostra a área de download com animação suave
+
             downloadArea.style.display = 'block';
             downloadArea.style.opacity = 0;
             setTimeout(() => {

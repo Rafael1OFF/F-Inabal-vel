@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Fé Inabalável | Plataforma de Formação EAD</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
         /* BASE PREMIUM E CORES */
@@ -136,15 +135,25 @@
         .copy-key-box h2 { margin: 0 0 1rem 0; color: var(--success); font-family: 'Merriweather', serif; font-size: 1.8rem; border-bottom: none; padding-bottom: 0; }
         .new-key-display { background: #1e293b; color: #10b981; padding: 1.2rem; border-radius: 8px; font-family: monospace; font-size: 1.4rem; font-weight: bold; margin: 1.5rem 0; word-break: break-all; }
 
-        /* CERTIFICADO INVISÍVEL PARA GERAÇÃO DE PDF */
-        #certificado-wrapper { display: none; padding: 40px; background: white; width: 1123px; height: 794px; position: absolute; left: -9999px; top: 0; }
-        .certificado-content { border: 10px solid var(--secondary); padding: 50px; text-align: center; height: 100%; border-radius: 10px; background: #f8fafc; position: relative; }
-        .cert-title { font-family: 'Merriweather', serif; font-size: 4rem; color: var(--primary); text-transform: uppercase; letter-spacing: 5px; margin-top: 30px; }
-        .cert-subtitle { font-size: 1.5rem; color: #64748b; margin-top: 10px; letter-spacing: 2px; }
-        .cert-name { font-family: 'Merriweather', serif; font-size: 3.5rem; font-weight: bold; color: var(--text-heading); margin: 60px 0; border-bottom: 2px solid var(--primary); display: inline-block; padding: 0 50px; }
-        .cert-body { font-size: 1.5rem; color: #334155; max-width: 800px; margin: 0 auto; line-height: 1.8; }
-        .cert-footer { position: absolute; bottom: 50px; width: 100%; left: 0; display: flex; justify-content: space-around; font-size: 1.2rem; color: var(--secondary); font-weight: bold; }
-        .cert-signature { border-top: 2px solid var(--secondary); padding-top: 10px; width: 300px; }
+        /* CSS DO EMISSOR DE CERTIFICADOS (Escopo protegido para não afetar o resto do site) */
+        .main-card {
+            background-color: #ffffff; padding: 40px; border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); width: 100%; max-width: 450px;
+            border-top: 5px solid #004a99; margin: 0 auto;
+        }
+        .main-card .header-area { text-align: center; margin-bottom: 35px; }
+        .main-card .header-area h2 { margin: 0; color: #004a99; font-size: 28px; font-weight: 700; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .main-card .header-area p { margin: 5px 0 0; color: #777; font-size: 16px; }
+        .main-card .form-group { margin-bottom: 22px; text-align: left; }
+        .main-card label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; font-size: 14px; text-transform: none; letter-spacing: normal; }
+        .main-card input[type="text"] { width: 100%; padding: 14px; border: 1px solid #ddd; background-color: #fafafa; color: #333; border-radius: 8px; box-sizing: border-box; font-size: 15px; transition: all 0.2s ease; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .main-card input[type="text"]:focus { outline: none; border-color: #004a99; box-shadow: 0 0 0 3px rgba(0, 74, 153, 0.1); background-color: #fff; }
+        .main-card .btn-generate { width: 100%; padding: 16px; background: linear-gradient(135deg, #004a99 0%, #0066cc 100%); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: opacity 0.2s ease; box-shadow: 0 4px 10px rgba(0, 102, 204, 0.2); margin-top:0; }
+        .main-card .btn-generate:hover { opacity: 0.9; background: linear-gradient(135deg, #004a99 0%, #0066cc 100%); transform: none; }
+        .main-card .btn-generate:active { transform: translateY(1px); }
+        .main-card .download-area { display: none; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; }
+        .main-card .download-btn { display: inline-block; background-color: #27ae60; text-align: center; text-decoration: none; padding: 14px 24px; border-radius: 30px; font-weight: 600; color: white; font-size: 15px; transition: background-color 0.2s ease; box-shadow: 0 4px 10px rgba(39, 174, 96, 0.2); width: auto; }
+        .main-card .download-btn:hover { background-color: #2ecc71; }
 
         @media (max-width: 768px) {
             .mobile-header { display: flex; }
@@ -447,7 +456,7 @@
                 <p>Chegamos ao último pilar, o selo dourado de validação da sua formação. Você agora é um cristão disciplinado, estuda a Bíblia com inteligência apologética, é constante, domina a sua ira e está devidamente cercado por irmãos de confiança. Porém, mais cedo ou mais tarde, a tragédia baterá à sua porta. Um desemprego inesperado surgirá, um diagnóstico médico assustará a sua família ou uma traição profunda cortará a sua alma. O que a sua fé construída faz quando a vida perde completamente o sentido?</p>
 
                 <h2>1. A Fé que Suporta o Vazio de Jó</h2>
-                <p>A perseverança não é aquela teologia da prosperidade rasa e ilusória que apenas sorri e diz "Deus vai me dar um milagre financeiro amanhã". A perseverança real se baseia na teologia de Jó. Ele perdeu o seu patrimônio inteiro e todos os seus dez filhos num único dia. Ele contraiu lepra e foi abandonado pelos amigos. Sentado nas cinzas, sem obter nenhuma resposta ou justificativa imediata do céu, Jó fez a maior declaração de caráter da história: "Embora Ele me mate, ainda assim esperarei nEle" (Jó 13:15). A verdadeira Fé Inabalável não é medida quando você recebe um presente novo no palco iluminado da igreja; ela é pesada e aferida no fundo do poço, no corredor escuro de hospital, quando Deus parece estar em total silêncio, mas você se recusa a soltar a mão dEle.</p>
+                <p>A perseverança não é aquela teologia da prosperidade rasa e ilusória que apenas sorri e diz "Deus vai me dar um milagre financeiro amanhã". A perseverança real se baseia na teologia de Jó. Ele perdeu o seu patrimônio inteiro e todos os seus dez filhos num único dia. Ele contraiu lepra e foi abandonado pelos amigos. Sentado nas cinzas, sem obter nenhuma resposta ou justificativa imediata do céu, Jó fez a maior declaração de caráter da história: "Embora Ele me mate, ainda assim esperarei nEle" (Jó 13:15). A verdadeira Fé Inabalável não é medida quando você recebe um presente novo no palco iluminado da igreja; ela é pesada e aferida no fundo do poço, no corredor escuro de um hospital, quando Deus parece estar em total silêncio, mas você se recusa a soltar a mão dEle.</p>
 
                 <div class="bible-box">
                     <p class="bible-text">"Meus irmãos, considerem motivo de grande alegria o fato de passarem por diversas provações, pois vocês sabem que a prova da sua fé produz perseverança. E a perseverança deve ter ação completa, a fim de que vocês sejam maduros e íntegros."</p>
@@ -492,7 +501,7 @@
                     <ul class="step-list">
                         <li>A nota de corte obrigatória e irredutível para passar é de <strong>85% de acertos</strong>. Sem negociações.</li>
                         <li>Se você reprovar, o sistema exigirá com firmeza que você revise o material inteiro com mais foco e refaça a prova.</li>
-                        <li>Se você provar a sua excelência com o acerto exigido, o motor lógico irá gerar, assinar eletronicamente e liberar o download automático do seu <strong>Certificado Oficial em PDF</strong> validando a sua aprovação na Forja.</li>
+                        <li>Se você provar a sua excelência com o acerto exigido, o motor lógico irá gerar o seu <strong>Certificado Oficial em Word (.doc)</strong> validando a sua aprovação na Forja.</li>
                     </ul>
                 </div>
                 <button class="btn btn-success" style="font-size: 1.3rem;" onclick="iniciarExameFinal()">Iniciar Batalha Final (15 Questões)</button>
@@ -523,36 +532,29 @@
     </div>
 
     <div id="cert-form-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 10001; align-items: center; justify-content: center; padding: 2rem;">
-        <div class="copy-key-box" style="text-align: left;">
-            <h2 style="text-align: center; color: var(--primary);">Parabéns! Exame Vencido</h2>
-            <p style="color: #64748b; font-size: 1.05rem; text-align: center; margin-bottom: 2rem;">Para emitirmos o seu Certificado Oficial, confirme ou corrija os dados abaixo:</p>
-            
-            <div class="form-group">
-                <label style="color: var(--secondary); font-weight: 800; font-size: 0.9rem; text-transform: uppercase;">Nome Completo</label>
-                <input type="text" id="form-cert-nome" style="border: 2px solid var(--border); padding: 1rem; border-radius: 8px; width: 100%; font-size: 1.1rem;">
+        <div class="main-card">
+            <div class="header-area">
+                <h2>Emissor de Certificados</h2>
+                <p>Tema: A Forja</p>
             </div>
-            
-            <div class="form-group" style="margin-top: 1.5rem;">
-                <label style="color: var(--secondary); font-weight: 800; font-size: 0.9rem; text-transform: uppercase;">Sua Função</label>
-                <input type="text" id="form-cert-funcao" style="border: 2px solid var(--border); padding: 1rem; border-radius: 8px; width: 100%; font-size: 1.1rem;">
-            </div>
-            
-            <button class="btn btn-success" style="margin-top: 2.5rem;" onclick="emitirCertificadoAcao()">Emitir Certificado (PDF)</button>
-        </div>
-    </div>
 
-    <div id="certificado-wrapper">
-        <div class="certificado-content">
-            <h1 class="cert-title">A FÉ INABALÁVEL</h1>
-            <p class="cert-subtitle">PROGRAMA OFICIAL DE FORMAÇÃO DE CARÁTER E TEOLOGIA</p>
-            <h2 class="cert-name" id="cert-nome-display">NOME DO ALUNO</h2>
-            <p class="cert-body">
-                Certificamos para os devidos fins que o(a) aluno(a) acima, exercendo a função de <strong><span id="cert-funcao-display"></span></strong>, concluiu com distinção, garra e excelência o treinamento prático e teórico, sendo aprovado(a) no Exame Final e comprovando domínio absoluto sobre os 7 Pilares do Caráter Cristão (Disciplina, Conhecimento, Convicção, Constância, Autocontrole, Comunhão e Perseverança).<br><br>
-                <em>"Produz fruto de justiça e paz para aqueles que por ela foram exercitados." (Hebreus 12:11)</em>
-            </p>
-            <div class="cert-footer">
-                <div class="cert-signature">Instrutor Teológico Oficial</div>
-                <div class="cert-signature">Supervisão da Forja</div>
+            <form id="formCertificado">
+                <div class="form-group">
+                    <label for="nome-cert">Nome Completo do Participante:</label>
+                    <input type="text" id="nome-cert" required placeholder="Ex: João da Silva">
+                </div>
+
+                <button type="submit" class="btn-generate">
+                    Gerar Arquivo do Certificado
+                </button>
+            </form>
+
+            <div id="downloadArea" class="download-area">
+                <p style="color: #555; margin-bottom: 15px; font-size: 14px;">Tudo pronto! Clique abaixo para baixar:</p>
+                <a id="btnDownload" class="download-btn" href="#">
+                    Baixar Certificado (.doc)
+                </a>
+                <button type="button" class="btn" style="background: transparent; color: #777; margin-top: 15px; padding: 10px; box-shadow: none; width: 100%; border: 1px solid #ddd;" onclick="fecharModalCertificado()">Fechar e Ver Resultados</button>
             </div>
         </div>
     </div>
@@ -773,9 +775,8 @@
 
             if (isExameFinal) {
                 if (percent >= 85) {
-                    // Preenche o formulário com os dados que o aluno digitou no Login
-                    document.getElementById('form-cert-nome').value = nomeAluno;
-                    document.getElementById('form-cert-funcao').value = funcaoAluno;
+                    // Preenche o formulário com o dado que o aluno digitou no Login
+                    document.getElementById('nome-cert').value = nomeAluno;
                     // Mostra o formulário modal do Certificado
                     document.getElementById('cert-form-modal').style.display = 'flex';
                 } else { 
@@ -834,34 +835,110 @@
             switchTab('mod-resultados'); 
         }
 
-        // AÇÃO DO FORMULÁRIO DO CERTIFICADO
-        function emitirCertificadoAcao() {
-            let nomeForm = document.getElementById('form-cert-nome').value.trim();
-            let funcaoForm = document.getElementById('form-cert-funcao').value.trim();
-            
-            if(!nomeForm || !funcaoForm) {
-                alert("Atenção: Preencha todos os campos para emitir o certificado.");
-                return;
-            }
-            
-            // Atualiza as variaveis com as correções feitas no formulário
-            nomeAluno = nomeForm;
-            funcaoAluno = funcaoForm;
-            
-            // Esconde o modal, gera o PDF com os dados atualizados e manda o aluno para a aba de resultados
-            document.getElementById('cert-form-modal').style.display = 'none';
-            gerarCertificadoPDF();
-            switchTab('mod-resultados');
-        }
+        // MOTOR DO CERTIFICADO (WORD .DOC)
+        document.getElementById('formCertificado').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-        // MOTOR DO PDF
-        function gerarCertificadoPDF() {
-            document.getElementById('cert-nome-display').innerText = nomeAluno.toUpperCase();
-            document.getElementById('cert-funcao-display').innerText = funcaoAluno.toUpperCase();
-            const element = document.getElementById('certificado-wrapper');
-            element.style.display = 'block'; 
-            var opt = { margin: 0, filename: `Certificado_Forja_${nomeAluno.replace(/\s+/g, '_')}.pdf`, image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2, logging: false }, jsPDF: { unit: 'px', format: [1123, 794], orientation: 'landscape' } };
-            html2pdf().set(opt).from(element).save().then(() => { element.style.display = 'none'; });
+            // Configuração Fixa
+            const nomeIgreja = "Igreja Comunidade Família Cristã";
+
+            // Pega o nome do formulário
+            const nome = document.getElementById('nome-cert').value;
+            nomeAluno = nome; // Atualiza a variável global caso tenha corrigido
+            
+            // Gera a data atual automaticamente
+            const dataAtual = new Date();
+            const dia = String(dataAtual.getDate()).padStart(2, '0');
+            const mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
+            const ano = dataAtual.getFullYear();
+            const dataFormatada = `${dia}/${mes}/${ano}`;
+
+            // --- Estrutura HTML do CERTIFICADO ---
+            const conteudoWord = `
+                <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+                <head>
+                    <meta charset='utf-8'>
+                    <title>Certificado A Forja</title>
+                </head>
+                <body style="font-family: 'Calibri', 'Arial', sans-serif; margin: 0; padding: 0;">
+                    
+                    <div style="border: 15px solid #c5a059; padding: 5px; margin: 20px;">
+                        
+                        <div style="border: 5px solid #002147; padding: 50px; text-align: center;">
+                            
+                            <p style="color: #c5a059; font-size: 18px; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; margin: 0;">
+                                CERTIFICADO DE CONCLUSÃO
+                            </p>
+                            
+                            <h1 style="color: #002147; font-size: 62px; margin-top: 10px; margin-bottom: 0; font-family: 'Georgia', serif; font-weight: bold; font-style: italic;">
+                                A Forja
+                            </h1>
+                            
+                            <div style="width: 200px; height: 2px; background-color: #c5a059; margin: 15px auto 40px auto;"></div>
+                            
+                            <p style="font-size: 22px; color: #444; margin-bottom: 10px;">
+                                Certificamos para os devidos fins que
+                            </p>
+                            
+                            <p style="font-size: 44px; color: #002147; font-weight: bold; text-transform: uppercase; margin: 0; padding: 10px 0; border-bottom: 1px solid #eee;">
+                                ${nome}
+                            </p>
+                            
+                            <p style="font-size: 19px; color: #555; line-height: 1.7; margin-top: 35px; padding: 0 50px;">
+                                participou e concluiu com distinção o ciclo de capacitação e renovação espiritual baseado no programa <b style="color:#002147;">"A Forja"</b>. Através da oração, do discipulado e da Palavra, demonstrou compromisso em ter seu caráter moldado e seu propósito firmado em Cristo Jesus.
+                            </p>
+                            
+                            <br><br><br>
+                            
+                            <table style="width: 100%; margin-top: 40px; border-collapse: collapse;">
+                                <tr>
+                                    <td style="text-align: center; width: 50%; padding: 10px; vertical-align: bottom;">
+                                        <p style="font-size: 18px; color: #000; margin: 0;">Concluído em,</p>
+                                        <p style="font-size: 20px; font-weight: bold; color: #002147; margin: 5px 0 0 0;">${dataFormatada}</p>
+                                        <div style="width: 80%; height: 1px; background-color: #999; margin: 5px auto;"></div>
+                                    </td>
+                                    <td style="text-align: center; width: 50%; padding: 10px; vertical-align: bottom;">
+                                        <div style="width: 80%; height: 1px; background-color: #333; margin: 0 auto 5px auto;"></div>
+                                        <p style="font-size: 18px; font-weight: bold; color: #002147; margin: 0;">${nomeIgreja}</p>
+                                        <p style="font-size: 14px; color: #c5a059; text-transform: uppercase; margin: 0; letter-spacing: 1px;">Organização Responsável</p>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `;
+
+            // Cria o arquivo Blob para download
+            const blob = new Blob(['\ufeff', conteudoWord], {
+                type: 'application/msword'
+            });
+            const url = URL.createObjectURL(blob);
+            
+            // Configura o botão de download
+            const btnDownload = document.getElementById('btnDownload');
+            const downloadArea = document.getElementById('downloadArea');
+            
+            btnDownload.href = url;
+            
+            // Formata o nome do arquivo
+            const nomeArquivo = nome.replace(/\s+/g, '_').toUpperCase();
+            btnDownload.download = `CERTIFICADO_FORJA_${nomeArquivo}.doc`;
+            
+            // Mostra a área de download com animação suave
+            downloadArea.style.display = 'block';
+            downloadArea.style.opacity = 0;
+            setTimeout(() => {
+                downloadArea.style.transition = 'opacity 0.5s ease';
+                downloadArea.style.opacity = 1;
+            }, 10);
+        });
+
+        function fecharModalCertificado() {
+            document.getElementById('cert-form-modal').style.display = 'none';
+            switchTab('mod-resultados');
         }
 
         // DESIGN INTERATIVO

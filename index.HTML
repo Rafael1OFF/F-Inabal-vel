@@ -1443,7 +1443,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   const MIN_DELTA  = 1000 / TARGET_FPS;
 
   const dpr = 1;                        // nunca > 1 em Celeron
-  const renderScale = 0.62;             // MUITO importante (0.55 ~ 0.70)
+  const renderScale = 0.72;             // MUITO importante (0.55 ~ 0.70)
   let last = 0;
   let paused = false;
 
@@ -1563,9 +1563,10 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 
       const pillarH = Math.min(rw, rh) * 0.50 * scale;
 
-      // 2 pilares (muito mais leve que 3) — ainda fica premium
-      drawPillarImage(rw*0.5 - (pillarH*0.26) + par, floorY, pillarH*0.96, 0.95);
-      drawPillarImage(rw*0.5 + (pillarH*0.26) + par, floorY, pillarH*0.96, 0.95);
+      // 3 pilares
+drawPillarImage(rw*0.5 - (pillarH*0.38) + par, floorY, pillarH*0.92, 0.90); // esquerdo
+drawPillarImage(rw*0.5 + par*0.15,              floorY, pillarH*1.05, 1.10); // centro destaque
+drawPillarImage(rw*0.5 + (pillarH*0.38) + par, floorY, pillarH*0.92, 0.90); // direito
 
       if(!textOn && t >= TEXT_IN){
         textOn = true;

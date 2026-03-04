@@ -157,7 +157,14 @@
         #intro-wrapper h1.intro-title .gold { color: #FFAE00; }
         #intro-wrapper .sub { margin-top: 14px; font-family: ui-sans-serif, system-ui, sans-serif; color: rgba(190,202,220,.92); font-size: clamp(13px, 2.05vw, 17px); line-height: 1.55; max-width: 820px; margin-inline: auto; text-align: center;}
         #intro-wrapper .vignette { position: absolute; inset: 0; pointer-events: none; opacity: .96; background: radial-gradient(1200px 700px at 50% 35%, rgba(255,255,255,.045) 0%, rgba(0,0,0,0) 46%, rgba(0,0,0,.74) 100%), radial-gradient(900px 520px at 50% 90%, rgba(0,0,0,.84) 0%, rgba(0,0,0,0) 56%); }
-        #intro-wrapper .grain { position: absolute; inset: -40px; pointer-events: none; mix-blend-mode: overlay; opacity: .16; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E"); animation: jitter .9s steps(2,end) infinite; }
+       #intro-wrapper .grain { 
+position: absolute; 
+inset: -40px; 
+pointer-events: none; 
+mix-blend-mode: overlay; 
+opacity: .12; 
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E"); 
+}
         @keyframes jitter { 0% { transform: translate(0,0) } 25% { transform: translate(-1px,1px) } 50% { transform: translate(1px,-1px) } 75% { transform: translate(-1px,-1px) } 100% { transform: translate(1px,1px) } }
         #intro-wrapper .fade { position: absolute; inset: 0; background: #000; opacity: 0; transition: opacity .9s; pointer-events: none; }
         #intro-wrapper .fade.on { opacity: 1; }
@@ -1417,144 +1424,175 @@
         }
         function switchTabIfUnlocked(tabId, element) { if (!element.classList.contains('locked')) { switchTab(tabId); } }
 		
-		/* ================= SCRIPT DA INTRO ================= */
-        (() => {
-            const DURATION = 5.5;  // Reduzimos o tempo total de 9.5 para 5.5 segundos
-            const TEXT_IN  = 1.1;  // Deixamos igual: o texto sobe no segundo 1.1
-            const FADE_AT  = 4.3;  // Reduzimos de 8.3 para 4.3: aqui a tela já começa a apagar e revelar o site
-            const PILLAR_SRC = "pilar1.png";
-			
-			
-            const wrapper = document.getElementById("intro-wrapper");
-            const cv = document.getElementById("cv");
-            const ctx = cv.getContext("2d", { alpha:false, desynchronized:true });
-            const stack = document.getElementById("stack");
-            const fade = document.getElementById("intro-fade");
+		<script>
+/* ================= SCRIPT DA INTRO (CELERON MODE) ================= */
+(() => {
+  const DURATION = 5.2;
+  const TEXT_IN  = 1.0;
+  const FADE_AT  = 4.0;
+  const PILLAR_SRC = "pilar1.png";
 
-            function resize(){
-                const dpr = Math.min(1.5, window.devicePixelRatio || 1);
-                cv.width  = Math.floor(window.innerWidth * dpr);
-                cv.height = Math.floor(window.innerHeight * dpr);
-                ctx.setTransform(1,0,0,1,0,0);
-                ctx.scale(dpr, dpr);
-            }
-            window.addEventListener("resize", resize, { passive:true });
-            resize();
+  const wrapper = document.getElementById("intro-wrapper");
+  const cv = document.getElementById("cv");
+  const ctx = cv.getContext("2d", { alpha: false, desynchronized: true });
+  const stack = document.getElementById("stack");
+  const fade = document.getElementById("intro-fade");
 
-            function clamp(x,a,b){ return Math.max(a, Math.min(b, x)); }
-            function smoothstep(a,b,x){ x=clamp((x-a)/(b-a),0,1); return x*x*(3-2*x); }
+  // ====== CELERON: travar FPS e reduzir resolução interna ======
+  const TARGET_FPS = 24;               // 24fps = cinema e bem leve
+  const MIN_DELTA  = 1000 / TARGET_FPS;
 
-            const pillarImg = new Image();
-            pillarImg.decoding = "async";
-            pillarImg.src = PILLAR_SRC;
+  const dpr = 1;                        // nunca > 1 em Celeron
+  const renderScale = 0.62;             // MUITO importante (0.55 ~ 0.70)
+  let last = 0;
+  let paused = false;
 
-            let imgReady = false;
-            pillarImg.onload = () => { imgReady = true; start(); };
-            pillarImg.onerror = () => { start(); };
+  let W = 0, H = 0;
 
-            function drawPillarImage(cx, baseY, targetH, emphasis=1){
-                if(!imgReady) return;
+  function resize() {
+    W = window.innerWidth;
+    H = window.innerHeight;
 
-                const aspect = pillarImg.width / pillarImg.height;
-                const h = targetH;
-                const w = h * aspect;
+    const rw = Math.max(320, Math.floor(W * dpr * renderScale));
+    const rh = Math.max(240, Math.floor(H * dpr * renderScale));
 
-                ctx.save();
-                ctx.globalAlpha = 0.18 * emphasis;
-                const sh = ctx.createRadialGradient(cx, baseY+12, 0, cx, baseY+12, w*0.9);
-                sh.addColorStop(0,"rgba(0,0,0,0.55)");
-                sh.addColorStop(1,"rgba(0,0,0,0)");
-                ctx.fillStyle = sh;
-                ctx.beginPath();
-                ctx.ellipse(cx, baseY+14, w*0.45, w*0.16, 0, 0, Math.PI*2);
-                ctx.fill();
-                ctx.restore();
+    cv.width = rw;
+    cv.height = rh;
+    ctx.setTransform(1,0,0,1,0,0);
+  }
+  window.addEventListener("resize", resize, { passive: true });
+  resize();
 
-                const left = cx - w/2;
-                const top  = baseY - h;
+  document.addEventListener("visibilitychange", () => {
+    paused = document.hidden;
+  }, { passive: true });
 
-                ctx.save();
-                ctx.globalAlpha = 1;
-                ctx.drawImage(pillarImg, left, top, w, h);
+  function clamp(x,a,b){ return Math.max(a, Math.min(b, x)); }
+  function smoothstep(a,b,x){ x=clamp((x-a)/(b-a),0,1); return x*x*(3-2*x); }
 
-                ctx.globalCompositeOperation = "multiply";
-                ctx.globalAlpha = 0.12;
-                ctx.fillStyle = "rgba(0,0,0,0.15)";
-                ctx.fillRect(left, top, w, h);
+  // ====== carregar imagem ======
+  const pillarImg = new Image();
+  pillarImg.decoding = "async";
+  pillarImg.src = PILLAR_SRC;
 
-                ctx.restore();
-            }
+  let imgReady = false;
+  pillarImg.onload = () => { imgReady = true; start(); };
+  pillarImg.onerror = () => { start(); };
 
-            function start(){
-                const startTime = performance.now();
-                let last=0, textOn=false, fadeOn=false;
+  // ====== gradientes cacheados (não recria todo frame) ======
+  let bgGrad = null;
+  let floorGrad = null;
 
-                function loop(now){
-                    const elapsed = (now - startTime)/1000;
-                    const t = elapsed;
+  function rebuildGradients(rw, rh) {
+    bgGrad = ctx.createLinearGradient(0, 0, 0, rh);
+    bgGrad.addColorStop(0, "#0c1220");
+    bgGrad.addColorStop(1, "#03050a");
 
-                    const targetFPS = (window.innerWidth < 900 ? 30 : 60);
-                    const minDelta = 1000/targetFPS;
-                    if(now - last < minDelta){
-                        if(elapsed < DURATION) requestAnimationFrame(loop);
-                        return;
-                    }
-                    last = now;
+    const floorY = rh * 0.66;
+    floorGrad = ctx.createLinearGradient(0, floorY, 0, rh);
+    floorGrad.addColorStop(0, "rgba(0,0,0,0)");
+    floorGrad.addColorStop(1, "rgba(0,0,0,0.85)");
+  }
 
-                    const w = window.innerWidth, h = window.innerHeight;
+  // ====== desenho mais barato (sem radial gradient, sem composite multiply) ======
+  function drawPillarImage(cx, baseY, targetH, alpha=1){
+    if(!imgReady) return;
 
-                    ctx.clearRect(0,0,w,h);
-                    const bg = ctx.createLinearGradient(0,0,0,h);
-                    bg.addColorStop(0,"#0c1220");
-                    bg.addColorStop(1,"#03050a");
-                    ctx.fillStyle = bg;
-                    ctx.fillRect(0,0,w,h);
+    const aspect = pillarImg.width / pillarImg.height;
+    const h = targetH;
+    const w = h * aspect;
 
-                    let floorY = h*0.66;
-                    ctx.save();
-                    const fg = ctx.createLinearGradient(0,floorY,0,h);
-                    fg.addColorStop(0,"rgba(0,0,0,0)");
-                    fg.addColorStop(1,"rgba(0,0,0,0.85)");
-                    ctx.fillStyle = fg;
-                    ctx.fillRect(0,floorY,w,h-floorY);
-                    ctx.restore();
+    const left = cx - w/2;
+    const top  = baseY - h;
 
-                    const push = smoothstep(0.0, 2.2, t);
-                    const scale = 1.0 + 0.05*push;
-                    const par = Math.sin(t*0.18) * (w*0.006);
+    // sombra simples
+    ctx.save();
+    ctx.globalAlpha = 0.12 * alpha;
+    ctx.fillStyle = "rgba(0,0,0,0.65)";
+    ctx.beginPath();
+    ctx.ellipse(cx, baseY + (w*0.04), w*0.20, w*0.06, 0, 0, Math.PI*2);
+    ctx.fill();
+    ctx.restore();
 
-                    const pillarH = Math.min(w,h) * 0.54 * scale;
+    // imagem
+    ctx.save();
+    ctx.globalAlpha = 1;
+    ctx.drawImage(pillarImg, left, top, w, h);
 
-                    drawPillarImage(w*0.5 - (pillarH*0.34) + par, floorY, pillarH*0.94, 0.95);
-                    drawPillarImage(w*0.5 + par*0.2,              floorY, pillarH*1.04, 1.12);
-                    drawPillarImage(w*0.5 + (pillarH*0.34) + par, floorY, pillarH*0.94, 0.95);
+    // leve sombreamento
+    ctx.globalAlpha = 0.07;
+    ctx.fillStyle = "rgba(0,0,0,0.45)";
+    ctx.fillRect(left, top, w, h);
+    ctx.restore();
+  }
 
-                    if(!textOn && t >= TEXT_IN){
-                        textOn = true;
-                        stack.classList.add("on");
-                    }
+  function start(){
+    const startTime = performance.now();
+    let textOn=false, fadeOn=false;
 
-                    if(!fadeOn && t >= FADE_AT){
-                        fadeOn = true;
-                        stack.classList.add("fade-out");
-                        fade.classList.add("on");
-                        
-                        // DELETA A INTRO DA TELA PARA REVELAR O LOGIN
-                        setTimeout(() => {
-                            wrapper.style.opacity = "0";
-                            setTimeout(() => {
-                                wrapper.style.display = "none";
-                            }, 1000);
-                        }, 900);
-                    }
+    function loop(now){
+      if (paused) { requestAnimationFrame(loop); return; }
 
-                    if(elapsed < DURATION) requestAnimationFrame(loop);
-                }
+      const elapsed = (now - startTime) / 1000;
+      const t = elapsed;
 
-                requestAnimationFrame(loop);
-            }
-        })();
-        /* ================= FIM DO SCRIPT DA INTRO ================= */
+      if (now - last < MIN_DELTA) {
+        if (elapsed < DURATION) requestAnimationFrame(loop);
+        return;
+      }
+      last = now;
+
+      const rw = cv.width;
+      const rh = cv.height;
+
+      if (!bgGrad || !floorGrad) rebuildGradients(rw, rh);
+
+      // fundo
+      ctx.clearRect(0,0,rw,rh);
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0,0,rw,rh);
+
+      const floorY = rh * 0.66;
+      ctx.fillStyle = floorGrad;
+      ctx.fillRect(0, floorY, rw, rh-floorY);
+
+      // animação bem leve
+      const push = smoothstep(0.0, 2.0, t);
+      const scale = 1.0 + 0.03*push;
+      const par = Math.sin(t*0.16) * (rw*0.004); // menor
+
+      const pillarH = Math.min(rw, rh) * 0.50 * scale;
+
+      // 2 pilares (muito mais leve que 3) — ainda fica premium
+      drawPillarImage(rw*0.5 - (pillarH*0.26) + par, floorY, pillarH*0.96, 0.95);
+      drawPillarImage(rw*0.5 + (pillarH*0.26) + par, floorY, pillarH*0.96, 0.95);
+
+      if(!textOn && t >= TEXT_IN){
+        textOn = true;
+        stack.classList.add("on");
+      }
+
+      if(!fadeOn && t >= FADE_AT){
+        fadeOn = true;
+        stack.classList.add("fade-out");
+        fade.classList.add("on");
+
+        setTimeout(() => {
+          wrapper.style.opacity = "0";
+          setTimeout(() => {
+            wrapper.style.display = "none";
+            bgGrad = null; floorGrad = null; // libera memória
+          }, 1000);
+        }, 900);
+      }
+
+      if (elapsed < DURATION) requestAnimationFrame(loop);
+    }
+
+    requestAnimationFrame(loop);
+  }
+})();
+ /* ================= FIM DO SCRIPT DA INTRO (CELERON MODE) ================= */
 		
     </script>
 </body>

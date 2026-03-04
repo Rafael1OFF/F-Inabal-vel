@@ -15,6 +15,14 @@
             --secondary: #1e293b; --border: #e2e8f0;
             --danger: #b91c1c; --success: #15803d;
         }
+		
+		#cv{
+position:absolute;
+inset:0;
+opacity:0;
+transition:opacity 900ms ease;
+}
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.8; -webkit-font-smoothing: antialiased; touch-action: manipulation; }
@@ -1418,18 +1426,22 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             document.querySelectorAll('.module-section').forEach(el => el.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('nav-' + tabId.replace('mod-', '')).classList.add('active');
+            document.getElementById('nav-mod-' + tabId.replace('mod-', '')).classList.add('active');
             window.scrollTo(0, 0);
             if (window.innerWidth <= 768) { document.getElementById('sidebar').classList.remove('open'); }
         }
         function switchTabIfUnlocked(tabId, element) { if (!element.classList.contains('locked')) { switchTab(tabId); } }
 		
-	
+		
+		
+	;
 /* ================= SCRIPT DA INTRO (CELERON MODE) ================= */
+
 (() => {
-  const DURATION = 5.2;
-  const TEXT_IN  = 1.0;
-  const FADE_AT  = 4.0;
+  const DURATION   = 5.2;
+  const PILLAR_IN  = 0.25; // pilares entram ANTES
+  const TEXT_IN    = 0.90; // titulo entra logo depois
+  const FADE_AT    = 4.0;  // quando começa sair
   const PILLAR_SRC = "pilar1.png";
 
   const wrapper = document.getElementById("intro-wrapper");
@@ -1438,161 +1450,148 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
   const stack = document.getElementById("stack");
   const fade = document.getElementById("intro-fade");
 
-  // ====== CELERON: travar FPS e reduzir resolução interna ======
-  const TARGET_FPS = 24;               // 24fps = cinema e bem leve
-  const MIN_DELTA  = 1000 / TARGET_FPS;
+  // garante canvas cobrindo tudo mesmo sem css extra
+  cv.style.position = "absolute";
+  cv.style.inset = "0";
+  cv.style.width = "100%";
+  cv.style.height = "100%";
+  cv.style.opacity = "0";
+  cv.style.transition = "opacity 900ms ease";
 
-  const dpr = 1;                        // nunca > 1 em Celeron
-  const renderScale = 0.85;            // MUITO importante (0.55 ~ 0.70)
-  let last = 0;
-  let paused = false;
+  // qualidade (sem embaçar)
+  const dpr = Math.min(1.5, window.devicePixelRatio || 1);
+  const renderScale = 1.0;
 
-  let W = 0, H = 0;
+  const pillarImg = new Image();
+  pillarImg.decoding = "async";
+  pillarImg.src = PILLAR_SRC;
+
+  let imgReady = false;
 
   function resize() {
-    W = window.innerWidth;
-    H = window.innerHeight;
+    const W = window.innerWidth;
+    const H = window.innerHeight;
 
     const rw = Math.max(320, Math.floor(W * dpr * renderScale));
     const rh = Math.max(240, Math.floor(H * dpr * renderScale));
 
     cv.width = rw;
     cv.height = rh;
-    ctx.setTransform(1,0,0,1,0,0);
+
+    // desenha 1x (estático)
+    drawOnce();
   }
   window.addEventListener("resize", resize, { passive: true });
-  resize();
 
-  document.addEventListener("visibilitychange", () => {
-    paused = document.hidden;
-  }, { passive: true });
-
-  function clamp(x,a,b){ return Math.max(a, Math.min(b, x)); }
-  function smoothstep(a,b,x){ x=clamp((x-a)/(b-a),0,1); return x*x*(3-2*x); }
-
-  // ====== carregar imagem ======
-  const pillarImg = new Image();
-  pillarImg.decoding = "async";
-  pillarImg.src = PILLAR_SRC;
-
-  let imgReady = false;
-  pillarImg.onload = () => { imgReady = true; start(); };
-  pillarImg.onerror = () => { start(); };
-
-  // ====== gradientes cacheados (não recria todo frame) ======
-  let bgGrad = null;
-  let floorGrad = null;
-
-  function rebuildGradients(rw, rh) {
-    bgGrad = ctx.createLinearGradient(0, 0, 0, rh);
-    bgGrad.addColorStop(0, "#0c1220");
-    bgGrad.addColorStop(1, "#03050a");
+  function drawBackground(rw, rh){
+    const bg = ctx.createLinearGradient(0,0,0,rh);
+    bg.addColorStop(0, "#0c1220");
+    bg.addColorStop(1, "#03050a");
+    ctx.fillStyle = bg;
+    ctx.fillRect(0,0,rw,rh);
 
     const floorY = rh * 0.66;
-    floorGrad = ctx.createLinearGradient(0, floorY, 0, rh);
-    floorGrad.addColorStop(0, "rgba(0,0,0,0)");
-    floorGrad.addColorStop(1, "rgba(0,0,0,0.85)");
+    const floor = ctx.createLinearGradient(0, floorY, 0, rh);
+    floor.addColorStop(0, "rgba(0,0,0,0)");
+    floor.addColorStop(1, "rgba(0,0,0,0.85)");
+    ctx.fillStyle = floor;
+    ctx.fillRect(0, floorY, rw, rh-floorY);
+    return floorY;
   }
 
-  // ====== desenho mais barato (sem radial gradient, sem composite multiply) ======
-  function drawPillarImage(cx, baseY, targetH, alpha=1){
+  function drawPillar(cx, baseY, targetH){
     if(!imgReady) return;
 
     const aspect = pillarImg.width / pillarImg.height;
-    const h = targetH;
-    const w = h * aspect;
+    const h = Math.round(targetH);
+    const w = Math.round(h * aspect);
 
-    const left = cx - w/2;
-    const top  = baseY - h;
+    const left = Math.round(cx - w/2);
+    const top  = Math.round(baseY - h);
 
     // sombra simples
     ctx.save();
-    ctx.globalAlpha = 0.12 * alpha;
+    ctx.globalAlpha = 0.14;
     ctx.fillStyle = "rgba(0,0,0,0.65)";
     ctx.beginPath();
-    ctx.ellipse(cx, baseY + (w*0.04), w*0.20, w*0.06, 0, 0, Math.PI*2);
+    ctx.ellipse(Math.round(cx), Math.round(baseY + (w*0.04)), Math.round(w*0.20), Math.round(w*0.06), 0, 0, Math.PI*2);
     ctx.fill();
     ctx.restore();
 
     // imagem
-    ctx.save();
-    ctx.globalAlpha = 1;
     ctx.drawImage(pillarImg, left, top, w, h);
 
-    // leve sombreamento
-    ctx.globalAlpha = 0.07;
+    // leve sombreamento fixo
+    ctx.save();
+    ctx.globalAlpha = 0.06;
     ctx.fillStyle = "rgba(0,0,0,0.45)";
     ctx.fillRect(left, top, w, h);
     ctx.restore();
   }
 
-  function start(){
+  function drawOnce(){
+    const rw = cv.width;
+    const rh = cv.height;
+
+    ctx.setTransform(1,0,0,1,0,0);
+    ctx.clearRect(0,0,rw,rh);
+
+    const floorY = drawBackground(rw, rh);
+    const pillarH = Math.min(rw, rh) * 0.52;
+
+    // 3 pilares estáticos
+    drawPillar(rw*0.5 - (pillarH*0.40), floorY, pillarH*0.96);
+    drawPillar(rw*0.5,                 floorY, pillarH*1.03);
+    drawPillar(rw*0.5 + (pillarH*0.40), floorY, pillarH*0.96);
+  }
+
+  function timeline(){
     const startTime = performance.now();
-    let textOn=false, fadeOn=false;
+    let textOn=false, fadeOn=false, pillarsOn=false;
 
     function loop(now){
-      if (paused) { requestAnimationFrame(loop); return; }
+      const t = (now - startTime)/1000;
 
-      const elapsed = (now - startTime) / 1000;
-      const t = elapsed;
-
-      if (now - last < MIN_DELTA) {
-        if (elapsed < DURATION) requestAnimationFrame(loop);
-        return;
+      // pilares entram antes
+      if(!pillarsOn && t >= PILLAR_IN){
+        pillarsOn = true;
+        cv.style.opacity = "1";
       }
-      last = now;
 
-      const rw = cv.width;
-      const rh = cv.height;
-
-      if (!bgGrad || !floorGrad) rebuildGradients(rw, rh);
-
-      // fundo
-      ctx.clearRect(0,0,rw,rh);
-      ctx.fillStyle = bgGrad;
-      ctx.fillRect(0,0,rw,rh);
-
-      const floorY = rh * 0.66;
-      ctx.fillStyle = floorGrad;
-      ctx.fillRect(0, floorY, rw, rh-floorY);
-
-      // animação bem leve
-      const push = smoothstep(0.0, 2.0, t);
-      const scale = 1.0 + 0.03*push;
-      const par = Math.sin(t*0.16) * (rw*0.004); // menor
-
-      const pillarH = Math.min(rw, rh) * 0.50 * scale;
-
-      // 3 pilares
-drawPillarImage(rw*0.5 - (pillarH*0.38) + par, floorY, pillarH*0.92, 0.90); // esquerdo
-drawPillarImage(rw*0.5 + par*0.15,              floorY, pillarH*1.05, 1.10); // centro destaque
-drawPillarImage(rw*0.5 + (pillarH*0.38) + par, floorY, pillarH*0.92, 0.90); // direito
-
+      // título entra depois (ou quase junto, conforme TEXT_IN)
       if(!textOn && t >= TEXT_IN){
         textOn = true;
         stack.classList.add("on");
       }
 
+      // saída/fade
       if(!fadeOn && t >= FADE_AT){
         fadeOn = true;
+
         stack.classList.add("fade-out");
         fade.classList.add("on");
 
         setTimeout(() => {
           wrapper.style.opacity = "0";
-          setTimeout(() => {
-            wrapper.style.display = "none";
-            bgGrad = null; floorGrad = null; // libera memória
-          }, 1000);
+          setTimeout(() => { wrapper.style.display = "none"; }, 1000);
         }, 900);
       }
 
-      if (elapsed < DURATION) requestAnimationFrame(loop);
+      if (t < DURATION) requestAnimationFrame(loop);
     }
-
     requestAnimationFrame(loop);
   }
+
+  pillarImg.onload = () => { imgReady = true; resize(); timeline(); };
+  pillarImg.onerror = () => { resize(); timeline(); };
+
+  // fallback caso demore pra carregar a imagem
+  setTimeout(() => {
+    if (!imgReady) { resize(); timeline(); }
+  }, 900);
 })();
+
+/* ================= FIM DO SCRIPT DA INTRO (UNIFICADO) ================= */
  /* ================= FIM DO SCRIPT DA INTRO (CELERON MODE) ================= */
 		
     </script>

@@ -35,51 +35,8 @@ transition:opacity 900ms ease;
 
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.8; -webkit-font-smoothing: antialiased; touch-action: manipulation; }
 
-        /* TELA DE LOGIN / ACESSO (ESTILO CARD CLEAN DA IMAGEM) */
-        #login-screen {
-            position: fixed; inset: 0;
-            background: url('bg.jpg') center/cover no-repeat, linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
-            z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 1.5rem; overflow-y: auto;
-        }
-        #login-screen::before {
-            content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 0;
-        }
-        .login-box {
-            position: relative; z-index: 1;
-            background: #ffffff;
-            max-width: 420px; width: 100%; padding: 3rem 2.5rem; border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15); text-align: center;
-        }
-        .login-box h1 { font-family: 'Inter', sans-serif; font-size: 1.8rem; color: #000000; margin-bottom: 0.2rem; font-weight: 700; }
-        .login-box p { color: #475569; margin-bottom: 2rem; font-size: 0.9rem; text-align: center; }
-
-        .form-group { margin-bottom: 1.2rem; }
-        .form-group input {
-            width: 100%; padding: 1rem 1.2rem;
-            background: #f8fafc; border: 1px solid transparent;
-            border-radius: 30px; font-size: 0.95rem; font-family: 'Inter', sans-serif;
-            color: var(--text-main); transition: all 0.3s;
-        }
-        .form-group input:focus { outline: none; border-color: #4bc3e6; background: #ffffff; box-shadow: 0 0 0 3px rgba(75, 195, 230, 0.15); }
-        .form-group input::placeholder { color: #B9B9B9; }
-
-        .btn-login {
-            background: #C82626; color: white; border: none; padding: 0.9rem 3.5rem;
-            border-radius: 30px; font-size: 1.1rem; font-weight: 600; cursor: pointer;
-            margin-top: 1rem; transition: 0.3s; box-shadow: 0 8px 15px rgba(75, 195, 230, 0.3);
-            display: inline-block;
-        }
-        .btn-login:hover { background: #FFFFFF; transform: translateY(-2px); box-shadow: 0 12px 20px rgba(75, 195, 230, 0.4); }
-
-        .login-divider {
-            display: flex; align-items: center; text-align: center; margin: 1.5rem 0; color: #000000; font-size: 0.85rem;
-        }
-        .login-divider::before, .login-divider::after { content: ''; flex: 1; border-bottom: 1px solid #000000; }
-        .login-divider::before { margin-right: .5em; }
-        .login-divider::after { margin-left: .5em; }
-
         /* ESTRUTURA DO CURSO */
-        #app-layout { display: none; flex-direction: column; min-height: 100vh; }
+        #app-layout { display: flex; flex-direction: column; min-height: 100vh; }
         .mobile-header { display: none; background: var(--sidebar-bg); color: white; padding: 1rem 1.5rem; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
         .menu-toggle { background: none; border: 1px solid rgba(255,255,255,0.3); color: white; padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.8rem; font-weight: 800; cursor: pointer; text-transform: uppercase; }
 
@@ -94,9 +51,6 @@ transition:opacity 900ms ease;
         .nav-btn:hover:not(.locked) { background: rgba(255,255,255,0.05); color: white; }
         .nav-btn.active { background: var(--primary); color: white; }
         .nav-btn.locked { opacity: 0.4; cursor: not-allowed; }
-
-        .sync-box { margin-top: auto; padding-top: 2rem; text-align: center; }
-        .sync-code-display { background: black; color: #10b981; padding: 0.8rem; border-radius: 4px; font-family: monospace; font-size: 1rem; font-weight: bold; margin-top: 0.5rem; word-break: break-all; }
 
         /* CONTEÚDO PRINCIPAL */
         .main-content { margin-left: 280px; padding: 4rem; max-width: 1000px; width: 100%; margin-right: auto; }
@@ -144,12 +98,6 @@ transition:opacity 900ms ease;
         .result-a.correct { color: var(--success); font-weight: bold; background: #f0fdf4; padding: 0.5rem; border-radius: 4px; }
         .result-a.incorrect { color: var(--danger); font-weight: bold; background: #fef2f2; padding: 0.5rem; border-radius: 4px; }
         .import-badge { color: var(--success); font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; margin-top: 10px; }
-
-        /* MODAL DE CÓPIA DE CHAVE */
-        #copy-key-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center; padding: 2rem; }
-        .copy-key-box { background: white; padding: 3rem; border-radius: 12px; text-align: center; max-width: 500px; width: 100%; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
-        .copy-key-box h2 { margin: 0 0 1rem 0; color: var(--success); font-family: 'Merriweather', serif; font-size: 1.8rem; border-bottom: none; padding-bottom: 0; }
-        .new-key-display { background: #1e293b; color: #10b981; padding: 1.2rem; border-radius: 8px; font-family: monospace; font-size: 1.4rem; font-weight: bold; margin: 1.5rem 0; word-break: break-all; }
 		
 		/* ================= INÍCIO CSS DA INTRO ================= */
         :root { --bg-intro: #213158; --ink: #f3f7ff; --gold: #d6a84a; }
@@ -267,71 +215,6 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             overscroll-behavior: none;
         }
         button, input { font: inherit; }
-
-        #login-screen {
-            background:
-                radial-gradient(ellipse at 50% 20%, rgba(29, 79, 126, .42), transparent 50%),
-                radial-gradient(ellipse at 50% 100%, rgba(181, 137, 55, .12), transparent 45%),
-                #061326 !important;
-            padding: 24px;
-        }
-        #login-screen::before {
-            background: linear-gradient(135deg, rgba(2, 10, 22, .28), rgba(3, 12, 25, .8));
-        }
-        .login-box {
-            max-width: 460px;
-            padding: clamp(30px, 5vw, 52px);
-            border-radius: 18px;
-            background: linear-gradient(155deg, #102945 0%, #0a1a2e 68%, #081629 100%);
-            border: 1px solid rgba(211, 170, 88, .35);
-            border-top: 3px solid var(--primary);
-            box-shadow: 0 30px 90px rgba(0,0,0,.48), 0 0 50px rgba(21, 68, 111, .16);
-        }
-        .login-box h1 {
-            color: #f8f6ef;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(30px, 5vw, 38px);
-            letter-spacing: -.04em;
-        }
-        .login-box h1::after {
-            content: "";
-            display: block;
-            width: 58px;
-            height: 3px;
-            margin: 16px auto 20px;
-            border-radius: 4px;
-            background: linear-gradient(90deg, #9c702b, #f0d28b, #9c702b);
-        }
-        .login-box p { color: #aebed2; text-align: center; }
-        .form-group input {
-            border: 1px solid #294361;
-            border-radius: 9px;
-            background: #08182b;
-            color: #f5f7fb;
-        }
-        .form-group input:focus {
-            border-color: var(--primary);
-            background: #0b2038;
-            box-shadow: 0 0 0 3px rgba(210,166,79,.13);
-        }
-        .form-group input::placeholder { color: #71859d; }
-        .btn-login {
-            min-width: 180px;
-            border-radius: 8px;
-            padding: 14px 32px;
-            background: linear-gradient(135deg, #e3c174, #b88938);
-            color: #071426;
-            box-shadow: 0 9px 25px rgba(0,0,0,.25);
-            text-transform: uppercase;
-            letter-spacing: .08em;
-        }
-        .btn-login:hover {
-            background: linear-gradient(135deg, #f0d690, #c99b4b);
-            color: #071426;
-            transform: translateY(-2px);
-        }
-        .login-divider { color: #9eb0c7; }
-        .login-divider::before, .login-divider::after { border-color: #294361; }
         .install-app-btn {
             display: inline-flex;
             align-items: center;
@@ -424,8 +307,6 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             box-shadow: inset 3px 0 0 #d2a64f;
         }
         .nav-btn.locked { color: #65778d; }
-        .sync-box { border-top: 1px solid #233b58; }
-        .sync-code-display {
             background: #030b15;
             border: 1px solid #24405c;
             color: #e2c277;
@@ -506,9 +387,14 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             background: linear-gradient(135deg, #f2d995, #c99b4a);
             transform: translateY(-2px);
         }
-        .btn-success {
-            color: #06192a;
-            background: linear-gradient(135deg, #8bd0ac, #4ca47c);
+        .btn-exam {
+            color: #071426;
+            background: linear-gradient(135deg, #f0d58f 0%, #d2a64f 55%, #a97b2f 100%);
+            border: 1px solid rgba(255,225,157,.58);
+            box-shadow: 0 14px 34px rgba(174,127,46,.18);
+        }
+        .btn-exam:hover {
+            background: linear-gradient(135deg, #f8e5b4 0%, #e2bd70 55%, #bd9146 100%);
         }
 
         /* A avaliação fica com UMA única área rolável. O body é bloqueado via .eval-open. */
@@ -588,17 +474,6 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             background: rgba(154,50,63,.18);
         }
         .import-badge { color: #8ee0b4; }
-
-        #copy-key-modal { background: rgba(1,7,15,.88); backdrop-filter: blur(10px); }
-        .copy-key-box {
-            background: linear-gradient(150deg, #112b46, #08192d);
-            border: 1px solid rgba(210,166,79,.3);
-            border-radius: 15px;
-            color: #d8e3f0;
-        }
-        .copy-key-box h2 { color: #f0d28b; }
-        .copy-key-box p { color: #b8c7d8 !important; }
-        .new-key-display {
             background: #030b15;
             border: 1px solid #294563;
             color: #e8c979;
@@ -690,33 +565,6 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
         <div class="fade" id="intro-fade"></div>
     </div>
 
-    <div id="login-screen">
-        <div class="login-box">
-            <h1>Bem Vindo</h1>
-            <p></p>
-
-            <div class="form-group">
-                <input type="text" id="login-nome" placeholder="Seu Nome Completo" required>
-            </div>
-
-            <div class="form-group">
-                <input type="text" id="login-funcao" placeholder="Sua Função na Igreja" required>
-            </div>
-
-            <div class="login-divider">Opcional</div>
-
-            <div class="form-group">
-                <input type="text" id="login-chave" placeholder="Chave de Sincronização">
-            </div>
-
-            <p id="login-err" style="color: var(--danger); font-weight: 800; display: none; margin-top: 1rem; font-size: 0.9rem;"></p>
-
-            <button class="btn-login" onclick="entrarNoCurso()">Acessar</button>
-            <button class="install-app-btn" data-install-app type="button">Instalar aplicativo</button>
-            <p id="install-help" class="install-help" role="status" aria-live="polite" hidden></p>
-        </div>
-    </div>
-
     <div id="app-layout" class="layout">
         <header class="mobile-header">
             <span style="font-weight: 800; font-size: 1.2rem;">A FÉ INABALÁVEL</span>
@@ -725,25 +573,20 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header"><h2>PILARES DA FÉ</h2></div>
-            <div class="student-info">Aluno: <strong id="display-nome">Nome</strong><span id="display-funcao" style="color:#94a3b8;">Função</span></div>
+            <div class="student-info"><strong>SEU PERCURSO</strong><span id="progress-status" style="display:block;color:#b7c7d9;margin-top:5px;">Todos os conteúdos e avaliações disponíveis</span><small style="display:block;color:#8298b1;margin-top:8px;line-height:1.45;">Progresso salvo neste dispositivo</small></div>
 
             <nav>
                 <button id="nav-mod-disciplina" class="nav-btn active" onclick="switchTab('mod-disciplina')">1. A Disciplina</button>
-                <button id="nav-mod-conhecimento" class="nav-btn locked" onclick="switchTabIfUnlocked('mod-conhecimento', this)">2. Conhecimento (Cadeado)</button>
-                <button id="nav-mod-conviccao" class="nav-btn locked" onclick="switchTabIfUnlocked('mod-conviccao', this)">3. Convicção Racional (Cadeado)</button>
-                <button id="nav-mod-constancia" class="nav-btn locked" onclick="switchTabIfUnlocked('mod-constancia', this)">4. Constância (Cadeado)</button>
-                <button id="nav-mod-autocontrole" class="nav-btn locked" onclick="switchTabIfUnlocked('mod-autocontrole', this)">5. Autocontrole (Cadeado)</button>
-                <button id="nav-mod-comunhao" class="nav-btn locked" onclick="switchTabIfUnlocked('mod-comunhao', this)">6. Comunhão (Cadeado)</button>
-                <button id="nav-mod-perseveranca" class="nav-btn locked" onclick="switchTabIfUnlocked('mod-perseveranca', this)">7. Perseverança (Cadeado)</button>
+                <button id="nav-mod-conhecimento" class="nav-btn" onclick="switchTab('mod-conhecimento')">2. Conhecimento</button>
+                <button id="nav-mod-conviccao" class="nav-btn" onclick="switchTab('mod-conviccao')">3. Convicção Racional</button>
+                <button id="nav-mod-constancia" class="nav-btn" onclick="switchTab('mod-constancia')">4. Constância</button>
+                <button id="nav-mod-autocontrole" class="nav-btn" onclick="switchTab('mod-autocontrole')">5. Autocontrole</button>
+                <button id="nav-mod-comunhao" class="nav-btn" onclick="switchTab('mod-comunhao')">6. Comunhão</button>
+                <button id="nav-mod-perseveranca" class="nav-btn" onclick="switchTab('mod-perseveranca')">7. Perseverança</button>
                 <hr style="border: 0; border-top: 1px solid #334155; margin: 15px 0;">
                 <button id="nav-mod-resultados" class="nav-btn" onclick="switchTab('mod-resultados')" style="color: #cbd5e1; font-weight: bold;">Resultados e Histórico</button>
-                <button id="nav-mod-exame" class="nav-btn locked" onclick="switchTabIfUnlocked('mod-exame', this)" style="background: var(--danger); color: white;">Exame Final (Cadeado)</button>
+                <button id="nav-mod-exame" class="nav-btn" onclick="switchTab('mod-exame')" style="background: linear-gradient(135deg, #e5c77d, #b78837); color: #071426; border-color: rgba(242,213,145,.35);">Exame Final</button>
             </nav>
-
-            <div class="sync-box">
-                <span style="font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; font-weight: bold;">Chave Atualizada</span>
-                <div class="sync-code-display" id="display-chave">NENHUMA</div>
-            </div>
             <button class="install-app-btn" data-install-app type="button">Instalar aplicativo</button>
             <p class="install-help" role="status" aria-live="polite" hidden></p>
         </aside>
@@ -999,7 +842,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
                     Este exame percorre os 7 tópicos. É objetivo, direto e sem brechas.
                     A nota mínima é <strong>85%</strong>.
                 </p>
-                <div class="step-box" style="border-top: 4px solid var(--danger);">
+                <div class="step-box" style="border-top: 4px solid var(--primary);">
                     <h4>Regras do Campo de Batalha:</h4>
                     <ul class="step-list">
                         <li>A nota de corte obrigatória e irredutível para passar é de <strong>85% de acertos</strong>.</li>
@@ -1007,7 +850,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
                         <li>Ao aprovar, o sistema libera o <strong>Certificado em Word (.doc)</strong>.</li>
                     </ul>
                 </div>
-                <button class="btn btn-success" style="font-size: 1.3rem;" onclick="iniciarExameFinal()">Iniciar Batalha Final (15 Questões)</button>
+                <button class="btn btn-exam" style="font-size: 1.3rem;" onclick="iniciarExameFinal()">Iniciar Batalha Final (15 Questões)</button>
             </section>
 
         </main>
@@ -1021,16 +864,6 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             <p id="quiz-err" style="color: var(--danger); font-weight: 800; display: none; text-align: center; margin-top: 1rem; font-size: 1.1rem;">ALERTA: Você não pode deixar perguntas sem resposta.</p>
             <button class="btn" onclick="finalizarProvaLocal()">Verificar Gabarito e Salvar Nota</button>
             <button class="btn" style="background: transparent; border: 2px solid var(--border); color: var(--secondary); margin-top: 1rem;" onclick="closeEval()">Cancelar</button>
-        </div>
-    </div>
-
-    <div id="copy-key-modal">
-        <div class="copy-key-box">
-            <h2>Tópico Concluído!</h2>
-            <p style="color: #64748b; font-size: 1.1rem;">Aqui está sua nova chave de sincronização. Copie e guarde-a para não perder seu progresso se fechar a página.</p>
-            <div class="new-key-display" id="new-key-display">CHAVE</div>
-            <button class="btn" style="margin-top: 1rem; margin-bottom: 1rem;" onclick="copiarChaveAcao()">Copiar Chave</button>
-            <button class="btn" style="background: transparent; border: 2px solid var(--border); color: var(--secondary); margin-top: 0;" onclick="fecharModalChave()">Continuar para Resultados</button>
         </div>
     </div>
 
@@ -1063,7 +896,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     </div>
 
     <script>
-        let nomeAluno = "", funcaoAluno = "", moduloAtualProva = "", questoesSorteadas = [], isExameFinal = false, notaFinalExame = 0;
+        let moduloAtualProva = "", questoesSorteadas = [], isExameFinal = false, notaFinalExame = 0;
 
         /*
           ==========================
@@ -1602,92 +1435,57 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             }
         ];
 
-        // --- SISTEMÁTICA DE ATUALIZAÇÃO DE RESULTADOS (SEM LOCAL STORAGE) ---
-        function carregarHistoricoLocal(modLiberado) {
-            let resultDiv = document.getElementById('resultados-lista');
-            resultDiv.innerHTML = "";
+        // --- ACESSO LIVRE + HISTÓRICO LOCAL (SEM LOGIN OU CHAVES) ---
+        const STORAGE_KEY = 'pilares-da-fe-progresso-v3';
 
-            if (modLiberado > 1) {
-                let boletim = "";
-                const nomesMods = ['Disciplina', 'Conhecimento', 'Convicção Racional', 'Constância', 'Autocontrole', 'Comunhão', 'Perseverança'];
-                let maxLoop = modLiberado > 8 ? 8 : modLiberado;
-                for(let i = 1; i < maxLoop; i++) {
-                    boletim = `
-                    <div class="result-card" style="border-left: 5px solid var(--success);">
-                        <div class="result-header">
-                            <h3>Tópico ${i}: ${nomesMods[i-1]}</h3>
-                            <div class="import-badge">✔️ Aprovado via Chave de Sincronização</div>
-                        </div>
-                        <p style="color:#475569; font-size: 0.95rem;">Seu progresso neste tópico foi validado pela chave inserida no login.</p>
-                    </div>` + boletim;
-                }
-                resultDiv.innerHTML = boletim;
-            }
+        function aplicarProgresso() {
+            const ids = [
+                'disciplina', 'conhecimento', 'conviccao', 'constancia',
+                'autocontrole', 'comunhao', 'perseveranca', 'exame'
+            ];
+            ids.forEach((id, indice) => {
+                const botao = document.getElementById('nav-mod-' + id);
+                if (!botao) return;
+                botao.classList.remove('locked');
+                const textos = [
+                    '1. A Disciplina', '2. Conhecimento', '3. Convicção Racional',
+                    '4. Constância', '5. Autocontrole', '6. Comunhão',
+                    '7. Perseverança', 'Exame Final'
+                ];
+                botao.textContent = textos[indice];
+                botao.onclick = () => switchTab('mod-' + id);
+            });
+
+            const status = document.getElementById('progress-status');
+            if (status) status.textContent = 'Todos os conteúdos e avaliações disponíveis';
         }
 
-        function entrarNoCurso() {
-            nomeAluno = document.getElementById('login-nome').value.trim();
-            funcaoAluno = document.getElementById('login-funcao').value.trim();
-            let chaveInput = document.getElementById('login-chave').value.trim();
-
-            if (!nomeAluno || !funcaoAluno) {
-                document.getElementById('login-err').innerText = "ATENÇÃO: Preencha seu Nome e a Função.";
-                document.getElementById('login-err').style.display = 'block'; return;
-            }
-
-            document.getElementById('display-nome').innerText = nomeAluno;
-            document.getElementById('display-funcao').innerText = funcaoAluno;
-
-            let modLiberado = 1;
-
-            if (chaveInput !== "") {
-                let check = extrairModuloDaChave(chaveInput, nomeAluno);
-                if (check === null) {
-                    document.getElementById('login-err').innerText = "ERRO: A Chave foi corrompida ou pertence a outro aluno (Nome incorreto).";
-                    document.getElementById('login-err').style.display = 'block'; return;
-                }
-                modLiberado = check;
-                document.getElementById('display-chave').innerText = chaveInput;
-            } else { document.getElementById('display-chave').innerText = "NENHUMA"; }
-
-            const paineis = ['conhecimento', 'conviccao', 'constancia', 'autocontrole', 'comunhao', 'perseveranca', 'exame'];
-            for(let i = 2; i <= 8; i++) {
-                if(modLiberado >= i) {
-                    let btn = document.getElementById('nav-mod-' + paineis[i-2]);
-                    btn.classList.remove('locked');
-                    if (i === 8) { btn.innerText = "Exame Final (Liberado)"; }
-                    else { btn.innerText = i + ". " + btn.innerText.split('.')[1].split('(')[0].trim(); }
-                }
-            }
-
-            carregarHistoricoLocal(modLiberado);
-            document.getElementById('login-screen').style.display = 'none';
-            document.getElementById('app-layout').style.display = 'flex';
-        }
-
-        // MOTOR ANTI-FRAUDE BASE64
-        function gerarAssinatura(nome, moduloNum) {
-            let n = nome.trim().toLowerCase();
-            let iniciais = n.split(/\s+/).map(p => p.charAt(0)).join('');
-            let letras = n.replace(/\s+/g, '').length;
-            let codigoBase = `${iniciais}${letras}-${moduloNum}`;
-            return btoa(codigoBase + "-FORJA2026");
-        }
-
-        function extrairModuloDaChave(chaveInput, nomeAtual) {
+        function salvarProgressoLocal() {
             try {
-                let decodificado = atob(chaveInput);
-                if (!decodificado.endsWith("-FORJA2026")) return null;
-                let partes = decodificado.replace("-FORJA2026", "").split('-');
-                let assinBase = partes[0];
-                let modNum = parseInt(partes[1]);
-                let n = nomeAtual.trim().toLowerCase();
-                let iniciais = n.split(/\s+/).map(p => p.charAt(0)).join('');
-                let letras = n.replace(/\s+/g, '').length;
-                if (assinBase !== `${iniciais}${letras}`) return null;
-                return modNum;
-            } catch (e) { return null; }
+                const dados = {
+                    resultadosHTML: document.getElementById('resultados-lista')?.innerHTML || '',
+                    atualizadoEm: new Date().toISOString()
+                };
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(dados));
+            } catch (erro) {
+                console.warn('Não foi possível salvar o histórico neste dispositivo:', erro);
+            }
         }
+
+        function carregarProgressoLocal() {
+            try {
+                const salvo = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+                if (salvo && typeof salvo.resultadosHTML === 'string') {
+                    document.getElementById('resultados-lista').innerHTML = salvo.resultadosHTML;
+                }
+            } catch (erro) {
+                console.warn('O histórico salvo não pôde ser recuperado:', erro);
+            }
+            aplicarProgresso();
+        }
+
+        // O curso inteiro fica aberto desde a primeira visita. Somente o histórico é salvo localmente.
+        carregarProgressoLocal();
 
         // MOTOR DE TESTES
         function iniciarProva(moduloID) {
@@ -1750,7 +1548,6 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             if (isExameFinal) {
                 notaFinalExame = percent;
                 if (percent >= 85) {
-                    document.getElementById('nome-cert').value = nomeAluno;
                     document.getElementById('cert-form-modal').style.display = 'flex';
                 } else {
                     alert(`REPROVADO. Nota: ${percent}%. A nota mínima é 85%. Revise os 7 tópicos e tente novamente.`);
@@ -1763,49 +1560,17 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             let htmlResultado = `<div class="result-card"><div class="result-header"><h3>Correção: ${tituloMod}</h3><div class="result-score">Nota: ${percent}% (${acertos}/${total})</div></div>${detalhamentoHTML}</div>`;
 
             const listaResult = document.getElementById('resultados-lista');
-            if (listaResult.innerHTML.includes("Nenhuma avaliação")) { listaResult.innerHTML = ''; }
+            if (listaResult.innerHTML.includes('Nenhuma avaliação')) listaResult.innerHTML = '';
             listaResult.innerHTML = htmlResultado + listaResult.innerHTML;
+            salvarProgressoLocal();
 
-            const mapas = {
-                'disciplina': { proxId: 'conhecimento', num: 2 }, 'conhecimento': { proxId: 'conviccao', num: 3 },
-                'conviccao': { proxId: 'constancia', num: 4 }, 'constancia': { proxId: 'autocontrole', num: 5 },
-                'autocontrole': { proxId: 'comunhao', num: 6 }, 'comunhao': { proxId: 'perseveranca', num: 7 },
-                'perseveranca': { proxId: 'exame', num: 8 }
-            };
-
-            if (percent >= 60) {
-                let info = mapas[moduloAtualProva];
-                if (info) {
-                    document.getElementById('nav-mod-' + info.proxId).classList.remove('locked');
-                    if (info.num === 8) { document.getElementById('nav-mod-' + info.proxId).innerText = "Exame Final (Liberado)"; }
-                    else { document.getElementById('nav-mod-' + info.proxId).innerText = info.num + ". " + info.proxId.charAt(0).toUpperCase() + info.proxId.slice(1); }
-
-                    let novaChave = gerarAssinatura(nomeAluno, info.num);
-                    document.getElementById('display-chave').innerText = novaChave;
-
-                    document.getElementById('new-key-display').innerText = novaChave;
-                    document.getElementById('copy-key-modal').style.display = 'flex';
-                    closeEval();
-                    return;
-                }
-            } else { alert(`REPROVADO (${percent}%). A nota mínima para avançar é 60%. Revise e tente de novo.`); }
-
-            closeEval(); switchTab('mod-resultados');
-        }
-
-        // FUNÇÕES DO MODAL DE CÓPIA DE CHAVE
-        function copiarChaveAcao() {
-            let chaveTexto = document.getElementById('new-key-display').innerText;
-            navigator.clipboard.writeText(chaveTexto).then(() => {
-                alert("Chave copiada com sucesso!");
-            }).catch(err => {
-                alert("Erro ao copiar. Selecione o texto e copie manualmente.");
-            });
-        }
-
-        function fecharModalChave() {
-            document.getElementById('copy-key-modal').style.display = 'none';
+            closeEval();
             switchTab('mod-resultados');
+            if (percent >= 60) {
+                alert(`Aprovado(a) com ${percent}%! O resultado foi salvo no histórico. Todos os demais conteúdos e avaliações continuam disponíveis.`);
+            } else {
+                alert(`Resultado: ${percent}%. A referência de aproveitamento é 60%. Você pode revisar qualquer conteúdo e refazer qualquer avaliação, sem bloqueios.`);
+            }
         }
 
         // MOTOR DO CERTIFICADO (WORD .DOC)
@@ -1819,7 +1584,6 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             event.preventDefault();
 
             const nome = document.getElementById('nome-cert').value.trim();
-            nomeAluno = nome;
             const nomeSeguro = escaparHTML(nome);
             const dataAtual = new Date();
             const dia = String(dataAtual.getDate()).padStart(2, '0');
@@ -1913,7 +1677,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             window.scrollTo(0, 0);
             if (window.innerWidth <= 768) { document.getElementById('sidebar').classList.remove('open'); }
         }
-        function switchTabIfUnlocked(tabId, element) { if (!element.classList.contains('locked')) { switchTab(tabId); } }
+        function switchTabIfUnlocked(tabId, element) { switchTab(tabId); }
 		
 		
 		

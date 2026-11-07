@@ -1,0 +1,27 @@
+{
+  "id": "./",
+  "name": "Pilares da Fé",
+  "short_name": "Pilares da Fé",
+  "description": "Formação Pilares da Fé — estudo, avaliação e aplicação dos sete pilares.",
+  "lang": "pt-BR",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#071426",
+  "theme_color": "#071426",
+  "icons": [
+    {
+      "src": "../icons/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "../icons/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

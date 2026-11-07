@@ -4,7 +4,7 @@
   "short_name": "Pilares da Fé",
   "description": "Formação Pilares da Fé — estudo, avaliação e aplicação dos sete pilares.",
   "lang": "pt-BR",
-  "start_url": "./intro.html",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",

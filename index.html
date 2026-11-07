@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html lang="pt-BR">
+<html lang="pt-BR" class="intro-open">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -213,6 +213,23 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             overflow: hidden !important;
             height: 100%;
             overscroll-behavior: none;
+        }
+
+        /* A introdução é uma camada independente: bloqueia qualquer rolagem
+           da página do curso que fica atrás dela, inclusive em telas touch. */
+        html.intro-open {
+            overflow: hidden !important;
+            height: 100% !important;
+            overscroll-behavior: none !important;
+        }
+        html.intro-open body {
+            position: fixed !important;
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            overflow: hidden !important;
+            overscroll-behavior: none !important;
+            touch-action: none !important;
         }
         button, input { font: inherit; }
         .install-app-btn {
@@ -1820,7 +1837,11 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 
         setTimeout(() => {
           wrapper.style.opacity = "0";
-          setTimeout(() => { wrapper.style.display = "none"; }, 1000);
+          setTimeout(() => {
+            wrapper.style.display = "none";
+            // Só libera a rolagem do curso depois que a introdução saiu por completo.
+            document.documentElement.classList.remove("intro-open");
+          }, 1000);
         }, 900);
       }
 

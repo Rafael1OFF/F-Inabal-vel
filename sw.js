@@ -1,5 +1,5 @@
 /* Pilares da Fé — cache offline do aplicativo */
-const CACHE_NAME = 'pilares-da-fe';
+const CACHE_NAME = 'pilares-da-fe1';
 const CORE_ASSETS = [
     './',
     './index.html',

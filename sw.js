@@ -1,7 +1,19 @@
 /* Pilares da Fé — cache offline do aplicativo */
-const CACHE_NAME = 'A-fé';
-const CORE_ASSETS = ['./', './index.html', './manifest.webmanifest'];
-const OPTIONAL_ASSETS = ['../icons/logo.png', './bg.jpg', './pilar1.png'];
+const CACHE_NAME = 'pilares-da-fe-shell-v2';
+const CORE_ASSETS = [
+    './',
+    './index.html',
+    './intro.html',
+    './manifest.webmanifest',
+    './icons/logo.png',
+    './icons/favicon-32.png',
+    './icons/favicon-48.png',
+    './icons/apple-touch-icon.png',
+    './icons/icon-192.png',
+    './icons/icon-512.png',
+    './icons/icon-maskable-512.png'
+];
+const OPTIONAL_ASSETS = ['./bg.jpg', './pilar1.png'];
 
 self.addEventListener('install', (event) => {
     event.waitUntil((async () => {
@@ -11,16 +23,14 @@ self.addEventListener('install', (event) => {
                 const response = await fetch(new Request(asset, { cache: 'reload' }));
                 if (response.ok) await cache.put(asset, response);
             } catch (_) {
-                // O shell continua instalável mesmo que o host não exponha ./ separadamente.
+                // Um recurso opcional ou indisponível não impede a instalação do shell.
             }
         }));
         await Promise.all(OPTIONAL_ASSETS.map(async (asset) => {
             try {
                 const response = await fetch(new Request(asset, { cache: 'reload' }));
                 if (response.ok) await cache.put(asset, response);
-            } catch (_) {
-                // Imagens opcionais não impedem o modo offline.
-            }
+            } catch (_) {}
         }));
         await self.skipWaiting();
     })());
@@ -29,7 +39,8 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
     event.waitUntil((async () => {
         const keys = await caches.keys();
-        await Promise.all(keys.filter((key) => key.startsWith('pilares-da-fe-') && key !== CACHE_NAME)
+        await Promise.all(keys
+            .filter((key) => key.startsWith('pilares-da-fe-') && key !== CACHE_NAME)
             .map((key) => caches.delete(key)));
         await self.clients.claim();
     })());
@@ -44,19 +55,19 @@ self.addEventListener('fetch', (event) => {
 
     if (request.mode === 'navigate') {
         event.respondWith((async () => {
-            const cachedPage = await caches.match('./index.html');
             try {
                 const response = await fetch(request);
                 if (response && response.ok) {
                     const cache = await caches.open(CACHE_NAME);
-                    cache.put('./index.html', response.clone());
+                    await cache.put('./index.html', response.clone());
                 }
                 return response;
             } catch (_) {
-                return cachedPage || new Response('O aplicativo ainda não foi carregado neste dispositivo. Conecte-se à internet uma vez para ativar o modo offline.', {
-                    status: 503,
-                    headers: { 'Content-Type': 'text/plain; charset=utf-8' }
-                });
+                const cachedPage = await caches.match('./index.html');
+                return cachedPage || new Response(
+                    'Conecte-se à internet uma vez para carregar o aplicativo e ativar o modo offline.',
+                    { status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8' } }
+                );
             }
         })());
         return;
@@ -69,7 +80,7 @@ self.addEventListener('fetch', (event) => {
             const response = await fetch(request);
             if (response && response.ok && response.type === 'basic') {
                 const cache = await caches.open(CACHE_NAME);
-                cache.put(request, response.clone());
+                await cache.put(request, response.clone());
             }
             return response;
         } catch (_) {

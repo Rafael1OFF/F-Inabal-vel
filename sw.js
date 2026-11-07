@@ -1,5 +1,5 @@
 /* Pilares da Fé — cache offline do aplicativo */
-const CACHE_NAME = 'A-fé';
+const CACHE_NAME = 'A-fé1';
 const CORE_ASSETS = ['./', './index.html', './manifest.webmanifest'];
 const OPTIONAL_ASSETS = ['../icons/logo.png', './bg.jpg', './pilar1.png'];
 

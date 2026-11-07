@@ -10,8 +10,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Pilares da Fé">
-    <link rel="icon" type="image/png" href="../icons/logo.png">
-    <link rel="apple-touch-icon" href="../icons/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png?v=2">
+    <link rel="icon" type="image/png" sizes="48x48" href="./icons/favicon-48.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png?v=2">
     <link rel="manifest" href="./manifest.webmanifest">
 <style>
         /* BASE PREMIUM E CORES */
@@ -346,7 +347,19 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             cursor: pointer;
         }
         .install-app-btn:hover { background: rgba(210,166,79,.13); }
-        .install-app-btn[hidden] { display: none; }
+        .install-app-btn:focus-visible { outline: 2px solid #f0d28b; outline-offset: 3px; }
+        .install-help {
+            margin: 12px 0 0;
+            padding: 11px 13px;
+            border: 1px solid rgba(222,187,111,.28);
+            border-radius: 8px;
+            background: rgba(5,18,34,.72);
+            color: #d6e1ef;
+            font-size: .82rem;
+            line-height: 1.55;
+            text-align: left;
+        }
+        .install-help[hidden] { display: none; }
 
         #app-layout {
             min-height: 100vh;
@@ -699,7 +712,8 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             <p id="login-err" style="color: var(--danger); font-weight: 800; display: none; margin-top: 1rem; font-size: 0.9rem;"></p>
 
             <button class="btn-login" onclick="entrarNoCurso()">Acessar</button>
-            <button id="install-app-btn" class="install-app-btn" type="button" hidden>Instalar aplicativo</button>
+            <button class="install-app-btn" data-install-app type="button">Instalar aplicativo</button>
+            <p id="install-help" class="install-help" role="status" aria-live="polite" hidden></p>
         </div>
     </div>
 
@@ -730,6 +744,8 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
                 <span style="font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; font-weight: bold;">Chave Atualizada</span>
                 <div class="sync-code-display" id="display-chave">NENHUMA</div>
             </div>
+            <button class="install-app-btn" data-install-app type="button">Instalar aplicativo</button>
+            <p class="install-help" role="status" aria-live="polite" hidden></p>
         </aside>
 
         <main class="main-content">
@@ -2064,32 +2080,83 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 
         /* ================= APP WEB OFFLINE / INSTALAÇÃO ================= */
         (() => {
-            const installButton = document.getElementById('install-app-btn');
+            const installButtons = Array.from(document.querySelectorAll('[data-install-app]'));
+            const installHelpElements = Array.from(document.querySelectorAll('.install-help'));
             let installPromptEvent = null;
 
+            const isStandalone = () =>
+                window.matchMedia('(display-mode: standalone)').matches ||
+                window.matchMedia('(display-mode: fullscreen)').matches ||
+                navigator.standalone === true;
+
+            const showInstallHelp = (message) => {
+                installHelpElements.forEach((element) => {
+                    element.textContent = message;
+                    element.hidden = false;
+                });
+            };
+
+            const hideInstallButtons = () => installButtons.forEach((button) => { button.hidden = true; });
+
+            if (isStandalone()) hideInstallButtons();
+
+            // Chromium (Chrome/Edge) fornece este evento quando o PWA está instalável.
             window.addEventListener('beforeinstallprompt', (event) => {
                 event.preventDefault();
                 installPromptEvent = event;
-                if (installButton) installButton.hidden = false;
+                if (!isStandalone()) installButtons.forEach((button) => { button.hidden = false; });
             });
 
-            if (installButton) {
+            installButtons.forEach((installButton) => {
                 installButton.addEventListener('click', async () => {
-                    if (!installPromptEvent) return;
-                    installPromptEvent.prompt();
-                    await installPromptEvent.userChoice;
-                    installPromptEvent = null;
-                    installButton.hidden = true;
+                    if (installPromptEvent) {
+                        const promptEvent = installPromptEvent;
+                        installPromptEvent = null;
+                        promptEvent.prompt();
+                        const choice = await promptEvent.userChoice;
+                        if (choice && choice.outcome === 'accepted') {
+                            hideInstallButtons();
+                            showInstallHelp('Instalação iniciada. O aplicativo ficará disponível na tela inicial ou na lista de aplicativos.');
+                        } else {
+                            showInstallHelp('A instalação não foi concluída. Você pode tentar novamente pelo menu do navegador.');
+                        }
+                        return;
+                    }
+
+                    if (location.protocol === 'file:') {
+                        showInstallHelp('Para instalar, publique o aplicativo em um endereço HTTPS. Abrir o arquivo HTML diretamente não permite instalação PWA nem funcionamento offline pelo Service Worker.');
+                        return;
+                    }
+
+                    if (!window.isSecureContext) {
+                        showInstallHelp('A instalação exige um endereço HTTPS (ou localhost para testes).');
+                        return;
+                    }
+
+                    const ua = navigator.userAgent || '';
+                    const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+                    const isEdge = /Edg\//.test(ua);
+
+                    if (isIOS) {
+                        showInstallHelp('No iPhone ou iPad: abra esta página no Safari, toque em Compartilhar e escolha “Adicionar à Tela de Início”.');
+                    } else if (isEdge) {
+                        showInstallHelp('No Microsoft Edge: abra o menu ⋯, entre em Aplicativos e escolha “Instalar este site como aplicativo”.');
+                    } else {
+                        showInstallHelp('No Google Chrome: abra o menu ⋮ e procure “Instalar Pilares da Fé” ou “Instalar página como app”.');
+                    }
                 });
-            }
+            });
 
             window.addEventListener('appinstalled', () => {
-                if (installButton) installButton.hidden = true;
+                hideInstallButtons();
+                showInstallHelp('Pilares da Fé foi instalado neste dispositivo.');
             });
 
-            if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+            // Service Workers só funcionam em HTTPS ou localhost.
+            if ('serviceWorker' in navigator && window.isSecureContext) {
                 window.addEventListener('load', () => {
                     navigator.serviceWorker.register('./sw.js', { scope: './' })
+                        .then((registration) => registration.update().catch(() => {}))
                         .catch((error) => console.warn('Não foi possível ativar o modo offline:', error));
                 }, { once: true });
             }

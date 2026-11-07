@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pilares da Fé</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:ital,wght@0,400;0,0,700;1,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-
-    <style>
+    <meta name="description" content="Formação Pilares da Fé — estudo, avaliação e aplicação dos sete pilares.">
+    <meta name="theme-color" content="#07172b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Pilares da Fé">
+    <link rel="icon" type="image/png" href="../icons/logo.png">
+    <link rel="apple-touch-icon" href="../icons/logo.png">
+    <link rel="manifest" href="./manifest.webmanifest">
+<style>
         /* BASE PREMIUM E CORES */
         :root {
             --bg-color: #f8fafc; --surface: #ffffff; --sidebar-bg: #0f172a;
@@ -207,6 +214,450 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             .main-content { margin-left: 0; padding: 2rem 1.5rem; }
             h1 { font-size: 2.2rem; }
         }
+
+
+        /* ============================================================
+           IDENTIDADE VISUAL CINEMATOGRÁFICA — AZUL PROFUNDO + DOURADO
+           ============================================================ */
+        :root {
+            color-scheme: dark;
+            --bg-color: #071426;
+            --surface: #0d2038;
+            --sidebar-bg: #061326;
+            --text-main: #d7e2f1;
+            --text-heading: #f7f9fd;
+            --primary: #d2a64f;
+            --primary-hover: #e8c574;
+            --secondary: #c5d5e9;
+            --border: #233c5b;
+            --danger: #e46b79;
+            --success: #56bd91;
+            --gold-soft: #f0d28b;
+            --blue-glow: #123b66;
+        }
+
+        html {
+            min-height: 100%;
+            background: #071426;
+            scrollbar-color: #c49a45 #09182b;
+            scrollbar-width: thin;
+        }
+        * { scrollbar-width: thin; scrollbar-color: #c49a45 #09182b; }
+        *::-webkit-scrollbar { width: 10px; height: 10px; }
+        *::-webkit-scrollbar-track { background: #09182b; }
+        *::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #e0bd70, #a77b2e);
+            border: 2px solid #09182b;
+            border-radius: 20px;
+        }
+        *::-webkit-scrollbar-thumb:hover { background: #f0d28b; }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(ellipse at 72% 0%, rgba(24, 69, 112, .25), transparent 42%),
+                linear-gradient(145deg, #071426 0%, #091a30 48%, #071426 100%);
+            color: var(--text-main);
+            font-family: Inter, "Segoe UI", Arial, sans-serif;
+        }
+        html.eval-open, body.eval-open {
+            overflow: hidden !important;
+            height: 100%;
+            overscroll-behavior: none;
+        }
+        button, input { font: inherit; }
+
+        #login-screen {
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(29, 79, 126, .42), transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(181, 137, 55, .12), transparent 45%),
+                #061326 !important;
+            padding: 24px;
+        }
+        #login-screen::before {
+            background: linear-gradient(135deg, rgba(2, 10, 22, .28), rgba(3, 12, 25, .8));
+        }
+        .login-box {
+            max-width: 460px;
+            padding: clamp(30px, 5vw, 52px);
+            border-radius: 18px;
+            background: linear-gradient(155deg, #102945 0%, #0a1a2e 68%, #081629 100%);
+            border: 1px solid rgba(211, 170, 88, .35);
+            border-top: 3px solid var(--primary);
+            box-shadow: 0 30px 90px rgba(0,0,0,.48), 0 0 50px rgba(21, 68, 111, .16);
+        }
+        .login-box h1 {
+            color: #f8f6ef;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(30px, 5vw, 38px);
+            letter-spacing: -.04em;
+        }
+        .login-box h1::after {
+            content: "";
+            display: block;
+            width: 58px;
+            height: 3px;
+            margin: 16px auto 20px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #9c702b, #f0d28b, #9c702b);
+        }
+        .login-box p { color: #aebed2; text-align: center; }
+        .form-group input {
+            border: 1px solid #294361;
+            border-radius: 9px;
+            background: #08182b;
+            color: #f5f7fb;
+        }
+        .form-group input:focus {
+            border-color: var(--primary);
+            background: #0b2038;
+            box-shadow: 0 0 0 3px rgba(210,166,79,.13);
+        }
+        .form-group input::placeholder { color: #71859d; }
+        .btn-login {
+            min-width: 180px;
+            border-radius: 8px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #e3c174, #b88938);
+            color: #071426;
+            box-shadow: 0 9px 25px rgba(0,0,0,.25);
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+        .btn-login:hover {
+            background: linear-gradient(135deg, #f0d690, #c99b4b);
+            color: #071426;
+            transform: translateY(-2px);
+        }
+        .login-divider { color: #9eb0c7; }
+        .login-divider::before, .login-divider::after { border-color: #294361; }
+        .install-app-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 14px;
+            padding: 12px 18px;
+            border: 1px solid rgba(222,187,111,.6);
+            border-radius: 8px;
+            color: #f0d28b;
+            background: rgba(9, 27, 47, .7);
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .install-app-btn:hover { background: rgba(210,166,79,.13); }
+        .install-app-btn[hidden] { display: none; }
+
+        #app-layout {
+            min-height: 100vh;
+            background: transparent;
+        }
+        .mobile-header {
+            background: rgba(5, 18, 34, .96);
+            border-bottom: 1px solid rgba(207,166,83,.26);
+            box-shadow: 0 8px 30px rgba(0,0,0,.22);
+            backdrop-filter: blur(16px);
+        }
+        .mobile-header span { color: #f2d58e; letter-spacing: .09em; }
+        .menu-toggle {
+            border: 1px solid rgba(220,184,108,.55);
+            border-radius: 7px;
+            color: #f1d38c;
+        }
+        .sidebar {
+            width: 286px;
+            background:
+                radial-gradient(ellipse at 15% 0%, rgba(26,72,115,.32), transparent 48%),
+                linear-gradient(180deg, #081a30 0%, #061326 100%);
+            border-right: 1px solid rgba(202,160,76,.25);
+            box-shadow: 12px 0 45px rgba(0,0,0,.16);
+            padding: 30px 20px 24px;
+        }
+        .sidebar-header {
+            border-bottom: 1px solid #233b58;
+            padding: 10px 8px 22px;
+            margin-bottom: 22px;
+        }
+        .sidebar-header h2 {
+            color: #f0d28b;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 20px;
+            letter-spacing: .12em;
+        }
+        .student-info {
+            background: linear-gradient(135deg, rgba(26,61,94,.85), rgba(12,34,57,.92));
+            border: 1px solid rgba(210,166,79,.18);
+            border-left: 3px solid var(--primary);
+            border-radius: 9px;
+            color: #9fb2c9;
+        }
+        .student-info strong { color: #fff; }
+        .nav-btn {
+            border: 1px solid transparent;
+            border-radius: 8px;
+            color: #9aacc2;
+            padding: 12px 13px;
+            margin-bottom: 5px;
+            font-size: .91rem;
+        }
+        .nav-btn:hover:not(.locked) {
+            background: rgba(39,85,127,.28);
+            color: #fff;
+        }
+        .nav-btn.active {
+            color: #f8e7bd;
+            background: linear-gradient(100deg, rgba(33,83,128,.65), rgba(12,37,62,.55));
+            border-color: rgba(210,166,79,.28);
+            box-shadow: inset 3px 0 0 #d2a64f;
+        }
+        .nav-btn.locked { color: #65778d; }
+        .sync-box { border-top: 1px solid #233b58; }
+        .sync-code-display {
+            background: #030b15;
+            border: 1px solid #24405c;
+            color: #e2c277;
+            border-radius: 7px;
+            font-size: .9rem;
+        }
+
+        .main-content {
+            max-width: 1160px;
+            padding: clamp(30px, 5vw, 72px);
+        }
+        .module-section { animation: fadeIn .38s ease; }
+        .kicker {
+            color: #d9b466;
+            letter-spacing: .2em;
+            font-size: .78rem;
+        }
+        .module-section > h1, #mod-resultados > h1, #mod-exame > h1 {
+            color: #f7f8fb;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2.4rem, 5vw, 3.6rem);
+            letter-spacing: -.045em;
+            line-height: 1.12;
+            margin-bottom: 2rem;
+            text-shadow: 0 8px 34px rgba(0,0,0,.22);
+        }
+        h2 {
+            color: #e8edf5;
+            border-bottom-color: #2a4360;
+        }
+        p {
+            color: #c1cddd;
+            font-size: 1.06rem;
+            line-height: 1.92;
+        }
+        strong { color: #f1d79f; }
+        .bible-box {
+            background: linear-gradient(135deg, #102b48, #0b1e34);
+            border-left: 4px solid #d0a34d;
+            border-top: 1px solid rgba(210,166,79,.18);
+            border-right: 1px solid rgba(210,166,79,.12);
+            border-bottom: 1px solid rgba(210,166,79,.12);
+            border-radius: 0 12px 12px 0;
+            box-shadow: 0 16px 40px rgba(0,0,0,.16);
+        }
+        .bible-text { color: #f1eee7; }
+        .bible-ref { color: #e0bd72; }
+        .step-box {
+            background: linear-gradient(145deg, #102943, #0b1d32);
+            border: 1px solid #2a4664;
+            border-top: 4px solid #c79a45;
+            box-shadow: 0 18px 44px rgba(0,0,0,.18);
+        }
+        .step-box h4 { color: #f0d28b; border-bottom-color: #2a4664; }
+        .step-list li { color: #c3d0df; }
+        .step-list li::before {
+            background: linear-gradient(145deg, #e1c174, #a87b2f);
+            color: #071426;
+            border-radius: 6px;
+        }
+        .step-list li strong { color: #f4dfb0; }
+        .conclusion-box {
+            background: rgba(18,65,100,.45);
+            color: #d4e2f2;
+            border-left-color: #d2a64f;
+        }
+        .conclusion-box strong { color: #f0d28b; }
+
+        .btn {
+            border: 1px solid rgba(242,213,145,.3);
+            border-radius: 8px;
+            color: #071426;
+            background: linear-gradient(135deg, #e5c77d, #b78837);
+            box-shadow: 0 12px 28px rgba(0,0,0,.2);
+            margin-top: 3rem;
+        }
+        .btn:hover {
+            background: linear-gradient(135deg, #f2d995, #c99b4a);
+            transform: translateY(-2px);
+        }
+        .btn-success {
+            color: #06192a;
+            background: linear-gradient(135deg, #8bd0ac, #4ca47c);
+        }
+
+        /* A avaliação fica com UMA única área rolável. O body é bloqueado via .eval-open. */
+        #eval-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-gutter: stable;
+            padding: clamp(14px, 3vw, 34px) 14px;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(28,77,121,.22), transparent 50%),
+                #071426;
+        }
+        .eval-container {
+            width: min(100%, 850px);
+            max-width: 850px;
+            min-height: auto;
+            height: auto;
+            overflow: visible;
+            margin: 0 auto;
+            padding: clamp(22px, 4vw, 48px);
+            border: 1px solid rgba(210,166,79,.24);
+            border-radius: 15px;
+            background: linear-gradient(155deg, #102640, #0a1b30 72%);
+            box-shadow: 0 25px 80px rgba(0,0,0,.42);
+        }
+        #quiz-titulo {
+            color: #f4d994 !important;
+            border-bottom-color: #344b67 !important;
+            margin-top: 0 !important;
+        }
+        .question-card { border-bottom-color: #2a435f; }
+        .question-title { color: #f1f4f8; font-size: 1.12rem; }
+        .option-lbl {
+            background: rgba(5,19,35,.62);
+            border: 1px solid #2a4664;
+            border-radius: 9px;
+            color: #cbd7e6;
+            transition: border-color .18s ease, background .18s ease;
+        }
+        .option-lbl:hover {
+            border-color: rgba(210,166,79,.65);
+            background: rgba(23,55,84,.72);
+        }
+        .option-lbl:has(input:checked) {
+            border-color: #d2a64f;
+            background: rgba(126,91,36,.18);
+        }
+        .option-lbl input { accent-color: #d2a64f; }
+        #quiz-err { color: #ff9aa4 !important; }
+        #eval-modal .btn { margin-top: 18px; }
+        #eval-modal .btn + .btn { margin-top: 12px !important; }
+
+        .result-card {
+            background: linear-gradient(145deg, #102943, #0a1c30) !important;
+            color: #d5dfed;
+            border: 1px solid #29445f;
+            border-radius: 11px;
+            box-shadow: 0 14px 34px rgba(0,0,0,.17);
+        }
+        .result-header { border-bottom-color: #2c4561; }
+        .result-header h3, .result-q { color: #edf2f8; }
+        .result-score { color: #e4c477; }
+        .result-a.correct {
+            color: #8ee0b4;
+            background: rgba(38,119,83,.17);
+        }
+        .result-a.incorrect {
+            color: #ff9ba5;
+            background: rgba(154,50,63,.18);
+        }
+        .import-badge { color: #8ee0b4; }
+
+        #copy-key-modal { background: rgba(1,7,15,.88); backdrop-filter: blur(10px); }
+        .copy-key-box {
+            background: linear-gradient(150deg, #112b46, #08192d);
+            border: 1px solid rgba(210,166,79,.3);
+            border-radius: 15px;
+            color: #d8e3f0;
+        }
+        .copy-key-box h2 { color: #f0d28b; }
+        .copy-key-box p { color: #b8c7d8 !important; }
+        .new-key-display {
+            background: #030b15;
+            border: 1px solid #294563;
+            color: #e8c979;
+        }
+
+        #cert-form-modal {
+            background: rgba(1,7,15,.88) !important;
+            backdrop-filter: blur(12px);
+            overflow-y: auto;
+        }
+        .main-card {
+            max-width: 520px;
+            padding: clamp(24px, 5vw, 42px);
+            border: 1px solid rgba(210,166,79,.34);
+            border-top: 4px solid #d2a64f;
+            border-radius: 15px;
+            background: linear-gradient(155deg, #112b46, #08192d 78%);
+            box-shadow: 0 30px 90px rgba(0,0,0,.52);
+        }
+        .main-card .header-area h2 {
+            color: #f0d28b;
+            font-family: Georgia, "Times New Roman", serif;
+        }
+        .main-card .header-area p { color: #b4c4d6; }
+        .main-card label { color: #d7e2ef; }
+        .main-card input[type="text"] {
+            border: 1px solid #2b4968;
+            background: #07182b;
+            color: #f4f6f9;
+            border-radius: 8px;
+        }
+        .main-card input[type="text"]:focus {
+            border-color: #d2a64f;
+            box-shadow: 0 0 0 3px rgba(210,166,79,.14);
+            background: #0a2038;
+        }
+        .main-card .btn-generate {
+            border: 1px solid rgba(242,213,145,.3);
+            border-radius: 8px;
+            color: #071426;
+            background: linear-gradient(135deg, #e5c77d, #b78837);
+            box-shadow: none;
+        }
+        .main-card .btn-generate:hover {
+            background: linear-gradient(135deg, #f2d995, #c99b4a);
+        }
+        .main-card .download-area { border-top-color: #29445f; }
+        .main-card .download-area p { color: #c3d1e0 !important; }
+        .main-card .download-btn {
+            color: #071426;
+            background: linear-gradient(135deg, #8bd0ac, #4ca47c);
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-header { display: flex; }
+            .sidebar { width: min(300px, 86vw); }
+            .main-content { padding: 34px 20px 50px; }
+            .main-content p { font-size: 1rem; text-align: left; }
+            .bible-box { padding: 22px; margin: 2rem 0; }
+            .step-box { padding: 22px; }
+            .btn { font-size: .98rem; padding: 16px; }
+            #eval-modal { padding: 10px; }
+            .eval-container { padding: 20px 16px; border-radius: 11px; }
+            .question-title { font-size: 1rem; }
+            .option-lbl { padding: 13px 11px; font-size: .95rem; }
+            .option-lbl input { margin-right: 10px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+        }
+
     </style>
 </head>
 <body>
@@ -248,6 +699,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             <p id="login-err" style="color: var(--danger); font-weight: 800; display: none; margin-top: 1rem; font-size: 0.9rem;"></p>
 
             <button class="btn-login" onclick="entrarNoCurso()">Acessar</button>
+            <button id="install-app-btn" class="install-app-btn" type="button" hidden>Instalar aplicativo</button>
         </div>
     </div>
 
@@ -569,8 +1021,8 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     <div id="cert-form-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 10001; align-items: center; justify-content: center; padding: 2rem;">
         <div class="main-card">
             <div class="header-area">
-                <h2>Emissor de Certificados</h2>
-                <p>Tema: A Forja</p>
+                <h2>Certificado de Aprendizado</h2>
+                <p>Registro de conclusão e aproveitamento dos sete pilares</p>
             </div>
 
             <form id="formCertificado">
@@ -580,14 +1032,14 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
                 </div>
 
                 <button type="submit" class="btn-generate">
-                    Gerar Arquivo do Certificado
+                    Emitir certificado
                 </button>
             </form>
 
             <div id="downloadArea" class="download-area">
-                <p style="color: #555; margin-bottom: 15px; font-size: 14px;">Tudo pronto! Clique abaixo para baixar:</p>
+                <p style="color: #555; margin-bottom: 15px; font-size: 14px;">Seu certificado de conclusão está pronto:</p>
                 <a id="btnDownload" class="download-btn" href="#">
-                    Baixar Certificado (.doc)
+                    Baixar certificado (.doc)
                 </a>
                 <button type="button" class="btn" style="background: transparent; color: #777; margin-top: 15px; padding: 10px; box-shadow: none; width: 100%; border: 1px solid #ddd;" onclick="fecharModalCertificado()">Fechar e Ver Resultados</button>
             </div>
@@ -595,7 +1047,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     </div>
 
     <script>
-        let nomeAluno = "", funcaoAluno = "", moduloAtualProva = "", questoesSorteadas = [], isExameFinal = false;
+        let nomeAluno = "", funcaoAluno = "", moduloAtualProva = "", questoesSorteadas = [], isExameFinal = false, notaFinalExame = 0;
 
         /*
           ==========================
@@ -1251,11 +1703,14 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
                 container.innerHTML += html;
             });
 
-            document.getElementById('eval-modal').style.display = 'block';
-            document.getElementById('eval-modal').scrollTop = 0;
+            document.documentElement.classList.add('eval-open');
+            document.body.classList.add('eval-open');
+            const modalAvaliacao = document.getElementById('eval-modal');
+            modalAvaliacao.style.display = 'block';
+            modalAvaliacao.scrollTop = 0;
         }
 
-        function closeEval() { document.getElementById('eval-modal').style.display = 'none'; }
+        function closeEval() { document.getElementById('eval-modal').style.display = 'none'; document.body.classList.remove('eval-open'); document.documentElement.classList.remove('eval-open'); }
 
         function finalizarProvaLocal() {
             let acertos = 0, total = questoesSorteadas.length, todasRespondidas = true, detalhamentoHTML = "";
@@ -1277,6 +1732,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             const percent = Math.round((acertos / total) * 100);
 
             if (isExameFinal) {
+                notaFinalExame = percent;
                 if (percent >= 85) {
                     document.getElementById('nome-cert').value = nomeAluno;
                     document.getElementById('cert-form-modal').style.display = 'flex';
@@ -1337,57 +1793,67 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
         }
 
         // MOTOR DO CERTIFICADO (WORD .DOC)
+        function escaparHTML(valor) {
+            return String(valor).replace(/[&<>"']/g, caractere => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            })[caractere]);
+        }
+
         document.getElementById('formCertificado').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            const nomeIgreja = "Igreja Comunidade Família Cristã";
-            const nome = document.getElementById('nome-cert').value;
+            const nome = document.getElementById('nome-cert').value.trim();
             nomeAluno = nome;
-
+            const nomeSeguro = escaparHTML(nome);
             const dataAtual = new Date();
             const dia = String(dataAtual.getDate()).padStart(2, '0');
             const mes = String(dataAtual.getMonth() + 1).padStart(2, '0');
             const ano = dataAtual.getFullYear();
             const dataFormatada = `${dia}/${mes}/${ano}`;
 
+            const aproveitamento = Number.isFinite(notaFinalExame) ? notaFinalExame : 85;
             const conteudoWord = `
                 <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
                 <head>
                     <meta charset='utf-8'>
-                    <title>Certificado A Forja</title>
+                    <title>Certificado — Pilares da Fé</title>
                 </head>
-                <body style="font-family: 'Calibri', 'Arial', sans-serif; margin: 0; padding: 0;">
-                    <div style="border: 15px solid #c5a059; padding: 5px; margin: 20px;">
-                        <div style="border: 5px solid #002147; padding: 50px; text-align: center;">
-                            <p style="color: #c5a059; font-size: 18px; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; margin: 0;">
-                                CERTIFICADO DE CONCLUSÃO
+                <body style="font-family: Georgia, 'Times New Roman', serif; margin: 0; padding: 0; background: #f4f6fa;">
+                    <div style="border: 14px solid #c8a253; padding: 6px; margin: 20px; background: #f8f7f2;">
+                        <div style="border: 3px solid #102b49; padding: 44px 42px; text-align: center; background: #fffefa;">
+                            <p style="color: #a47a32; font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; text-transform: uppercase; letter-spacing: 4px; margin: 0 0 18px;">
+                                CERTIFICADO DE APRENDIZADO E APLICAÇÃO
                             </p>
-                            <h1 style="color: #002147; font-size: 62px; margin-top: 10px; margin-bottom: 0; font-family: 'Georgia', serif; font-weight: bold; font-style: italic;">
-                                A Forja
+                            <h1 style="color: #102b49; font-size: 52px; margin: 0; font-weight: bold; letter-spacing: -1px;">
+                                Pilares da Fé
                             </h1>
-                            <div style="width: 200px; height: 2px; background-color: #c5a059; margin: 15px auto 40px auto;"></div>
-                            <p style="font-size: 22px; color: #444; margin-bottom: 10px;">
-                                Certificamos para os devidos fins que
+                            <div style="width: 180px; height: 3px; background: #c8a253; margin: 18px auto 34px;"></div>
+                            <p style="font-family: Arial, sans-serif; font-size: 18px; color: #46566a; margin: 0 0 12px;">
+                                Certificamos que
                             </p>
-                            <p style="font-size: 44px; color: #002147; font-weight: bold; text-transform: uppercase; margin: 0; padding: 10px 0; border-bottom: 1px solid #eee;">
-                                ${nome}
+                            <p style="font-family: Arial, sans-serif; font-size: 38px; color: #102b49; font-weight: bold; text-transform: uppercase; margin: 0; padding: 8px 0 16px; border-bottom: 1px solid #c8a253;">
+                                ${nomeSeguro}
                             </p>
-                            <p style="font-size: 19px; color: #555; line-height: 1.7; margin-top: 35px; padding: 0 50px;">
-                                participou e concluiu com distinção o ciclo de capacitação e renovação espiritual baseado no programa <b style="color:#002147;">"A Forja"</b>.
-                                Demonstrou compromisso em ter seu caráter moldado e seu propósito firmado em Cristo Jesus.
+                            <p style="font-family: Arial, sans-serif; font-size: 17px; color: #3f4e60; line-height: 1.8; margin: 30px 18px 18px;">
+                                concluiu com aproveitamento a formação <b style="color:#102b49;">Pilares da Fé</b>, sendo aprovado(a) no exame final com <b style="color:#a47a32;">${aproveitamento}% de aproveitamento</b>.
                             </p>
-                            <br><br><br>
-                            <table style="width: 100%; margin-top: 40px; border-collapse: collapse;">
+                            <p style="font-family: Arial, sans-serif; font-size: 15px; color: #526174; line-height: 1.8; margin: 0 24px;">
+                                Ao longo do percurso, estudou e foi avaliado(a) nos princípios de <b>disciplina, conhecimento, convicção racional, constância, autocontrole, comunhão e perseverança</b>, demonstrando compreensão dos conteúdos e de suas aplicações na construção de uma vida cristã consciente, consistente e perseverante.
+                            </p>
+                            <p style="font-family: Arial, sans-serif; font-size: 13px; color: #a47a32; letter-spacing: 1.5px; text-transform: uppercase; margin: 28px 0 0;">
+                                Formação concluída • Conhecimento e prática
+                            </p>
+                            <table style="width: 100%; margin-top: 58px; border-collapse: collapse; font-family: Arial, sans-serif;">
                                 <tr>
-                                    <td style="text-align: center; width: 50%; padding: 10px; vertical-align: bottom;">
-                                        <p style="font-size: 18px; color: #000; margin: 0;">Concluído em,</p>
-                                        <p style="font-size: 20px; font-weight: bold; color: #002147; margin: 5px 0 0 0;">${dataFormatada}</p>
-                                        <div style="width: 80%; height: 1px; background-color: #999; margin: 5px auto;"></div>
+                                    <td style="text-align: center; width: 50%; padding: 10px 14px; vertical-align: bottom;">
+                                        <div style="width: 88%; height: 1px; background: #9aa6b4; margin: 0 auto 9px;"></div>
+                                        <p style="font-size: 13px; color: #526174; margin: 0;">Data de conclusão</p>
+                                        <p style="font-size: 16px; font-weight: bold; color: #102b49; margin: 5px 0 0;">${dataFormatada}</p>
                                     </td>
-                                    <td style="text-align: center; width: 50%; padding: 10px; vertical-align: bottom;">
-                                        <div style="width: 80%; height: 1px; background-color: #333; margin: 0 auto 5px auto;"></div>
-                                        <p style="font-size: 18px; font-weight: bold; color: #002147; margin: 0;">${nomeIgreja}</p>
-                                        <p style="font-size: 14px; color: #c5a059; text-transform: uppercase; margin: 0; letter-spacing: 1px;">Organização Responsável</p>
+                                    <td style="text-align: center; width: 50%; padding: 10px 14px; vertical-align: bottom;">
+                                        <div style="width: 88%; height: 1px; background: #9aa6b4; margin: 0 auto 9px;"></div>
+                                        <p style="font-size: 16px; font-weight: bold; color: #102b49; margin: 0;">Programa de Formação</p>
+                                        <p style="font-size: 13px; color: #a47a32; margin: 5px 0 0; letter-spacing: 1px;">PILARES DA FÉ</p>
                                     </td>
                                 </tr>
                             </table>
@@ -1406,7 +1872,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             btnDownload.href = url;
 
             const nomeArquivo = nome.replace(/\s+/g, '_').toUpperCase();
-            btnDownload.download = `CERTIFICADO_FORJA_${nomeArquivo}.doc`;
+            btnDownload.download = `CERTIFICADO_PILARES_DA_FE_${nomeArquivo}.doc`;
 
             downloadArea.style.display = 'block';
             downloadArea.style.opacity = 0;
@@ -1595,6 +2061,41 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 /* ================= FIM DO SCRIPT DA INTRO (UNIFICADO) ================= */
  /* ================= FIM DO SCRIPT DA INTRO (CELERON MODE) ================= */
 		
+
+        /* ================= APP WEB OFFLINE / INSTALAÇÃO ================= */
+        (() => {
+            const installButton = document.getElementById('install-app-btn');
+            let installPromptEvent = null;
+
+            window.addEventListener('beforeinstallprompt', (event) => {
+                event.preventDefault();
+                installPromptEvent = event;
+                if (installButton) installButton.hidden = false;
+            });
+
+            if (installButton) {
+                installButton.addEventListener('click', async () => {
+                    if (!installPromptEvent) return;
+                    installPromptEvent.prompt();
+                    await installPromptEvent.userChoice;
+                    installPromptEvent = null;
+                    installButton.hidden = true;
+                });
+            }
+
+            window.addEventListener('appinstalled', () => {
+                if (installButton) installButton.hidden = true;
+            });
+
+            if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('./sw.js', { scope: './' })
+                        .catch((error) => console.warn('Não foi possível ativar o modo offline:', error));
+                }, { once: true });
+            }
+        })();
+        /* ================= FIM APP WEB OFFLINE ================= */
+
     </script>
 </body>
 </html>
